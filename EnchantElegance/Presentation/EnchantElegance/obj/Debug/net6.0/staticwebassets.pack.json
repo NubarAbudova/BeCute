@@ -1,0 +1,705 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\EnchantElegance.bundle.scp.css",
+      "PackagePath": "staticwebassets\\EnchantElegance.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\css\\plugins\\glightbox.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\plugins\\glightbox.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\css\\plugins\\swiper-bundle.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\plugins\\swiper-bundle.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\css\\style.css",
+      "PackagePath": "staticwebassets\\assets\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\css\\vendor\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\vendor\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner-bg1.html",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner-bg1.html"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner-fullwidth1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner-fullwidth1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner-fullwidth2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner-fullwidth2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner-fullwidth3.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner-fullwidth3.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner-fullwidth4.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner-fullwidth4.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner-fullwidth5.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner-fullwidth5.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner-fullwidth6.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner-fullwidth6.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner-fullwidth7.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner-fullwidth7.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner-fullwidth8.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner-fullwidth8.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner-layer1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner-layer1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner-menu.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner-menu.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner10.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner10.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner11.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner11.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner12.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner12.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner13.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner13.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner14.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner14.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner15.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner15.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner16.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner16.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner18.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner18.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner19.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner19.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner20.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner20.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner21.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner21.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner22.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner22.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner23.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner23.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner24.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner24.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner25.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner25.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner26.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner26.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner27.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner27.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner28.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner28.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner29.png",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner29.png"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner3.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner3.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner30.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner30.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner31.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner31.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner32.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner32.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner33.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner33.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner34.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner34.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner4.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner4.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner5.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner5.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner6.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner6.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner7.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner7.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner8.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner8.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\banner9.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\banner9.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\newsletter-popup-thumb2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\newsletter-popup-thumb2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\parallax-banner1.png",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\parallax-banner1.png"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\parallax-banner2.png",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\parallax-banner2.png"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\parallax-banner3.png",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\parallax-banner3.png"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\banner\\parallax-banner4.png",
+      "PackagePath": "staticwebassets\\assets\\img\\banner\\parallax-banner4.png"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\blog\\blog-page-big1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\blog-page-big1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\blog\\blog1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\blog1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\blog\\blog2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\blog2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\blog\\blog3.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\blog3.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\blog\\blog4.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\blog4.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\blog\\blog5.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\blog5.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\blog\\blog6.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\blog\\blog6.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\collection\\collection1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\collection\\collection1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\collection\\collection10.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\collection\\collection10.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\collection\\collection11.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\collection\\collection11.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\collection\\collection2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\collection\\collection2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\collection\\collection3.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\collection\\collection3.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\collection\\collection4.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\collection\\collection4.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\collection\\collection5.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\collection\\collection5.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\collection\\collection7.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\collection\\collection7.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\collection\\collection8.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\collection\\collection8.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\collection\\collection9.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\collection\\collection9.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\favicon.ico",
+      "PackagePath": "staticwebassets\\assets\\img\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\icon\\email-icon.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\icon\\email-icon.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\icon\\icon-img1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\icon\\icon-img1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\icon\\icon-img2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\icon\\icon-img2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\icon\\icon-img3.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\icon\\icon-img3.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\icon\\icon-img4.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\icon\\icon-img4.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\icon\\icon-img5.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\icon\\icon-img5.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\icon\\icon-img6.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\icon\\icon-img6.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\icon\\language-icon.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\icon\\language-icon.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\icon\\payment-img.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\icon\\payment-img.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\icon\\vector-icon.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\icon\\vector-icon.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\logo\\brand-logo1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\logo\\brand-logo1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\logo\\brand-logo2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\logo\\brand-logo2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\logo\\brand-logo3.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\logo\\brand-logo3.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\logo\\brand-logo4.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\logo\\brand-logo4.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\logo\\brand-logo5.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\logo\\brand-logo5.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\logo\\brand-logo6.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\logo\\brand-logo6.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\logo\\brand-logo7.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\logo\\brand-logo7.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\logo\\nav-log-white.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\logo\\nav-log-white.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\logo\\nav-log.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\logo\\nav-log.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\404-thumb.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\404-thumb.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\about.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\about.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\about2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\about2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\comment-thumb1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\comment-thumb1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\comment-thumb2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\comment-thumb2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\comment-thumb3.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\comment-thumb3.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\feature1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\feature1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\feature2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\feature2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\feature3.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\feature3.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\feature4.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\feature4.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\instagram1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\instagram1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\instagram2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\instagram2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\instagram3.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\instagram3.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\instagram4.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\instagram4.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\instagram5.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\instagram5.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\portfolio1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\portfolio1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\portfolio2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\portfolio2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\portfolio3.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\portfolio3.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\portfolio4.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\portfolio4.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\portfolio5.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\portfolio5.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\portfolio6.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\portfolio6.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\safe-checkout.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\safe-checkout.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\shape-img1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\shape-img1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\shape-img2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\shape-img2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\team1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\team1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\team2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\team2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\team3.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\team3.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\testimonial1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\testimonial1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\testimonial2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\testimonial2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\testimonial3.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\testimonial3.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\testimonial4.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\testimonial4.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\other\\testimonial5.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\other\\testimonial5.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\big-product\\product1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\big-product\\product1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\big-product\\product2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\big-product\\product2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\big-product\\product3.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\big-product\\product3.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\big-product\\product4.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\big-product\\product4.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\big-product\\product5.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\big-product\\product5.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\main-product\\product1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\main-product\\product1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\main-product\\product10.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\main-product\\product10.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\main-product\\product11.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\main-product\\product11.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\main-product\\product12.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\main-product\\product12.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\main-product\\product13.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\main-product\\product13.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\main-product\\product14.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\main-product\\product14.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\main-product\\product15.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\main-product\\product15.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\main-product\\product16.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\main-product\\product16.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\main-product\\product2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\main-product\\product2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\main-product\\product3.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\main-product\\product3.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\main-product\\product4.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\main-product\\product4.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\main-product\\product5.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\main-product\\product5.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\main-product\\product6.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\main-product\\product6.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\main-product\\product7.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\main-product\\product7.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\main-product\\product8.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\main-product\\product8.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\main-product\\product9.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\main-product\\product9.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\small-product\\product1.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\small-product\\product1.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\small-product\\product2.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\small-product\\product2.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\small-product\\product3.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\small-product\\product3.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\small-product\\product4.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\small-product\\product4.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\small-product\\product5.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\small-product\\product5.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\small-product\\product6.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\product\\small-product\\product6.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home1-slider1-bg.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\home1-slider1-bg.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home1-slider1-layer.png",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\home1-slider1-layer.png"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home1-slider2-layer.png",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\home1-slider2-layer.png"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home1-slider3-layer.png",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\home1-slider3-layer.png"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home2-slider1-bg.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\home2-slider1-bg.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home2-slider1-layer.png",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\home2-slider1-layer.png"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home2-slider2-layer.png",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\home2-slider2-layer.png"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home2-slider3-layer.png",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\home2-slider3-layer.png"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home3-slider1-bg.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\home3-slider1-bg.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home3-slider1-layer.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\home3-slider1-layer.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home3-slider2-layer.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\home3-slider2-layer.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home3-slider3-layer.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\home3-slider3-layer.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home5-slider1-bg.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\home5-slider1-bg.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home5-slider1-layer.png",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\home5-slider1-layer.png"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home5-slider2-layer.png",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\home5-slider2-layer.png"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home5-slider3-layer.png",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\home5-slider3-layer.png"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\js\\plugins\\glightbox.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\plugins\\glightbox.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\js\\plugins\\swiper-bundle.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\plugins\\swiper-bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\js\\script.js",
+      "PackagePath": "staticwebassets\\assets\\js\\script.js"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\js\\vendor\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\vendor\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\js\\vendor\\popper.js",
+      "PackagePath": "staticwebassets\\assets\\js\\vendor\\popper.js"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.EnchantElegance.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.EnchantElegance.props",
+      "PackagePath": "build\\EnchantElegance.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.EnchantElegance.props",
+      "PackagePath": "buildMultiTargeting\\EnchantElegance.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.EnchantElegance.props",
+      "PackagePath": "buildTransitive\\EnchantElegance.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
