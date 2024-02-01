@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "EnchantElegance.Application/1.0.0": {
+        "dependencies": {
+          "EnchantElegance.Domain": "1.0.0"
+        },
+        "runtime": {
+          "EnchantElegance.Application.dll": {}
+        }
+      },
+      "EnchantElegance.Domain/1.0.0": {
+        "runtime": {
+          "EnchantElegance.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EnchantElegance.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EnchantElegance.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
