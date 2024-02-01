@@ -15,6 +15,8 @@ namespace EnchantElegance.Persistence.Configurations
         {
             builder.Property(x=>x.Name).IsRequired().HasMaxLength(100);
             builder.HasIndex(x => x.Name).IsUnique();
+            builder.Property(x => x.Description).IsRequired().HasColumnType("text");
+
 
         }
     }
