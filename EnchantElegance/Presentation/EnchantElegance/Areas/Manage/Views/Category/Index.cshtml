@@ -1,0 +1,58 @@
+﻿@using EnchantElegance.Domain.Entities;
+@model List<Category>
+@{
+	int count = 0;
+}
+
+<!-- START PAGE CONTENT-->
+<div class="page-heading">
+	<h1 class="page-title">Category Table</h1>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a href="index.html"><i class="la la-home font-20"></i></a>
+		</li>
+	</ol>
+</div>
+<div class="page-content fade-in-up">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="ibox">
+				<div class="ibox-head">
+					<div class="ibox-title">Categories</div>
+					<a asp-controller="Category" asp-action="Create"class="btn btn-success"><i class="ti-plus"></i></a>
+				</div>
+	
+
+				<div class="ibox-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Name</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (Category category in Model)
+							{
+								count++;
+								<tr >
+									<td>@count</td>
+									<td>@category.Name</td>
+									<td>
+										<a class="btn-btn danger"><i class="ti-trash"></i></a>
+										<a class="btn-btn warning"><i class="ti-marker-alt"></i></a>
+										<a class="btn-btn info"><i class="ti-arrow-top-right"></i></a>
+
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- END PAGE CONTENT-->
