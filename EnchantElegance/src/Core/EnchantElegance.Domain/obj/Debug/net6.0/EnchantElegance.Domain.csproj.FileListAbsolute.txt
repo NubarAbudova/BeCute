@@ -9,3 +9,4 @@ C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\src\Core\EnchantElegance.
 C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\src\Core\EnchantElegance.Domain\obj\Debug\net6.0\refint\EnchantElegance.Domain.dll
 C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\src\Core\EnchantElegance.Domain\obj\Debug\net6.0\EnchantElegance.Domain.pdb
 C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\src\Core\EnchantElegance.Domain\obj\Debug\net6.0\ref\EnchantElegance.Domain.dll
+C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\src\Core\EnchantElegance.Domain\obj\Debug\net6.0\EnchantElegance.Domain.csproj.AssemblyReference.cache
