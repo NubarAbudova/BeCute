@@ -4,8 +4,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using EnchantElegance.Application.Abstarctions.Services;
 using EnchantElegance.Domain.Entities;
 using EnchantElegance.Persistence.Contexts;
+using EnchantElegance.Persistence.Implementations.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -37,6 +39,8 @@ namespace EnchantElegance.Persistence.ServiceRegistration
 
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
+
+            services.AddScoped<IAuthService,AuthService>();
             return services;
         }
     }

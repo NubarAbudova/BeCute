@@ -73,6 +73,36 @@ namespace EnchantElegance.Areas.Manage.Controllers
 			await _context.SaveChangesAsync();
 			return RedirectToAction(nameof(Index));
 		}
+		public async Task<IActionResult> Delete(int id)
+		{
+			if (id <= 0) return BadRequest();
 
+			Category existed = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
+
+			if (existed == null) return NotFound();
+
+			_context.Categories.Remove(existed);
+
+			await _context.SaveChangesAsync();
+
+			TempData["SuccessMessage"] = "Category successfully deleted.";
+
+			return RedirectToAction(nameof(Index));
+		}
+		//public async Task<IActionResult> Details(int id)
+		//{
+		//	if (id <= 0) return BadRequest();
+
+		//	Category category = await _context.Categories
+		//		.Include(c => c.Products)
+		//		.ThenInclude(c => c.ProductImages)
+		//		.Include(c => c.Products)
+		//		.ThenInclude(c => c.ProductTags)
+		//		.FirstOrDefaultAsync(c => c.Id == id);
+
+		//	if (category == null) return NotFound();
+
+		//	return View(category);
+		//}
 	}
 }

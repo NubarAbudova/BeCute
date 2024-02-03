@@ -261,3 +261,8 @@ C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\Presentation\EnchantElega
 C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\Presentation\EnchantElegance\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\Presentation\EnchantElegance\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll
 C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\Presentation\EnchantElegance\obj\Debug\net6.0\EnchantElegance.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\Presentation\EnchantElegance\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\Presentation\EnchantElegance\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\Presentation\EnchantElegance\bin\Debug\net6.0\FluentValidation.dll
+C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\Presentation\EnchantElegance\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\Presentation\EnchantElegance\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll

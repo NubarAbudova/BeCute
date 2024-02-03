@@ -115,6 +115,7 @@ namespace EnchantElegance.Persistence.Implementations.Repositories
         public void SoftDelete(T entity)
         {
             entity.IsDeleted = true;
+            Update(entity);
         }
         public void ReverseDelete(T entity)
         {

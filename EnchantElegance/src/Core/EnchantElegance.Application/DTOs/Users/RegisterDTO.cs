@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EnchantElegance.Application.DTOs.Users
 {
-    public record RegisterDTO(string UserName,string Email,string Password,string ConfirmPassword,string Name,string Surname)
+    public record RegisterDTO(string UserName,string Email,string Password,string ConfirmPassword,string PhoneNumber,string Name,string Surname)
     {
     }
 }

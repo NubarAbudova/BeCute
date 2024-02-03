@@ -16,6 +16,8 @@ namespace EnchantElegance.Application.Abstarctions.Repositories
         Task AddAsync(T entity);
         void Update(T entity);
         void Delete(T entity);
+        void SoftDelete(T entity);
+            
         Task SaveChangesAsync();
     }
 }
