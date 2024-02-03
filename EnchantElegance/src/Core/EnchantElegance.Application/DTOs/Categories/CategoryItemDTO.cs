@@ -6,5 +6,9 @@ using System.Threading.Tasks;
 
 namespace EnchantElegance.Application.DTOs.Categories
 {
-    public record CategoryItemDTO(int Id, string Name, string Description);
+    public class CategoryItemDTO
+    {
+        public int Id { get; set; }
+
+    }
 }

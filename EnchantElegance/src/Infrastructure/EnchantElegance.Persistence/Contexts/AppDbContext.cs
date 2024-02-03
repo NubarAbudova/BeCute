@@ -8,9 +8,6 @@ using EnchantElegance.Domain.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-
-
-
 namespace EnchantElegance.Persistence.Contexts
 {
     public class AppDbContext:IdentityDbContext<AppUser>
@@ -21,9 +18,12 @@ namespace EnchantElegance.Persistence.Contexts
         public DbSet<Product> Products { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<ProductColor> ProductColors { get; set; }
+		public DbSet<Slider> Sliders { get; set; }
 
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 

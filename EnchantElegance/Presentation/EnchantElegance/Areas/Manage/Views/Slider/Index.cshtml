@@ -1,0 +1,64 @@
+﻿@using EnchantElegance.Domain.Entities;
+@model List<Slider>
+@{
+	int count = 0;
+}
+
+<!-- START PAGE CONTENT-->
+<div class="page-heading">
+	<h1 class="page-title">Slider Table</h1>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a href="index.html"><i class="la la-home font-20"></i></a>
+		</li>
+	</ol>
+</div>
+<div class="page-content fade-in-up">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="ibox">
+				<div class="ibox-head">
+					<div class="ibox-title">Categories</div>
+					<a asp-controller="Slider" asp-action="Create" class="btn btn-success"><i class="ti-plus"></i></a>
+				</div>
+
+
+				<div class="ibox-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Name</th>
+								<th>SubTitle</th>
+								<th>Description</th>
+								<th>Order</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (Slider slider in Model)
+							{
+								count++;
+								<tr>
+									<td>@count</td>
+									<td>@slider.Name</td>
+									<td>@slider.SubTitle</td>
+									<td>@slider.Description</td>
+									<td>@slider.Order</td>
+									<td>
+										<a asp-controller="Slider" asp-action="Update" asp-route-id="@slider.Id" class="btn-btn warning"><i class="ti-marker-alt"></i></a>
+										<a asp-controller="Slider" asp-action="Delete" asp-route-id="@slider.Id" class="btn-btn danger"><i class="ti-trash"></i></a>
+										<a asp-controller="Slider" asp-action="Details" asp-route-id="@slider.Id" class="btn-btn info"><i class="ti-arrow-top-right"></i></a>
+
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- END PAGE CONTENT-->
