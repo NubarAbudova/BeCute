@@ -13,7 +13,8 @@ namespace EnchantElegance.Application.Validators
 		public RegisterDTOValidator()
 		{
 			RuleFor(x => x.UserName)
-			  .NotEmpty().WithMessage("Username cannot be empty.");
+			  .NotEmpty().WithMessage("Username cannot be empty.")
+			  .MaximumLength(100).WithMessage("Username must be at most 100 characters long.");
 
 			RuleFor(x => x.Email)
 				.NotEmpty().WithMessage("Email cannot be empty.")
@@ -29,10 +30,14 @@ namespace EnchantElegance.Application.Validators
 				.Equal(x => x.Password).WithMessage("Passwords do not match.");
 
 			RuleFor(x => x.Name)
-				.NotEmpty().WithMessage("Name cannot be empty.");
+				.NotEmpty().WithMessage("Name cannot be empty.")
+			  .MaximumLength(50).WithMessage("Name must be at most 100 characters long.");
+
 
 			RuleFor(x => x.Surname)
-				.NotEmpty().WithMessage("Surname cannot be empty.");
+				.NotEmpty().WithMessage("Surname cannot be empty.")
+			  .MaximumLength(50).WithMessage("Surname must be at most 100 characters long.");
+
 
 			RuleFor(x => x.PhoneNumber)
 				.NotEmpty().WithMessage("Phone number cannot be empty.")
