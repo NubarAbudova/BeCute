@@ -31,29 +31,20 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Create(SliderCreateDTO sliderDTO)
 		{
-			if (!ModelState.IsValid)
-			{
-				var errors = ModelState.Values.SelectMany(v => v.Errors);
-				foreach (var error in errors)
-				{
-					Console.WriteLine(error.ErrorMessage);
-				}
-				return View();
-			}
+			if(ModelState.IsValid) return View(sliderDTO);
 
 			if (!sliderDTO.Photo.ValidateType("image/"))
 			{
 				ModelState.AddModelError("Photo", "File type is not compatible");
 				return View();
 			}
-
 			if (!sliderDTO.Photo.ValidateSize(2 * 1024))
 			{
 				ModelState.AddModelError("Photo", "File size should not be larger than 2MB");
 				return View();
 			}
 
-			string fileName = await sliderDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "imag", "slider");
+			string fileName = await sliderDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img", "slider");
 
 			Slider slider = new Slider
 			{
