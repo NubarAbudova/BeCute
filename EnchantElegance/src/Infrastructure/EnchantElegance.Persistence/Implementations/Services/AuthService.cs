@@ -58,7 +58,6 @@ namespace EnchantElegance.Persistence.Implementations.Services
 		public async Task Logout()
 		{
 			await _signInManager.SignOutAsync();
-		
 		}
 
 	}

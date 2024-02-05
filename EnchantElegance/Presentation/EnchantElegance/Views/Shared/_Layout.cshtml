@@ -224,7 +224,7 @@
 								@if (User.Identity.IsAuthenticated)
 								{
 									<li class="header__menu--items">
-										<a class="header__menu--link" href="contact.html">@User.Identity.Name </a>
+										<a class="header__menu--link">@User.Identity.Name </a>
 									</li>
 									<li class="header__menu--items">
 										<a class="header__menu--link" asp-controller="User" asp-action="Logout">Logout </a>

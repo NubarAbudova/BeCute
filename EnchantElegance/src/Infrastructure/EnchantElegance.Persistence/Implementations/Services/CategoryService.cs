@@ -8,6 +8,7 @@ using EnchantElegance.Application.Abstarctions.Repositories;
 using EnchantElegance.Application.Abstarctions.Services;
 using EnchantElegance.Application.DTOs.Categories;
 using EnchantElegance.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace EnchantElegance.Persistence.Implementations.Services
 {
@@ -25,7 +26,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
 	//	public async Task<ICollection<CategoryItemDTO>> GetAllAsync(int page, int take)
 	//	{
-	//		ICollection<Category> categories = await _repository.GetAllWhere(skip: (page - 1) * take, take: take).ToListAsync();
+	//		ICollection<Category> categories = await _repository.GetAllAsyn(skip: (page - 1) * take, take: take).ToListAsync();
 
 	//		return _mapper.Map<ICollection<CategoryItemDTO>>(categories);
 	//	}
@@ -64,6 +65,11 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
 	//		_repository.SoftDelete(category);
 	//		await _repository.SaveChangesAsync();
+	//	}
+
+	//	public Task Delete(int id)
+	//	{
+	//		throw new NotImplementedException();
 	//	}
 	//	//public async Task Delete(int id)
 	//	//{

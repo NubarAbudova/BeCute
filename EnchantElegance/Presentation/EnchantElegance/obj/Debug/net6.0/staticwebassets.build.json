@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ajFJLxaqUpypt3tHeGemzyRaAgaSe2B4Y/UWySFD3F4=",
+  "Hash": "KiZVZlRjx9L6ETNa9GQ7WIpZCIKA+Du2r+0bTL/Xu9Q=",
   "Source": "EnchantElegance",
   "BasePath": "_content/EnchantElegance",
   "Mode": "Default",
@@ -61521,6 +61521,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\slider\\1de81c2d-9740-4d9b-b8c0-3e17ae4f9e10wp6836080.webp"
+    },
+    {
+      "Identity": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\e58482f5-a66c-4b29-9455-1c88a32c3ad0wp6836080.webp",
+      "SourceId": "EnchantElegance",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\",
+      "BasePath": "_content/EnchantElegance",
+      "RelativePath": "assets/img/slider/e58482f5-a66c-4b29-9455-1c88a32c3ad0wp6836080.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\slider\\e58482f5-a66c-4b29-9455-1c88a32c3ad0wp6836080.webp"
+    },
+    {
+      "Identity": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\effa15cf-8070-41a0-add9-45b860810985wp6836080.webp",
+      "SourceId": "EnchantElegance",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\",
+      "BasePath": "_content/EnchantElegance",
+      "RelativePath": "assets/img/slider/effa15cf-8070-41a0-add9-45b860810985wp6836080.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\slider\\effa15cf-8070-41a0-add9-45b860810985wp6836080.webp"
     },
     {
       "Identity": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home1-slider1-bg.webp",

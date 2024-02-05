@@ -7,7 +7,7 @@ using EnchantElegance.Domain.Entities;
 
 namespace EnchantElegance.Application.Abstarctions.Repositories
 {
-	internal interface ISliderRepository:IRepository<Slider>
+	public interface ISliderRepository:IRepository<Slider>
 	{
 	}
 }

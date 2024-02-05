@@ -21,7 +21,7 @@ namespace EnchantElegance.Controllers
 			return View();
 		}
 		[HttpPost]
-		public async Task<IActionResult> Register([FromForm] RegisterDTO registerDTO)
+		public async Task<IActionResult> Register(RegisterDTO registerDTO)
 		{
 			await _service.Register(registerDTO);
 			return RedirectToAction("Index", "Home");
@@ -32,10 +32,16 @@ namespace EnchantElegance.Controllers
 			return View();
 		}
 		[HttpPost]
-		public async Task<IActionResult> Login([FromForm] LoginDTO loginDTO)
+		public async Task<IActionResult> Login(LoginDTO loginDTO)
 		{
 			await _service.Login(loginDTO);
 			return RedirectToAction("Index", "Home");
+		}
+		public async Task<IActionResult> LogOut()
+		{
+			await _service.Logout();
+			return RedirectToAction("Index", "Home");
+
 		}
 
 	}

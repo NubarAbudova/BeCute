@@ -30,37 +30,35 @@ namespace EnchantElegance.Persistence.Implementations.Repositories
             return query;
         }
 
-
         //GETALLWHERE
-        //public IQueryable<T> GetAllWhere(Expression<Func<T, bool>>? expression = null, Expression<Func<T, object>>? orderExpression = null, bool isDescending = false, int skip = 0, int take = 0, bool isTracking = false, bool isIgnoreQuery = false, params string[] includes)
-        //{
-        //    IQueryable<T> query = _table;
-        //    if (expression != null)
-        //    {
-        //        query = query.Where(expression);
-        //    }
-        //    if (orderExpression != null)
-        //    {
-        //        if (isDescending) query = query.OrderByDescending(orderExpression);
-        //        else query = query.OrderBy(orderExpression);
-        //    }
+        public IQueryable<T> GetAllWhere(Expression<Func<T, bool>>? expression = null, Expression<Func<T, object>>? orderExpression = null, bool isDescending = false, int skip = 0, int take = 0, bool isTracking = false, bool isIgnoreQuery = false, params string[] includes)
+        {
+            IQueryable<T> query = _table;
+            if (expression != null)
+            {
+                query = query.Where(expression);
+            }
+            if (orderExpression != null)
+            {
+                if (isDescending) query = query.OrderByDescending(orderExpression);
+                else query = query.OrderBy(orderExpression);
+            }
+
+            if (skip != 0) query = query.Skip(skip);
+            if (take != 0) query = query.Take(take);
 
 
-        //    if (skip != 0) query = query.Skip(skip);
-        //    if (take != 0) query = query.Take(take);
+            if (includes != null)
+            {
+                for (int i = 0; i < includes.Length; i++)
+                {
+                    query = query.Include(includes[i]);
+                }
+            }
 
-
-        //    if (includes != null)
-        //    {
-        //        for (int i = 0; i < includes.Length; i++)
-        //        {
-        //            query = query.Include(includes[i]);
-        //        }
-        //    }
-
-        //    if (isIgnoreQuery) query = query.IgnoreQueryFilters();
-        //    return isTracking ? query : query.AsNoTracking();
-        //}
+            if (isIgnoreQuery) query = query.IgnoreQueryFilters();
+            return isTracking ? query : query.AsNoTracking();
+        }
 
         //ADDASYNC
         public async Task AddAsync(T entity)
@@ -68,7 +66,6 @@ namespace EnchantElegance.Persistence.Implementations.Repositories
             await _table.AddAsync(entity);
 
         }
-
         public async Task<bool> IsExistAsync(Expression<Func<T, bool>> expression)
         {
             return await _table.AnyAsync(expression);
@@ -85,7 +82,6 @@ namespace EnchantElegance.Persistence.Implementations.Repositories
             return await query.FirstOrDefaultAsync();
         }
 
-
         //GETBYEXPRESSION
 
         public Task<T> GetByExpressionAsync(Expression<Func<T, bool>>? expression, bool isTracking = false, bool isIgnoreQuery = false, params string[] includes)
@@ -98,8 +94,6 @@ namespace EnchantElegance.Persistence.Implementations.Repositories
 
             return query.FirstOrDefaultAsync();
         }
-
-
 
         //UPDATE
         public void Update(T entity)
@@ -136,16 +130,6 @@ namespace EnchantElegance.Persistence.Implementations.Repositories
                 }
             }
             return query;
-        }
-
-        public IQueryable<T> GetAll(Expression<Func<T, bool>>? expression = null, params string[] includes)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<T> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

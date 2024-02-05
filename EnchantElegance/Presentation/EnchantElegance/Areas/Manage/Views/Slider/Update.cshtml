@@ -1,0 +1,70 @@
+﻿@model EnchantElegance.Application.DTOs.Sliders.SliderUpdateDTO
+
+<!-- START PAGE CONTENT-->
+<div class="page-heading">
+	<h1 class="page-title">Slider</h1>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a href="index.html"><i class="la la-home font-20"></i></a>
+		</li>
+		<li class="breadcrumb-item">Create Slider</li>
+	</ol>
+</div>
+<div class="page-content fade-in-up">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="ibox">
+				<div class="ibox-head">
+					<div class="ibox-tools">
+						<a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+						<a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<a class="dropdown-item">option 1</a>
+							<a class="dropdown-item">option 2</a>
+						</div>
+					</div>
+				</div>
+				<div class="ibox-body">
+					<form method="post" enctype="multipart/form-data">
+
+						<div class="row">
+							
+							<div <img src="~/assets/img/slider/@Model.Image"> typeof="hidden"></div>
+							
+
+							<div class="col-sm-6 form-group">
+								<label asp-for="Photo"> Photo</label>
+								<input asp-for="Photo" class="form-control" placeholder="Photo">
+								<span asp-validation-for="Photo"></span>
+							</div>
+							<div class="col-sm-6 form-group">
+								<label asp-for="Name"> Name</label>
+								<input asp-for="Name" class="form-control" placeholder="Name">
+								<span asp-validation-for="Name"></span>
+							</div>
+							<div class="col-sm-6 form-group">
+								<label asp-for="SubTitle"> SubTitle</label>
+								<input asp-for="SubTitle" class="form-control" placeholder="SubTitle">
+								<span asp-validation-for="SubTitle"></span>
+							</div>
+							<div class="col-sm-6 form-group">
+								<label asp-for="Description"> Description</label>
+								<input asp-for="Description" class="form-control" placeholder="Description">
+								<span asp-validation-for="Description"></span>
+							</div>
+							<div class="col-sm-6 form-group">
+								<label asp-for="Order"> Order</label>
+								<input asp-for="Order" class="form-control" placeholder="Order">
+								<span asp-validation-for="Order"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<button class="btn btn-success" type="submit">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END PAGE CONTENT-->

@@ -4,24 +4,24 @@ using EnchantElegance.Persistence.Contexts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EnchantElegance.Domain.Utilities.Extensions;
+using EnchantElegance.Application.Abstarctions.Services;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace EnchantElegance.Areas.Manage.Controllers
 {
 	[Area("Manage")]
 	public class SliderController : Controller
 	{
-		private readonly AppDbContext _context;
-		private readonly IWebHostEnvironment _env;
-		public SliderController(AppDbContext context, IWebHostEnvironment env)
-		{
-			_context = context;
-			_env = env;
-		}
+		private readonly ISliderService _service;
 
+		public SliderController(ISliderService service)
+		{
+			_service = service;
+		}
 		public async Task<IActionResult> Index()
 		{
-			List<Slider> sliders = await _context.Sliders.ToListAsync();
-			return View(sliders);
+			await _service.GetAllAsync(1, 3);
+			return View("Index","slider");
 		}
 		public async Task<IActionResult> Create()
 		{
@@ -30,119 +30,38 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Create(SliderCreateDTO sliderDTO)
 		{
-			if(ModelState.IsValid) return View(sliderDTO);
+			if (ModelState.IsValid) return View(sliderDTO);
 
-			if (!sliderDTO.Photo.ValidateType("image/"))
+			var result = await _service.Create(sliderDTO);
+
+			if (result.Any())
 			{
-				ModelState.AddModelError("Photo", "File type is not compatible");
-				return View();
+				ModelState.AddModelError(String.Empty, "Create is not success");
+				return View(sliderDTO);
 			}
-			if (!sliderDTO.Photo.ValidateSize(2 * 1024))
-			{
-				ModelState.AddModelError("Photo", "File size should not be larger than 2MB");
-				return View();
-			}
-
-			string fileName = await sliderDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img", "slider");
-
-			Slider slider = new Slider
-			{
-				Image = fileName,
-				Name = sliderDTO.Name,
-				SubTitle = sliderDTO.SubTitle, 
-				Description = sliderDTO.Description,
-				Order = sliderDTO.Order,
-			};
-
-			await _context.Sliders.AddAsync(slider);
-			await _context.SaveChangesAsync();
 			return RedirectToAction(nameof(Index));
 		}
-	
+
 		public async Task<IActionResult> Update(int id)
 		{
-			if (id <= 0) BadRequest();
-
-			Slider slider = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
-
-			if (slider == null) return NotFound();
-
-			SliderUpdateDTO updateDTO = new SliderUpdateDTO
-			{
-				Name= slider.Name,
-				Description = slider.Description,
-				SubTitle = slider.SubTitle,
-				Order = slider.Order,
-				Image = slider.Image
-			};
-			await _context.SaveChangesAsync();
-			return View(updateDTO);
+			if (id <= 0) return BadRequest();
+			await _service.Update(id);
+			return RedirectToAction(nameof(Index));
 		}
 		[HttpPost]
 		public async Task<IActionResult> Update(int id, SliderUpdateDTO updateDTO)
 		{
 			if (!ModelState.IsValid) return View(updateDTO);
-	
-			Slider existed = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
 
-			if (existed == null) return NotFound();
+			await _service.Update(id, updateDTO);
+			return View("Index", "slider");
 
-			if (updateDTO.Photo != null)
-			{
-				if (!updateDTO.Photo.ValidateType("image/"))
-				{
-					ModelState.AddModelError("Photo", "File type is not compatible");
-					return View(existed);
-				}
-				if (updateDTO.Photo.ValidateSize(2 * 1024))
-				{
-					ModelState.AddModelError("Photo", "File size should not be larger than 2MB");
-					return View(existed);
-				}
-			}
-
-
-			string fileName = await updateDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img", "slider");
-			if (!string.IsNullOrEmpty(existed.Image))
-			{
-				existed.Image.DeleteFile(_env.WebRootPath, "assets", "img", "slider");
-			}
-
-			existed.Image = fileName;
-
-			existed.Name = updateDTO.Name;
-			existed.Description = updateDTO.Description;
-			existed.SubTitle = updateDTO.SubTitle;
-			existed.Order = updateDTO.Order;
-
-			await _context.SaveChangesAsync();
-			return RedirectToAction(nameof(Index));
 		}
 		public async Task<IActionResult> Delete(int id)
 		{
 			if (id <= 0) return BadRequest();
 
-			Slider existed = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
-
-			if (existed == null) return Json(new { status = 404 });
-
-			try
-			{
-				_context.Sliders.Remove(existed);
-				await _context.SaveChangesAsync();
-			}
-			catch (Exception)
-			{
-
-				return Json(new { status = 500 });
-			}
-
-			if (!string.IsNullOrEmpty(existed.Image))
-			{
-				existed.Image.DeleteFile(_env.WebRootPath, "assets", "img", "slider");
-			}
-
-			await _context.SaveChangesAsync();
+			await _service.Delete(id);
 			return RedirectToAction(nameof(Index));
 		}
 		//public async Task<IActionResult> Details(int id)
