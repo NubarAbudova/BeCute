@@ -1201,6 +1201,10 @@
       "PackagePath": "staticwebassets\\admin\\js\\app.min.js"
     },
     {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\admin\\js\\main.js",
+      "PackagePath": "staticwebassets\\admin\\js\\main.js"
+    },
+    {
       "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\admin\\js\\scripts\\calendar-demo.js",
       "PackagePath": "staticwebassets\\admin\\js\\scripts\\calendar-demo.js"
     },
@@ -14459,6 +14463,10 @@
     {
       "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\product\\small-product\\product6.webp",
       "PackagePath": "staticwebassets\\assets\\img\\product\\small-product\\product6.webp"
+    },
+    {
+      "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\1de81c2d-9740-4d9b-b8c0-3e17ae4f9e10wp6836080.webp",
+      "PackagePath": "staticwebassets\\assets\\img\\slider\\1de81c2d-9740-4d9b-b8c0-3e17ae4f9e10wp6836080.webp"
     },
     {
       "Id": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home1-slider1-bg.webp",

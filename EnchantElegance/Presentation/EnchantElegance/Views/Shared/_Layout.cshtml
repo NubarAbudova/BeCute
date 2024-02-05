@@ -21,9 +21,9 @@
 	<!-- Custom Style CSS -->
 	<link rel="stylesheet" href="~/assets/css/style.css">
 	<style>
-		
+
 		.main__logo--title a {
-			font-size: 24px; 
+			font-size: 24px;
 			color: #DB7093;
 		}
 	</style>
@@ -221,6 +221,25 @@
 								<li class="header__menu--items">
 									<a class="header__menu--link" href="contact.html">Contact </a>
 								</li>
+								@if (User.Identity.IsAuthenticated)
+								{
+									<li class="header__menu--items">
+										<a class="header__menu--link" href="contact.html">@User.Identity.Name </a>
+									</li>
+									<li class="header__menu--items">
+										<a class="header__menu--link" asp-controller="User" asp-action="Logout">Logout </a>
+									</li>
+								}
+								else
+								{
+									<li class="header__menu--items">
+										<a class="header__menu--link" asp-controller="User" asp-action="Register">Register </a>
+									</li>
+									<li class="header__menu--items">
+										<a class="header__menu--link" asp-controller="User" asp-action="Login">Login </a>
+									</li>
+								}
+
 							</ul>
 						</nav>
 					</div>

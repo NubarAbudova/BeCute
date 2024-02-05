@@ -6,14 +6,15 @@
 	<div class="container">
 		<form action="#">
 			<div class="login__section--inner">
-				<div class="row row-cols-md-2 row-cols-1">
-					<div class="col">
+				<div class="row row-cols-md-2row-cols-1" >
+					<div class="col" >
 						<div class="account__login">
 							<div class="account__login--header mb-25">
 								<h2 class="account__login--header__title mb-15">Login</h2>
 								<p class="account__login--header__desc">Login if you area a returning customer.</p>
 							</div>
 							<div class="account__login--inner">
+								<div class="text-danger" asp-validation-summary="ModelOnly"></div>
 								<div class="form-group">
 									<label asp-for="UsernameorEmail" class="account__login--label"></label>
 									<input asp-for="UsernameorEmail" class="account__login--input form-control" />

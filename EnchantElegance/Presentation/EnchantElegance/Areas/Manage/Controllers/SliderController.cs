@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EnchantElegance.Domain.Utilities.Extensions;
 
-
 namespace EnchantElegance.Areas.Manage.Controllers
 {
 	[Area("Manage")]
@@ -50,12 +49,99 @@ namespace EnchantElegance.Areas.Manage.Controllers
 			{
 				Image = fileName,
 				Name = sliderDTO.Name,
-				SubTitle = sliderDTO.SubTitle,
+				SubTitle = sliderDTO.SubTitle, 
 				Description = sliderDTO.Description,
 				Order = sliderDTO.Order,
 			};
 
 			await _context.Sliders.AddAsync(slider);
+			await _context.SaveChangesAsync();
+			return RedirectToAction(nameof(Index));
+		}
+	
+		public async Task<IActionResult> Update(int id)
+		{
+			if (id <= 0) BadRequest();
+
+			Slider slider = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
+
+			if (slider == null) return NotFound();
+
+			SliderUpdateDTO updateDTO = new SliderUpdateDTO
+			{
+				Name= slider.Name,
+				Description = slider.Description,
+				SubTitle = slider.SubTitle,
+				Order = slider.Order,
+				Image = slider.Image
+			};
+			await _context.SaveChangesAsync();
+			return View(updateDTO);
+		}
+		[HttpPost]
+		public async Task<IActionResult> Update(int id, SliderUpdateDTO updateDTO)
+		{
+			if (!ModelState.IsValid) return View(updateDTO);
+	
+			Slider existed = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
+
+			if (existed == null) return NotFound();
+
+			if (updateDTO.Photo != null)
+			{
+				if (!updateDTO.Photo.ValidateType("image/"))
+				{
+					ModelState.AddModelError("Photo", "File type is not compatible");
+					return View(existed);
+				}
+				if (updateDTO.Photo.ValidateSize(2 * 1024))
+				{
+					ModelState.AddModelError("Photo", "File size should not be larger than 2MB");
+					return View(existed);
+				}
+			}
+
+
+			string fileName = await updateDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img", "slider");
+			if (!string.IsNullOrEmpty(existed.Image))
+			{
+				existed.Image.DeleteFile(_env.WebRootPath, "assets", "img", "slider");
+			}
+
+			existed.Image = fileName;
+
+			existed.Name = updateDTO.Name;
+			existed.Description = updateDTO.Description;
+			existed.SubTitle = updateDTO.SubTitle;
+			existed.Order = updateDTO.Order;
+
+			await _context.SaveChangesAsync();
+			return RedirectToAction(nameof(Index));
+		}
+		public async Task<IActionResult> Delete(int id)
+		{
+			if (id <= 0) return BadRequest();
+
+			Slider existed = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
+
+			if (existed == null) return Json(new { status = 404 });
+
+			try
+			{
+				_context.Sliders.Remove(existed);
+				await _context.SaveChangesAsync();
+			}
+			catch (Exception)
+			{
+
+				return Json(new { status = 500 });
+			}
+
+			if (!string.IsNullOrEmpty(existed.Image))
+			{
+				existed.Image.DeleteFile(_env.WebRootPath, "assets", "img", "slider");
+			}
+
 			await _context.SaveChangesAsync();
 			return RedirectToAction(nameof(Index));
 		}
@@ -74,80 +160,6 @@ namespace EnchantElegance.Areas.Manage.Controllers
 
 		//	if (slider == null) return NotFound();
 		//	return View(slider);
-		//}
-		//public async Task<IActionResult> Update(int id)
-		//{
-		//	if (id <= 0) BadRequest();
-		//	Slider existed = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
-		//	if (existed == null) return NotFound();
-
-		//	UpdateSliderVM updateSliderVM = new UpdateSliderVM
-		//	{
-		//		Description = existed.Description,
-		//		Title = existed.Title,
-		//		SubTitle = existed.SubTitle,
-		//		Order = existed.Order,
-		//		Image = existed.Image
-		//	};
-		//	await _context.SaveChangesAsync();
-		//	return View(updateSliderVM);
-		//}
-		//[HttpPost]
-		//public async Task<IActionResult> Update(int id, UpdateSliderVM updateSliderVM)
-		//{
-		//	if (!ModelState.IsValid)
-		//	{
-		//		return View(updateSliderVM);
-		//	}
-		//	Slider existed = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
-
-		//	if (existed == null) return NotFound();
-
-		//	if (updateSliderVM.Photo != null)
-		//	{
-		//		if (!updateSliderVM.Photo.ValidateType("image/"))
-		//		{
-		//			ModelState.AddModelError("Photo", "File type is not compatible");
-		//			return View(existed);
-		//		}
-		//		if (updateSliderVM.Photo.ValidateSize(2 * 1024))
-		//		{
-		//			ModelState.AddModelError("Photo", "File size should not be larger than 2MB");
-		//			return View(existed);
-		//		}
-		//	}
-
-		//	string fileName = await updateSliderVM.Photo.CreateFileAsync(_env.WebRootPath, "assets", "images", "slider");
-		//	existed.Image.DeleteFile(_env.WebRootPath, "assets", "images", "slider");
-		//	existed.Image = fileName;
-
-
-
-		//	existed.Title = updateSliderVM.Title;
-		//	existed.Description = updateSliderVM.Description;
-		//	existed.SubTitle = updateSliderVM.SubTitle;
-		//	existed.Order = updateSliderVM.Order;
-		//	await _context.SaveChangesAsync();
-		//	return RedirectToAction(nameof(Index));
-		//}
-		//public async Task<IActionResult> Delete(int id)
-		//{
-		//	if (id <= 0) return BadRequest();
-
-		//	Slider existed = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
-		//	if (existed == null) return NotFound();
-
-		//	existed.Image.DeleteFile(_env.WebRootPath, "assets", "images", "slider");
-
-		//	//string path = Path.Combine(_env.WebRootPath, "assets/images/slider", existed.Image);
-		//	//if (System.IO.File.Exists(path))
-		//	//{
-		//	//    System.IO.File.Delete(path);
-		//	//}
-		//	_context.Sliders.Remove(existed);
-		//	await _context.SaveChangesAsync();
-		//	return RedirectToAction(nameof(Index));
-
 		//}
 	}
 }

@@ -10,5 +10,7 @@ namespace EnchantElegance.Application.Abstarctions.Services
 	public interface IAuthService
 	{
 		Task Register(RegisterDTO registerDTO);
+		Task Login(LoginDTO loginDTO);
+		Task Logout();
 	}
 }

@@ -34,20 +34,21 @@ namespace EnchantElegance.Domain.Utilities.Extensions
 
 			return (filename);
 		}
-		public static void DeleteFile(string filename, string root, params string[] folder)
+		public static void DeleteFile(this string filename, string root, params string[] folder)
 		{
 			string path = root;
 			for (int i = 0; i < folder.Length; i++)
 			{
 				path = Path.Combine(path, folder[i]);
 			}
+
 			path = Path.Combine(path, filename);
 
 			if (File.Exists(path))
 			{
 				File.Delete(path);
 			}
-
 		}
+		
 	}
 }
