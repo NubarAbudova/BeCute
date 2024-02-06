@@ -1,4 +1,6 @@
-﻿using EnchantElegance.Application.DTOs.Categories;
+﻿using EnchantElegance.Application.Abstarctions.Services;
+using EnchantElegance.Application.DTOs.Categories;
+using EnchantElegance.Application.DTOs.Sliders;
 using EnchantElegance.Domain.Entities;
 using EnchantElegance.Persistence.Contexts;
 using Microsoft.AspNetCore.Mvc;
@@ -6,103 +8,78 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EnchantElegance.Areas.Manage.Controllers
 {
-    [Area("Manage")]
-    public class CategoryController : Controller
-    {
-		private readonly AppDbContext _context;
+	[Area("Manage")]
+	public class CategoryController : Controller
+	{
+		private readonly ICategoryService _service;
 
-		public CategoryController(AppDbContext context)
-        {
-			_context = context;
+		public CategoryController(ICategoryService service)
+		{
+			_service = service;
 		}
-        public async Task<IActionResult> Index()
-        {
-            List<Category> categories = await _context.Categories.ToListAsync();
-            return View(categories);
-        }
-        public async Task<IActionResult> Create(CategoryCreateDTO createDTO)
-        {
-			if (!ModelState.IsValid) return View();
-			bool result = await _context.Categories.AnyAsync(c => c.Name.Trim() == createDTO.Name.Trim());
-			if (result)
+		public async Task<IActionResult> Index()
+		{
+			return View(await _service.GetAllAsync(1, 3));
+		}
+		public async Task<IActionResult> Create()
+		{
+			return View();
+		}
+		[HttpPost]
+		public async Task<IActionResult> Create(CategoryCreateDTO categoryCreateDTO)
+		{
+			if (ModelState.IsValid) return View(categoryCreateDTO);
+
+			var result = await _service.Create(categoryCreateDTO);
+
+			if (result.Any())
 			{
-				ModelState.AddModelError("Name", "Category name already exists");
-				return View();
+				ModelState.AddModelError(String.Empty, "Create is not success");
+				return View(categoryCreateDTO);
 			}
-			Category category = new Category
-			{
-				Name = createDTO.Name,
-				Description = createDTO.Description,
-			};
-			await _context.Categories.AddAsync(category);
-			await _context.SaveChangesAsync();
 			return RedirectToAction(nameof(Index));
-        }
+		}
+
 		public async Task<IActionResult> Update(int id)
 		{
 			if (id <= 0) return BadRequest();
-			Category category = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
-			if (category == null) return NotFound();
-			CategoryUpdateDTO updateDTO = new CategoryUpdateDTO(category.Id, category.Name, category.Description);
+
+			await _service.GetCategoryForUpdateAsync(id);
+
+			CategoryUpdateDTO updateDTO = new CategoryUpdateDTO();
+
 			return View(updateDTO);
 		}
-
 		[HttpPost]
 		public async Task<IActionResult> Update(int id, CategoryUpdateDTO updateDTO)
 		{
-			if (!ModelState.IsValid) return View();
+			if (!ModelState.IsValid) return View(updateDTO);
 
-			Category existed = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
-
-			if (existed == null) return NotFound();
-
-			if (existed.Name != updateDTO.Name && !string.IsNullOrEmpty(updateDTO.Name))
-			{
-				bool result = await _context.Categories.AnyAsync(c => c.Name == updateDTO.Name);
-
-				if (result)
-				{
-					ModelState.AddModelError("Name", "Category name already exists");
-					return View();
-				}
-			}
-
-			existed.Name = updateDTO.Name;
-			existed.Description = updateDTO.Description;
-
-			await _context.SaveChangesAsync();
+			await _service.Update(id, updateDTO);
 			return RedirectToAction(nameof(Index));
 		}
 		public async Task<IActionResult> Delete(int id)
 		{
 			if (id <= 0) return BadRequest();
 
-			Category existed = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
-
-			if (existed == null) return NotFound();
-
-			_context.Categories.Remove(existed);
-
-			await _context.SaveChangesAsync();
-
-			TempData["SuccessMessage"] = "Category successfully deleted.";
-
+			await _service.Delete(id);
 			return RedirectToAction(nameof(Index));
 		}
 		//public async Task<IActionResult> Details(int id)
 		//{
-		//	if (id <= 0) return BadRequest();
+		//	if (id <= 0) BadRequest();
+		//	Category Category = await _context.Categorys.FirstOrDefaultAsync(c => c.Id == id);
 
-		//	Category category = await _context.Categories
-		//		.Include(c => c.Products)
-		//		.ThenInclude(c => c.ProductImages)
-		//		.Include(c => c.Products)
-		//		.ThenInclude(c => c.ProductTags)
-		//		.FirstOrDefaultAsync(c => c.Id == id);
+		//	List<Category> Categorys = await _context.Categorys
+		//		.Where(s => s.Id == id)
+		//		.Include(s => s.Title)
+		//		.Include(s => s.SubTitle)
+		//		.Include(s => s.Description)
+		//		.Include(s => s.Image)
+		//		.ToListAsync();
 
-		//	if (category == null) return NotFound();
-
-		//	return View(category);
+		//	if (Category == null) return NotFound();
+		//	return View(Category);
 		//}
 	}
 }

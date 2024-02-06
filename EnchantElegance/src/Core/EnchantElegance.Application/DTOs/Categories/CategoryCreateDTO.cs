@@ -3,8 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace EnchantElegance.Application.DTOs.Categories
 {
-    public record CategoryCreateDTO (string Name, string Description);
+
+	public class CategoryCreateDTO
+	{
+		public string Name { get; set; }
+		public string Description { get; set; }
+		public string Image { get; set; }
+		public IFormFile Photo { get; set; }
+	}
 }

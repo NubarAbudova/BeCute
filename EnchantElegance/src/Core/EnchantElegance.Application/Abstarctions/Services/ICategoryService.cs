@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EnchantElegance.Application.DTOs;
 using EnchantElegance.Application.DTOs.Categories;
+using EnchantElegance.Domain.Entities;
 
 namespace EnchantElegance.Application.Abstarctions.Services
 {
     public interface ICategoryService
     {
-        Task<ICollection<CategoryItemDTO>> GetAllAsync(int page, int take);
-        Task Create(CategoryCreateDTO categoryDTO);
-        Task<CategoryUpdateDTO> Update(int id, string name);
-        Task Delete(int id);
-        Task SoftDeleteAsync(int id);
-    }
+		Task<ItemVM<Category>> GetAllAsync(int page, int take);
+		Task<List<string>> Create(CategoryCreateDTO CategoryCreateDTO);
+		Task GetCategoryForUpdateAsync(int id);
+		Task Update(int id, CategoryUpdateDTO updateDTO);
+		Task Delete(int id);
+		Task SoftDeleteAsync(int id);
+	}
 }

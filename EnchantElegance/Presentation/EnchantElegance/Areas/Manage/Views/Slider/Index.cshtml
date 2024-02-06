@@ -1,5 +1,7 @@
-﻿@using EnchantElegance.Domain.Entities;
-@model List<EnchantElegance.Domain.Entities.Slider>
+﻿@using EnchantElegance.Application.DTOs.Sliders;
+@using EnchantElegance.Application.DTOs;
+@using EnchantElegance.Domain.Entities;
+@model ItemVM<Slider>
 
 @{
 	int count = 0;
@@ -41,7 +43,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach (Slider slider in Model)
+							@foreach (var slider in Model.Items)
 							{
 								count++;
 								<tr>

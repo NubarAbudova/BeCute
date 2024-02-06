@@ -20,8 +20,7 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		}
 		public async Task<IActionResult> Index()
 		{
-			await _service.GetAllAsync(1, 3);
-			return View("Index","slider");
+			return View(await _service.GetAllAsync(1, 3));
 		}
 		public async Task<IActionResult> Create()
 		{
@@ -45,8 +44,12 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		public async Task<IActionResult> Update(int id)
 		{
 			if (id <= 0) return BadRequest();
-			await _service.Update(id);
-			return RedirectToAction(nameof(Index));
+
+			await _service.GetSliderForUpdateAsync(id);
+
+			SliderUpdateDTO updateDTO = new SliderUpdateDTO();
+
+			return View(updateDTO);
 		}
 		[HttpPost]
 		public async Task<IActionResult> Update(int id, SliderUpdateDTO updateDTO)
@@ -54,8 +57,7 @@ namespace EnchantElegance.Areas.Manage.Controllers
 			if (!ModelState.IsValid) return View(updateDTO);
 
 			await _service.Update(id, updateDTO);
-			return View("Index", "slider");
-
+			return RedirectToAction(nameof(Index));
 		}
 		public async Task<IActionResult> Delete(int id)
 		{

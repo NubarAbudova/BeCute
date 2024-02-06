@@ -17,6 +17,8 @@ namespace EnchantElegance.Application.MappingProfiles
 			CreateMap<Slider, SliderItemDTO>().ReverseMap();
 
 			CreateMap<SliderCreateDTO, Slider>();
+			CreateMap<SliderUpdateDTO, Slider>().ReverseMap();
+
 
 		}
 	}

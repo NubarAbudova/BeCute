@@ -7,7 +7,7 @@
 		<li class="breadcrumb-item">
 			<a href="index.html"><i class="la la-home font-20"></i></a>
 		</li>
-		<li class="breadcrumb-item">Create Slider</li>
+		<li class="breadcrumb-item">Update Slider</li>
 	</ol>
 </div>
 <div class="page-content fade-in-up">
@@ -28,9 +28,9 @@
 					<form method="post" enctype="multipart/form-data">
 
 						<div class="row">
-							
-							<div <img src="~/assets/img/slider/@Model.Image"> typeof="hidden"></div>
-							
+@* 
+							<img src="~/assets/img/slider/@Model.Image"> 
+							<input asp-for="Image" type="hidden" class="form-control" value="@Model.Image"> *@
 
 							<div class="col-sm-6 form-group">
 								<label asp-for="Photo"> Photo</label>

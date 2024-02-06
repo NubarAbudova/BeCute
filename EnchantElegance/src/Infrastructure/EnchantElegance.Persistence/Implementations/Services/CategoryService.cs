@@ -6,81 +6,159 @@ using System.Threading.Tasks;
 using AutoMapper;
 using EnchantElegance.Application.Abstarctions.Repositories;
 using EnchantElegance.Application.Abstarctions.Services;
+using EnchantElegance.Application.DTOs;
 using EnchantElegance.Application.DTOs.Categories;
 using EnchantElegance.Domain.Entities;
+using EnchantElegance.Persistence.Contexts;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using EnchantElegance.Domain.Utilities.Extensions;
+
 
 namespace EnchantElegance.Persistence.Implementations.Services
 {
 
-	//public class CategoryService : ICategoryService
-	//{
-	//	private readonly ICategoryRepository _repository;
-	//	private readonly IMapper _mapper;
+	public class CategoryService : ICategoryService
+	{
+		private readonly AppDbContext _context;
+		private readonly IMapper _mapper;
+		private readonly IWebHostEnvironment _env;
 
-	//	public CategoryService(ICategoryRepository repository, IMapper mapper)
-	//	{
-	//		_repository = repository;
-	//		_mapper = mapper;
-	//	}
+		public CategoryService(AppDbContext context, IMapper mapper, IWebHostEnvironment env)
+		{
+			_context = context;
+			_mapper = mapper;
+			_env = env;
+		}
+		public async Task<ItemVM<Category>> GetAllAsync(int page, int take)
+		{
+			List<Category> categories = await _context.Categories.ToListAsync();
+			ItemVM<Category> categoryvm = new ItemVM<Category>
+			{
+				Items = categories,
+			};
+			return categoryvm;
+		}
+		public async Task<List<string>> Create(CategoryCreateDTO CategoryDTO)
+		{
+			List<string> str = new List<string>();
+			if (CategoryDTO.Photo != null)
+			{
+				if (!CategoryDTO.Photo.ValidateType("image/"))
+				{
+					str.Add("File type does not match");
+					return str;
+				}
+				if (!CategoryDTO.Photo.ValidateSize(2 * 1024))
+				{
+					str.Add("File size should not be larger than 2MB");
+					return str;
+				}
+			}
 
-	//	public async Task<ICollection<CategoryItemDTO>> GetAllAsync(int page, int take)
-	//	{
-	//		ICollection<Category> categories = await _repository.GetAllAsyn(skip: (page - 1) * take, take: take).ToListAsync();
+			string fileName = await CategoryDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img");
 
-	//		return _mapper.Map<ICollection<CategoryItemDTO>>(categories);
-	//	}
-	//	//public async Task<GetCategoryDTO> GetAsync(int id)
-	//	//{
-	//	//    Category category = await _repository.GetByIdAsync(id);
-	//	//    if (category == null) throw new Exception("Not found");
+			Category category = new Category
+			{
+				Image = fileName,
+				Name = CategoryDTO.Name,
 
-	//	//    return new GetCategoryDTO
-	//	//    {
-	//	//        Id = category.Id,
-	//	//        Name = category.Name,
-	//	//    };
-	//	//}
+				Description = CategoryDTO.Description,
+			};
 
-	//	public async Task Create(CategoryCreateDTO categoryDTO)
-	//	{
-	//		await _repository.AddAsync(_mapper.Map<Category>(categoryDTO));
+			await _context.Categories.AddAsync(category);
+			await _context.SaveChangesAsync();
+			return str;
+		}
+		public async Task GetCategoryForUpdateAsync(int id)
+		{
+			Category Category = await _context.Categories.FirstOrDefaultAsync(s => s.Id == id);
 
-	//		await _repository.SaveChangesAsync();
-	//	}
+			if (Category == null)
+			{
+				throw new Exception("Category is null");
 
-	//	public async Task<CategoryUpdateDTO> Update(int id, string name)
-	//	{
-	//		Category existed = await _repository.GetByIdAsync(id);
-	//		if (existed == null) throw new Exception("Not found");
-	//		existed.Name = name;
-	//		_repository.Update(existed);
-	//		await _repository.SaveChangesAsync();
-	//		return new CategoryUpdateDTO(existed.Id, existed.Name);
-	//	}
-	//	public async Task SoftDeleteAsync(int id)
-	//	{
-	//		Category category = await _repository.GetByIdAsync(id);
-	//		if (category == null) throw new Exception("Connot Found");
+			}
 
-	//		_repository.SoftDelete(category);
-	//		await _repository.SaveChangesAsync();
-	//	}
+			CategoryUpdateDTO updateDTO = _mapper.Map<CategoryUpdateDTO>(Category);
 
-	//	public Task Delete(int id)
-	//	{
-	//		throw new NotImplementedException();
-	//	}
-	//	//public async Task Delete(int id)
-	//	//{
-	//	//    Category existed = await _repository.GetByIdAsync(id);
+			await _context.SaveChangesAsync();
+		}
 
-	//	//    if (existed == null) throw new Exception("Not found");
+		public async Task Update(int id, CategoryUpdateDTO updateDTO)
+		{
+			Category Category = await _context.Categories.FirstOrDefaultAsync(s => s.Id == id);
 
-	//	//    _repository.Delete(existed);
-	//	//    await _repository.SaveChangesAsync();
-	//	//}
-	//}
+			if (Category == null)
+			{
+				throw new Exception("Category is null");
+			}
+
+			// Güncelleme işlemlerini yapın
+			Category.Name = updateDTO.Name;
+			Category.Description = updateDTO.Description;
+
+			if (updateDTO.Photo != null)
+			{
+				// Yeni fotoğraf varsa işlemleri gerçekleştirin
+				if (!updateDTO.Photo.ValidateType("image/"))
+				{
+					throw new Exception("File type does not match");
+				}
+
+				if (!updateDTO.Photo.ValidateSize(2 * 1024))
+				{
+					throw new Exception("File size should not be larger than 2MB");
+				}
+
+				// Eski fotoğraf varsa silin
+				if (!string.IsNullOrEmpty(Category.Image))
+				{
+					Category.Image.DeleteFile(_env.WebRootPath, "assets", "img");
+				}
+
+				// Yeni fotoğrafı ekleyin
+				Category.Image = await updateDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img");
+			}
+
+			await _context.SaveChangesAsync();
+		}
+		public async Task Delete(int id)
+		{
+			Category existed = await _context.Categories.FirstOrDefaultAsync(s => s.Id == id);
+
+			if (existed == null)
+			{
+				throw new Exception("Category is null");
+			}
+
+			try
+			{
+				_context.Categories.Remove(existed);
+				await _context.SaveChangesAsync();
+			}
+			catch (Exception)
+			{
+				throw new Exception("Category is null");
+
+			}
+
+			if (!string.IsNullOrEmpty(existed.Image))
+			{
+				existed.Image.DeleteFile(_env.WebRootPath, "assets", "img");
+			}
+
+			await _context.SaveChangesAsync();
+		}
+
+
+		public Task SoftDeleteAsync(int id)
+		{
+			throw new NotImplementedException();
+		}
+
+
+	}
 
 
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KiZVZlRjx9L6ETNa9GQ7WIpZCIKA+Du2r+0bTL/Xu9Q=",
+  "Hash": "Q63b7j3Rhry2exmNbgTXOdASEEA/cZTGZWPa2fb0HiQ=",
   "Source": "EnchantElegance",
   "BasePath": "_content/EnchantElegance",
   "Mode": "Default",
@@ -61523,12 +61523,12 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\slider\\1de81c2d-9740-4d9b-b8c0-3e17ae4f9e10wp6836080.webp"
     },
     {
-      "Identity": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\e58482f5-a66c-4b29-9455-1c88a32c3ad0wp6836080.webp",
+      "Identity": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\22709ced-c9ce-4203-81fa-a469ca06e281Lip color.webp",
       "SourceId": "EnchantElegance",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\",
       "BasePath": "_content/EnchantElegance",
-      "RelativePath": "assets/img/slider/e58482f5-a66c-4b29-9455-1c88a32c3ad0wp6836080.webp",
+      "RelativePath": "assets/img/slider/22709ced-c9ce-4203-81fa-a469ca06e281Lip color.webp",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -61537,15 +61537,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\img\\slider\\e58482f5-a66c-4b29-9455-1c88a32c3ad0wp6836080.webp"
+      "OriginalItemSpec": "wwwroot\\assets\\img\\slider\\22709ced-c9ce-4203-81fa-a469ca06e281Lip color.webp"
     },
     {
-      "Identity": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\effa15cf-8070-41a0-add9-45b860810985wp6836080.webp",
+      "Identity": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\76011613-d16a-47d6-b8ff-eaff9eff1650Beauty Care.webp",
       "SourceId": "EnchantElegance",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\",
       "BasePath": "_content/EnchantElegance",
-      "RelativePath": "assets/img/slider/effa15cf-8070-41a0-add9-45b860810985wp6836080.webp",
+      "RelativePath": "assets/img/slider/76011613-d16a-47d6-b8ff-eaff9eff1650Beauty Care.webp",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -61554,7 +61554,41 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\img\\slider\\effa15cf-8070-41a0-add9-45b860810985wp6836080.webp"
+      "OriginalItemSpec": "wwwroot\\assets\\img\\slider\\76011613-d16a-47d6-b8ff-eaff9eff1650Beauty Care.webp"
+    },
+    {
+      "Identity": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\8e6974a8-23ac-4a1b-b46a-19fddd033d2bCosmetics.jpg",
+      "SourceId": "EnchantElegance",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\",
+      "BasePath": "_content/EnchantElegance",
+      "RelativePath": "assets/img/slider/8e6974a8-23ac-4a1b-b46a-19fddd033d2bCosmetics.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\slider\\8e6974a8-23ac-4a1b-b46a-19fddd033d2bCosmetics.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\f9194bba-d059-4f5d-b583-f16681e9928cSkincare.jpg",
+      "SourceId": "EnchantElegance",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\",
+      "BasePath": "_content/EnchantElegance",
+      "RelativePath": "assets/img/slider/f9194bba-d059-4f5d-b583-f16681e9928cSkincare.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\slider\\f9194bba-d059-4f5d-b583-f16681e9928cSkincare.jpg"
     },
     {
       "Identity": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\home1-slider1-bg.webp",

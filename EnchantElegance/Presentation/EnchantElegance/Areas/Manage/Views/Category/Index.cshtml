@@ -1,5 +1,8 @@
-﻿@using EnchantElegance.Domain.Entities;
-@model List<Category>
+﻿@using EnchantElegance.Application.DTOs.Categories;
+@using EnchantElegance.Application.DTOs;
+@using EnchantElegance.Domain.Entities;
+@model ItemVM<Category>
+
 @{
 	int count = 0;
 }
@@ -29,19 +32,24 @@
 							<tr>
 								<th>#</th>
 								<th>Name</th>
+								<th>Image</th>
+
 								<th>Actions</th>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach (Category category in Model)
+							@foreach (var category in Model.Items)
 							{
 								count++;
 								<tr >
 									<td>@count</td>
 									<td>@category.Name</td>
 									<td>
+										<img src="~/assets/img/slider/@category.Image">
+									</td>
+									<td>
 										<a asp-controller="Category" asp-action="Update" asp-route-id="@category.Id" class="btn-btn warning"><i class="ti-marker-alt"></i></a>
-										<a asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" class="btn-btn danger"><i class="ti-trash"></i></a>
+										<a asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" class="customDelete"  class="btn-btn danger"><i class="ti-trash"></i></a>
 										<a asp-controller="Category" asp-action="Details" asp-route-id="@category.Id" class="btn-btn info"><i class="ti-arrow-top-right"></i></a>
 
 									</td>

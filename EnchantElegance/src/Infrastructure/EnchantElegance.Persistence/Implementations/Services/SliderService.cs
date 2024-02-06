@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using EnchantElegance.Application.Abstarctions.Repositories;
 using EnchantElegance.Application.Abstarctions.Services;
+using EnchantElegance.Application.DTOs;
 using EnchantElegance.Application.DTOs.Categories;
 using EnchantElegance.Application.DTOs.Sliders;
 using EnchantElegance.Domain.Entities;
@@ -23,31 +24,38 @@ namespace EnchantElegance.Persistence.Implementations.Services
 		private readonly IMapper _mapper;
 		private readonly IWebHostEnvironment _env;
 
-		public SliderService(AppDbContext context,IMapper mapper,IWebHostEnvironment env)
-        {
+		public SliderService(AppDbContext context, IMapper mapper, IWebHostEnvironment env)
+		{
 			_context = context;
 			_mapper = mapper;
 			_env = env;
 		}
-		public async Task<ICollection<SliderItemDTO>> GetAllAsync(int page,int take)
+		public async Task<ItemVM<Slider>> GetAllAsync(int page, int take)
 		{
 			List<Slider> sliders = await _context.Sliders.ToListAsync();
-			return _mapper.Map<List<SliderItemDTO>>(sliders);
+			ItemVM<Slider> slidervm = new ItemVM<Slider>
+			{
+				Items = sliders,
+			};
+			return slidervm;
 		}
-		
-		public async Task<List<string>>Create(SliderCreateDTO sliderDTO)
-		{
-			List<string>str=new List<string>();
 
-			if (!sliderDTO.Photo.ValidateType("image/"))
+		public async Task<List<string>> Create(SliderCreateDTO sliderDTO)
+		{
+			List<string> str = new List<string>();
+			if (sliderDTO.Photo != null)
 			{
-				str.Add("File type does not match");
-				return str;
-			}
-			if (!sliderDTO.Photo.ValidateSize(2 * 1024))
-			{
-			  str.Add( "File size should not be larger than 2MB");
-				return str;
+
+				if (!sliderDTO.Photo.ValidateType("image/"))
+				{
+					str.Add("File type does not match");
+					return str;
+				}
+				if (!sliderDTO.Photo.ValidateSize(2 * 1024))
+				{
+					str.Add("File size should not be larger than 2MB");
+					return str;
+				}
 			}
 
 			string fileName = await sliderDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img", "slider");
@@ -65,65 +73,60 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			await _context.SaveChangesAsync();
 			return str;
 		}
-		public async Task Update(int id)
+		public async Task GetSliderForUpdateAsync(int id)
 		{
 			Slider slider = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
-			if(slider == null)
+
+			if (slider == null)
 			{
 				throw new Exception("Slider is null");
+
 			}
-			SliderUpdateDTO updateDTO = new SliderUpdateDTO
-			{
-				Name = slider.Name,
-				Description = slider.Description,
-				SubTitle = slider.SubTitle,
-				Order = slider.Order,
-				Image = slider.Image
-			};
+
+			SliderUpdateDTO updateDTO = _mapper.Map<SliderUpdateDTO>(slider);
+		
 			await _context.SaveChangesAsync();
 		}
-		public async Task<List<string>> Update(int id,SliderUpdateDTO updateDTO)
+
+		public async Task Update(int id, SliderUpdateDTO updateDTO)
 		{
-			Slider existed = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
-			if (existed == null)
+			Slider slider = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
+
+			if (slider == null)
 			{
 				throw new Exception("Slider is null");
 			}
 
-			List<string> str = new List<string>();
-
+			// Güncelleme işlemlerini yapın
+			slider.Name = updateDTO.Name;
+			slider.Description = updateDTO.Description;
+			slider.SubTitle = updateDTO.SubTitle;
+			slider.Order = updateDTO.Order;
 
 			if (updateDTO.Photo != null)
 			{
+				// Yeni fotoğraf varsa işlemleri gerçekleştirin
 				if (!updateDTO.Photo.ValidateType("image/"))
 				{
-					str.Add("File type does not match");
-					return str;
+					throw new Exception("File type does not match");
 				}
-				if (updateDTO.Photo.ValidateSize(2 * 1024))
+
+				if (!updateDTO.Photo.ValidateSize(2 * 1024))
 				{
-					str.Add("File size should not be larger than 2MB");
-					return str;
+					throw new Exception("File size should not be larger than 2MB");
 				}
+
+				// Eski fotoğraf varsa silin
+				if (!string.IsNullOrEmpty(slider.Image))
+				{
+					slider.Image.DeleteFile(_env.WebRootPath, "assets", "img", "slider");
+				}
+
+				// Yeni fotoğrafı ekleyin
+				slider.Image = await updateDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img", "slider");
 			}
-
-
-			string fileName = await updateDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img", "slider");
-
-			if (!string.IsNullOrEmpty(existed.Image))
-			{
-				existed.Image.DeleteFile(_env.WebRootPath, "assets", "img", "slider");
-			}
-
-			existed.Image = fileName;
-
-			existed.Name = updateDTO.Name;
-			existed.Description = updateDTO.Description;
-			existed.SubTitle = updateDTO.SubTitle;
-			existed.Order = updateDTO.Order;
 
 			await _context.SaveChangesAsync();
-			return str;
 		}
 		public async Task Delete(int id)
 		{
@@ -158,7 +161,6 @@ namespace EnchantElegance.Persistence.Implementations.Services
 		{
 			throw new NotImplementedException();
 		}
-
 
 	}
 }
