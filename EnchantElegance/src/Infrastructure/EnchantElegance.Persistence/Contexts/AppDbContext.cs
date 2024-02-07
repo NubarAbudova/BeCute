@@ -18,6 +18,8 @@ namespace EnchantElegance.Persistence.Contexts
         public DbSet<Product> Products { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<ProductColor> ProductColors { get; set; }
+		public DbSet<ProductImages> ProductImages { get; set; }
+
 		public DbSet<Slider> Sliders { get; set; }
 
 

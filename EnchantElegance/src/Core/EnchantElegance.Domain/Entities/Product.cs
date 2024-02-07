@@ -13,7 +13,6 @@ namespace EnchantElegance.Domain.Entities
         public decimal Price { get; set; }
         public int StockQuantity { get; set; }
         public string Brand { get; set; } = null!;
-        public string? Image { get; set; }
 
         // Cosmetics and SkinCare Properties
         public string SkinType { get; set; } = null!;
@@ -28,7 +27,9 @@ namespace EnchantElegance.Domain.Entities
         public Category Category { get; set; } = null!;
 
         public ICollection<ProductColor> ProductColors { get; set; } = null!;
+		public ICollection<ProductImages> ProductImages { get; set; } = null!;
 
 
-    }
+
+	}
 }
