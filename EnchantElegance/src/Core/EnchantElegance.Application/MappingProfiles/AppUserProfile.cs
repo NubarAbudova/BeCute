@@ -14,7 +14,9 @@ namespace EnchantElegance.Application.MappingProfiles
         public AppUserProfile()
         {
             CreateMap<RegisterDTO, AppUser>();
-        }
+			CreateMap<LoginDTO, AppUser>();
 
-    }
+		}
+
+	}
 }

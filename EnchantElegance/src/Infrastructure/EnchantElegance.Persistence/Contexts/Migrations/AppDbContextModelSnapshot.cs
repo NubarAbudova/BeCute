@@ -204,6 +204,9 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Ingredients")
                         .IsRequired()
                         .HasColumnType("text");

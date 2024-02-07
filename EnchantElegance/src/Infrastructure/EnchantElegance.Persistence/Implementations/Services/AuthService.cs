@@ -7,6 +7,9 @@ using AutoMapper;
 using EnchantElegance.Application.Abstarctions.Services;
 using EnchantElegance.Application.DTOs.Users;
 using EnchantElegance.Domain.Entities;
+using EnchantElegance.Domain.Enums;
+using EnchantElegance.Domain.Utilities.Extensions;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,48 +20,168 @@ namespace EnchantElegance.Persistence.Implementations.Services
 		private readonly UserManager<AppUser> _userManager;
 		private readonly SignInManager<AppUser> _signInManager;
 		private readonly IMapper _mapper;
+		private readonly RoleManager<IdentityRole> _roleManager;
+		private readonly IWebHostEnvironment _env;
 
-		public AuthService(UserManager<AppUser> userManager,SignInManager<AppUser>SignInManager, IMapper mapper)
-        {
+		public AuthService(UserManager<AppUser> userManager, SignInManager<AppUser> SignInManager, IMapper mapper,
+			RoleManager<IdentityRole> roleManager, IWebHostEnvironment env)
+		{
 			_userManager = userManager;
 			_signInManager = SignInManager;
 			_mapper = mapper;
+			_roleManager = roleManager;
+			_env = env;
 		}
 
-		public async Task Register(RegisterDTO registerDTO)
+		public async Task<List<string>> Register(RegisterDTO registerDTO)
 		{
-			if (await _userManager.Users.AnyAsync(u => u.UserName == registerDTO.UserName || u.Email == registerDTO.Email))
-				throw new Exception("Username or email is already available");
+			List<string> String = new List<string>();
 
-			AppUser user=_mapper.Map<AppUser>(registerDTO);
+			if (!registerDTO.Name.IsLetter())
+			{
+				String.Add("Your Name or Surname only contain letters");
+				return String;
+			}
+			if (!registerDTO.Email.CheeckEmail())
+			{
+				String.Add("Your Email type is not true");
+				return String;
+			}
+			registerDTO.Name.Capitalize();
+			registerDTO.Surname.Capitalize();
+			AppUser user = new AppUser
+			{
+				Name = registerDTO.Name,
+				UserName = registerDTO.UserName,
+				Surname = registerDTO.Surname,
+				Email = registerDTO.Email,
 
-			var result=await _userManager.CreateAsync(user,registerDTO.Password);
+			};
 
+			//if (registerDTO.MainImage is not null)
+			//{
+			//	if (!registerDTO.MainImage.CheckType("image/"))
+			//	{
+			//		String.Add("Your photo type is not true.Please use only image");
+			//		return String;
+			//	}
+			//	if (!registerDTO.MainImage.ValidateSize(7))
+			//	{
+			//		String.Add("Your Email size must be max 7 mb");
+			//		return String;
+			//	}
+			//	user.MainImage = await register.MainImage.CreateFileAsync(_env.WebRootPath, "assets", "images");
+			//}
+			//if (register.BackImage is not null)
+			//{
+			//	if (!register.BackImage.CheckType("image/"))
+			//	{
+			//		String.Add("Your photo type is not true.Please use only image");
+			//		return String;
+			//	}
+			//	if (!register.BackImage.ValidateSize(7))
+			//	{
+			//		String.Add("Your Email size must be max 5mb");
+			//		return String;
+			//	}
+			//	user.BackImage = await register.BackImage.CreateFileAsync(_env.WebRootPath, "assets", "images");
+			//}
+			IdentityResult result = await _userManager.CreateAsync(user, registerDTO.Password);
 			if (!result.Succeeded)
 			{
-				StringBuilder builder= new StringBuilder();
 				foreach (var error in result.Errors)
 				{
-					builder.AppendLine(error.Description);
+
+					String.Add(error.Description);
 				}
-				throw new Exception(builder.ToString());
+				return String;
 			}
 
-		}
-		public async Task Login(LoginDTO loginDTO)
-		{
-			AppUser user = await _userManager.FindByNameAsync(loginDTO.UsernameorEmail);
-			if (user is null)
+			await _signInManager.SignInAsync(user, isPersistent: false);
+			if (user != null)
 			{
-				user = await _userManager.FindByEmailAsync(loginDTO.UsernameorEmail);
-				if (user is null) throw new Exception("Username,email or password is incorrect");
+				//await AssignRoleToUser(user, registerDTO.SelectedRole);
 			}
-			if (!await _userManager.CheckPasswordAsync(user, loginDTO.Password)) throw new Exception("Username,email or password is incorrect");
-		}
-		public async Task Logout()
-		{
-			await _signInManager.SignOutAsync();
+			return String;
+
 		}
 
+
+		public async Task<List<string>> Login(LoginDTO loginDTO)
+		{
+			List<string> String = new List<string>();
+
+			AppUser user = await _userManager.FindByEmailAsync(loginDTO.UsernameorEmail);
+			if (user == null)
+			{
+				user = await _userManager.FindByNameAsync(loginDTO.UsernameorEmail);
+				if (user == null)
+				{
+					String.Add("Username, Email or Password was wrong");
+					return String;
+
+				}
+			}
+			var result = await _signInManager.PasswordSignInAsync(user, loginDTO.Password, loginDTO.IsRemembered, true);
+			if (result.IsLockedOut)
+			{
+				String.Add("You have a lot of fail  try that is why you banned please try some minuts late");
+				return String;
+			}
+			if (!result.Succeeded)
+				if (!result.Succeeded)
+				{
+					String.Add("Username, Email or Password was wrong");
+					return String;
+				}
+			return String;
+		}
+
+		public async Task CreateRoleAsync()
+		{
+			foreach (UserRole role in Enum.GetValues(typeof(UserRole)))
+			{
+				if (!await _roleManager.RoleExistsAsync(role.ToString()))
+				{
+					await _roleManager.CreateAsync(new IdentityRole
+					{
+						Name = role.ToString(),
+					});
+
+				}
+			}
+		}
+
+
+		public async Task CreateAdminRoleAsync()
+		{
+			var adminRoleName = "Admin";
+
+			if (!await _roleManager.RoleExistsAsync(adminRoleName))
+			{
+				await _roleManager.CreateAsync(new IdentityRole
+				{
+					Name = adminRoleName,
+				});
+			}
+		}
+
+		public async Task AssignRoleToUser(AppUser user, string roleName)
+		{
+			if (!await _roleManager.RoleExistsAsync(roleName))
+			{
+
+				await _roleManager.CreateAsync(new IdentityRole
+				{
+					Name = roleName
+				});
+			}
+			await _userManager.AddToRoleAsync(user, roleName);
+		}
+
+		public Task Logout()
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
