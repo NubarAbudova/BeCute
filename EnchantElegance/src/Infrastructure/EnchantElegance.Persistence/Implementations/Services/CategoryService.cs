@@ -7,13 +7,12 @@ using AutoMapper;
 using EnchantElegance.Application.Abstarctions.Repositories;
 using EnchantElegance.Application.Abstarctions.Services;
 using EnchantElegance.Application.DTOs;
-using EnchantElegance.Application.DTOs.Categories;
 using EnchantElegance.Domain.Entities;
 using EnchantElegance.Persistence.Contexts;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using EnchantElegance.Domain.Utilities.Extensions;
-
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace EnchantElegance.Persistence.Implementations.Services
 {
@@ -32,7 +31,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 		}
 		public async Task<ItemVM<Category>> GetAllAsync(int page, int take)
 		{
-			List<Category> categories = await _context.Categories.ToListAsync();
+			List<Category> categories = await _context.Categories.Include(c=>c.Products).ToListAsync();
 			ItemVM<Category> categoryvm = new ItemVM<Category>
 			{
 				Items = categories,
@@ -57,8 +56,9 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			//}
 
 			//string fileName = await CategoryDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img");
-
-			Category category = new Category
+			bool result= _context.Categories.Any(c=>c.Name.Trim() == CategoryDTO.Name.Trim());
+          
+            Category category = new Category
 			{
 				Name = CategoryDTO.Name,
 			};
@@ -67,36 +67,33 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			await _context.SaveChangesAsync();
 			return str;
 		}
-		public async Task GetCategoryForUpdateAsync(int id)
+		public async Task<CategoryUpdateDTO>GetCategoryForUpdateAsync(int id)
 		{
 			Category Category = await _context.Categories.FirstOrDefaultAsync(s => s.Id == id);
 
-			if (Category == null)
-			{
-				throw new Exception("Category is null");
+			if (Category == null) throw new Exception("Category is not found");
 
-			}
-
-			CategoryUpdateDTO updateDTO = _mapper.Map<CategoryUpdateDTO>(Category);
+			var updateDTO = _mapper.Map<CategoryUpdateDTO>(Category);
 
 			await _context.SaveChangesAsync();
+			return updateDTO;
 		}
 
 		public async Task Update(int id, CategoryUpdateDTO updateDTO)
 		{
-			Category Category = await _context.Categories.FirstOrDefaultAsync(s => s.Id == id);
+			Category existed = await _context.Categories.FirstOrDefaultAsync(c => c.Id == id);
 
-			if (Category == null)
-			{
-				throw new Exception("Category is null");
-			}
+			if (existed == null) throw new Exception("Category not found");
 
-			// Güncelleme işlemlerini yapın
-			Category.Name = updateDTO.Name;
+			bool result=await _context.Categories.AnyAsync(c=>c.Name == updateDTO.Name);
+
+			if (result) throw new Exception("Category already existed");
+
+			existed.Name=updateDTO.Name;
 
 			//if (updateDTO.Photo != null)
 			//{
-			//	// Yeni fotoğraf varsa işlemleri gerçekleştirin
+			//	
 			//	if (!updateDTO.Photo.ValidateType("image/"))
 			//	{
 			//		throw new Exception("File type does not match");
@@ -107,7 +104,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			//		throw new Exception("File size should not be larger than 2MB");
 			//	}
 
-			//	Eski fotoğraf varsa silin
+			//	
 			//	if (!string.IsNullOrEmpty(Category.Image))
 			//	{
 			//		Category.Image.DeleteFile(_env.WebRootPath, "assets", "img");
@@ -125,18 +122,16 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
 			if (existed == null)
 			{
-				throw new Exception("Category is null");
-			}
+				try
+				{
+					_context.Categories.Remove(existed);
+					await _context.SaveChangesAsync();
+				}
+				catch (Exception)
+				{
+					throw new Exception("Category not found");
 
-			try
-			{
-				_context.Categories.Remove(existed);
-				await _context.SaveChangesAsync();
-			}
-			catch (Exception)
-			{
-				throw new Exception("Category is null");
-
+				}
 			}
 
 			//if (!string.IsNullOrEmpty(existed.Image))

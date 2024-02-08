@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EnchantElegance.Application.DTOs.Users
+namespace EnchantElegance.Application.DTOs
 {
 	public record LoginDTO(string UsernameorEmail,string Password,bool IsRemembered);
 

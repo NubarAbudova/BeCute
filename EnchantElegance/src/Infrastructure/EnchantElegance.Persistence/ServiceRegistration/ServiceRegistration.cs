@@ -43,9 +43,11 @@ namespace EnchantElegance.Persistence.ServiceRegistration
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<ISliderService, SliderService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductService, ProductService>();
 
 
-            return services;
+
+			return services;
         }
     }
 }

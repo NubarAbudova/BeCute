@@ -1,10 +1,6 @@
 ﻿using EnchantElegance.Application.Abstarctions.Services;
-using EnchantElegance.Application.DTOs.Categories;
-using EnchantElegance.Application.DTOs.Sliders;
-using EnchantElegance.Domain.Entities;
-using EnchantElegance.Persistence.Contexts;
+using EnchantElegance.Application.DTOs;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace EnchantElegance.Areas.Manage.Controllers
 {
@@ -28,7 +24,7 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Create(CategoryCreateDTO categoryCreateDTO)
 		{
-			if (ModelState.IsValid) return View(categoryCreateDTO);
+			if (!ModelState.IsValid) return View(categoryCreateDTO);
 
 			var result = await _service.Create(categoryCreateDTO);
 
@@ -44,10 +40,8 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		{
 			if (id <= 0) return BadRequest();
 
-			await _service.GetCategoryForUpdateAsync(id);
-
-			CategoryUpdateDTO updateDTO = new CategoryUpdateDTO();
-
+			CategoryUpdateDTO updateDTO=await _service.GetCategoryForUpdateAsync(id);
+			if (updateDTO == null) return NotFound();
 			return View(updateDTO);
 		}
 		[HttpPost]
@@ -58,6 +52,7 @@ namespace EnchantElegance.Areas.Manage.Controllers
 			await _service.Update(id, updateDTO);
 			return RedirectToAction(nameof(Index));
 		}
+
 		public async Task<IActionResult> Delete(int id)
 		{
 			if (id <= 0) return BadRequest();

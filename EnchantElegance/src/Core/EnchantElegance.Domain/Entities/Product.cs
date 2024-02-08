@@ -13,8 +13,6 @@ namespace EnchantElegance.Domain.Entities
 		public decimal OldPrice { get; set; }
 		public decimal CurrentPrice { get; set; }
         public string? Color { get; set; }
-        public string Ingredients { get; set; } = null!;
-
 
         //Relational Properties
         public int CategoryId { get; set; }

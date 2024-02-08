@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using EnchantElegance.Application.DTOs.Categories;
-using EnchantElegance.Application.DTOs.Sliders;
+using EnchantElegance.Application.DTOs;
 using EnchantElegance.Domain.Entities;
 
 namespace EnchantElegance.Application.MappingProfiles

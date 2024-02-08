@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using EnchantElegance.Application.Abstarctions.Repositories;
+﻿using AutoMapper;
 using EnchantElegance.Application.Abstarctions.Services;
 using EnchantElegance.Application.DTOs;
-using EnchantElegance.Application.DTOs.Categories;
-using EnchantElegance.Application.DTOs.Sliders;
 using EnchantElegance.Domain.Entities;
 using EnchantElegance.Domain.Utilities.Extensions;
 using EnchantElegance.Persistence.Contexts;
@@ -60,6 +52,8 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
 			string fileName = await sliderDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img", "slider");
 
+			bool result = _context.Sliders.Any(s => s.Name.Trim() == sliderDTO.Name.Trim());
+
 			Slider slider = new Slider
 			{
 				Image = fileName,
@@ -72,38 +66,29 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			await _context.SaveChangesAsync();
 			return str;
 		}
-		public async Task GetSliderForUpdateAsync(int id)
+		public async Task<SliderUpdateDTO> GetSliderForUpdateAsync(int id)
 		{
 			Slider slider = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
 
-			if (slider == null)
-			{
-				throw new Exception("Slider is null");
+			if (slider == null) throw new Exception("Slider is not found");
 
-			}
-
-			SliderUpdateDTO updateDTO = _mapper.Map<SliderUpdateDTO>(slider);
+			var updateDTO = _mapper.Map<SliderUpdateDTO>(slider);
 		
-			await _context.SaveChangesAsync();
+			return updateDTO;
 		}
 
 		public async Task Update(int id, SliderUpdateDTO updateDTO)
 		{
-			Slider slider = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
+			Slider existed = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
 
-			if (slider == null)
-			{
-				throw new Exception("Slider is null");
-			}
+			if (existed == null) throw new Exception("Slider not found");
 
-			// Güncelleme işlemlerini yapın
-			slider.Name = updateDTO.Name;
-			slider.SubTitle = updateDTO.SubTitle;
-			slider.Order = updateDTO.Order;
+			existed.Name = updateDTO.Name;
+			existed.SubTitle = updateDTO.SubTitle;
+			existed.Order = updateDTO.Order;
 
 			if (updateDTO.Photo != null)
 			{
-				// Yeni fotoğraf varsa işlemleri gerçekleştirin
 				if (!updateDTO.Photo.ValidateType("image/"))
 				{
 					throw new Exception("File type does not match");
@@ -114,14 +99,13 @@ namespace EnchantElegance.Persistence.Implementations.Services
 					throw new Exception("File size should not be larger than 2MB");
 				}
 
-				// Eski fotoğraf varsa silin
-				if (!string.IsNullOrEmpty(slider.Image))
+			
+				if (!string.IsNullOrEmpty(existed.Image))
 				{
-					slider.Image.DeleteFile(_env.WebRootPath, "assets", "img", "slider");
+					existed.Image.DeleteFile(_env.WebRootPath, "assets", "img", "slider");
 				}
 
-				// Yeni fotoğrafı ekleyin
-				slider.Image = await updateDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img", "slider");
+				existed.Image = await updateDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img", "slider");
 			}
 
 			await _context.SaveChangesAsync();

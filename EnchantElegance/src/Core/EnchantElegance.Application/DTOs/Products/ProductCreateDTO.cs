@@ -3,26 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
-namespace EnchantElegance.Application.DTOs.Products
+namespace EnchantElegance.Application.DTOs
 {
-	public record ProductCreateDTO
-	(
-	  string Name,
-	  string? Description,
-	  decimal Price,
-	  int StockQuantity,
-	  string Brand,
-	  string SkinType,
-	  string SkinTone,
-	  string? Color,
-	  string Usage,
-	  string Ingredients,
-	  bool IsOrganic,
-	  
-	  int CategoryId,
-	  
-	  ICollection<int>? ColorIds
+	public class ProductCreateDTO
+	{
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal OldPrice { get; set; }
+		public decimal CurrentPrice { get; set; }
+        public IFormFile Photo { get; set; }
+        public int CategoryId { get; set; }
+        public int ColorId { get; set; }
 
-	);
+
+    }
+
 }

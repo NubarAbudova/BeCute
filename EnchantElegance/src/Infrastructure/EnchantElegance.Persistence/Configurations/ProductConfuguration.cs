@@ -14,7 +14,6 @@ namespace EnchantElegance.Persistence.Configurations
         public void Configure(EntityTypeBuilder<Product> builder)
         {
             builder.Property(x => x.Name).IsRequired().HasMaxLength(100);
-            builder.Property(x => x.Ingredients).IsRequired().HasColumnType("text");
         }
     }
 }

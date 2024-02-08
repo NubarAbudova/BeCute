@@ -1,4 +1,5 @@
-﻿@model EnchantElegance.Application.DTOs.Sliders.SliderUpdateDTO
+﻿@using EnchantElegance.Application.DTOs;
+@model SliderUpdateDTO
 
 <!-- START PAGE CONTENT-->
 <div class="page-heading">
@@ -7,7 +8,6 @@
 		<li class="breadcrumb-item">
 			<a href="index.html"><i class="la la-home font-20"></i></a>
 		</li>
-		<li class="breadcrumb-item">Update Slider</li>
 	</ol>
 </div>
 <div class="page-content fade-in-up">
@@ -28,10 +28,7 @@
 					<form method="post" enctype="multipart/form-data">
 
 						<div class="row">
-@* 
-							<img src="~/assets/img/slider/@Model.Image"> 
-							<input asp-for="Image" type="hidden" class="form-control" value="@Model.Image"> *@
-
+							<img width="150px;" height="150px;"  src="~/assets/img/slider/@Model.Image">
 							<div class="col-sm-6 form-group">
 								<label asp-for="Photo"> Photo</label>
 								<input asp-for="Photo" class="form-control" placeholder="Photo">

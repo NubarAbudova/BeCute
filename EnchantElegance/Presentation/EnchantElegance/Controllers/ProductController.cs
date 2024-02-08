@@ -15,21 +15,23 @@ namespace EnchantElegance.Controllers
 			_context = context;
 		}
 
-        //public IActionResult Index()
-        //{
-        //	return View();
-        //}
-
-  //      public IActionResult Detail(int id)
+		//public IActionResult Index()
 		//{
-		//	if (id <= 0) return BadRequest();
-
-		//	//Product product=_context.Products
-		//	//	.Include(p=>p.Category)
-		//	//	.FirstOrDefault(p => p.Id == id);
-
-		//	if(product == null) return NotFound();	
-		//	return View(product);
+		//	return View();
 		//}
+
+		public IActionResult Detail(int id)
+		{
+			if (id <= 0) return BadRequest();
+
+			Product product = _context.Products
+				.Include(p => p.Category)
+				.Include(p=>p.ProductImages)
+				.Include(p=>p.ProductColors).ThenInclude(pc=>pc.Color)
+				.FirstOrDefault(p => p.Id == id);
+
+			if (product == null) return NotFound(); 
+			return View(product);
+		}
 	}
 }

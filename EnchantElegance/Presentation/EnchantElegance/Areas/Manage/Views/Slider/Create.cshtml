@@ -1,4 +1,5 @@
-﻿@model EnchantElegance.Application.DTOs.Sliders.SliderCreateDTO
+﻿@using EnchantElegance.Application.DTOs;
+@model SliderCreateDTO
 
 <!-- START PAGE CONTENT-->
 <div class="page-heading">
@@ -26,6 +27,7 @@
 				</div>
 				<div class="ibox-body">
 					<form method="post" enctype="multipart/form-data">
+
 						<div class="row">
 							<div class="col-sm-6 form-group">
 								<label asp-for="Photo"> Photo</label>

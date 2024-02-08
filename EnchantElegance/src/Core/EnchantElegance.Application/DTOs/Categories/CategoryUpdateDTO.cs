@@ -5,13 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace EnchantElegance.Application.DTOs.Categories
-{
+namespace EnchantElegance.Application.DTOs
+{ 
 	public class CategoryUpdateDTO
 	{
 		public string Name { get; set; }
-		public string Description { get; set; }
-		public string Image { get; set; }
-		public IFormFile Photo { get; set; }
 	}
 }

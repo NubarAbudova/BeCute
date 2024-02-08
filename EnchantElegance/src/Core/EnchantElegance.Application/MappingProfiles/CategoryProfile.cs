@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using EnchantElegance.Application.DTOs.Categories;
+using EnchantElegance.Application.DTOs;
+
 using EnchantElegance.Domain.Entities;
 
 namespace EnchantElegance.Application.MappingProfiles
@@ -16,6 +17,7 @@ namespace EnchantElegance.Application.MappingProfiles
 			CreateMap<Category, CategoryItemDTO>().ReverseMap();
 
 			CreateMap<CategoryCreateDTO, Category>();
+			CreateMap<CategoryUpdateDTO, Category>().ReverseMap();
 
 		}
 	}

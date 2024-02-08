@@ -1,4 +1,4 @@
-﻿using EnchantElegance.Application.DTOs.Sliders;
+﻿using EnchantElegance.Application.DTOs;
 using EnchantElegance.Domain.Entities;
 using EnchantElegance.Persistence.Contexts;
 using Microsoft.AspNetCore.Mvc;
@@ -43,12 +43,11 @@ namespace EnchantElegance.Areas.Manage.Controllers
 
 		public async Task<IActionResult> Update(int id)
 		{
+		
 			if (id <= 0) return BadRequest();
 
-			await _service.GetSliderForUpdateAsync(id);
-
-			SliderUpdateDTO updateDTO = new SliderUpdateDTO();
-
+			SliderUpdateDTO updateDTO = await _service.GetSliderForUpdateAsync(id);
+			if (updateDTO == null) return NotFound();
 			return View(updateDTO);
 		}
 		[HttpPost]

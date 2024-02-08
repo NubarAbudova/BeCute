@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnchantElegance.Application.Abstarctions.Services;
-using EnchantElegance.Application.DTOs.Users;
+using EnchantElegance.Application.DTOs;
 using EnchantElegance.Domain.Entities;
 using EnchantElegance.Domain.Enums;
 using EnchantElegance.Domain.Utilities.Extensions;
@@ -125,9 +125,9 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			}
 		}
 		
-		public Task Logout()
+		public async Task Logout()
 		{
-			throw new NotImplementedException();
+			await _signInManager.SignOutAsync();
 		}
 	}
 }

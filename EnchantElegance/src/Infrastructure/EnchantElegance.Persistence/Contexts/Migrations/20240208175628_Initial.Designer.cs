@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EnchantElegance.Persistence.Contexts.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240208153252_CreateColorsandProductColorsTable")]
-    partial class CreateColorsandProductColorsTable
+    [Migration("20240208175628_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -192,10 +192,6 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Ingredients")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EnchantElegance.Application.DTOs.Users
+namespace EnchantElegance.Application.DTOs
 {
     public record RegisterDTO(string UserName,string Email,string Password,string ConfirmPassword,string PhoneNumber,string Name,string Surname)
     {

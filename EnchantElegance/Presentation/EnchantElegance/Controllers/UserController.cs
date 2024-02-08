@@ -1,5 +1,5 @@
 ﻿using EnchantElegance.Application.Abstarctions.Services;
-using EnchantElegance.Application.DTOs.Users;
+using EnchantElegance.Application.DTOs;
 using EnchantElegance.Domain.Entities;
 using EnchantElegance.Persistence.Implementations.Services;
 using Microsoft.AspNetCore.Identity;
