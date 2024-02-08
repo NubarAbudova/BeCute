@@ -57904,6 +57904,38 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\img\slider\8e6974a8-23ac-4a1b-b46a-19fddd033d2bCosmetics.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\img\slider\a2dc2648-2c99-4664-9bc6-e1201ef7bfd7wp6836080.webp))">
+      <SourceType>Package</SourceType>
+      <SourceId>EnchantElegance</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/EnchantElegance</BasePath>
+      <RelativePath>assets/img/slider/a2dc2648-2c99-4664-9bc6-e1201ef7bfd7wp6836080.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\img\slider\a2dc2648-2c99-4664-9bc6-e1201ef7bfd7wp6836080.webp))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\img\slider\ddfe567a-c1bc-4260-a8ed-2c523fcb2170Cosmetics.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>EnchantElegance</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/EnchantElegance</BasePath>
+      <RelativePath>assets/img/slider/ddfe567a-c1bc-4260-a8ed-2c523fcb2170Cosmetics.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\img\slider\ddfe567a-c1bc-4260-a8ed-2c523fcb2170Cosmetics.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\img\slider\f9194bba-d059-4f5d-b583-f16681e9928cSkincare.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>EnchantElegance</SourceId>

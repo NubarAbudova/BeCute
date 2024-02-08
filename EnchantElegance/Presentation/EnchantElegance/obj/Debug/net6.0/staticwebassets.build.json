@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Q63b7j3Rhry2exmNbgTXOdASEEA/cZTGZWPa2fb0HiQ=",
+  "Hash": "UljZrEixhSeo7YE/ejspWrkVVHVsZRevQuN1zCVXc44=",
   "Source": "EnchantElegance",
   "BasePath": "_content/EnchantElegance",
   "Mode": "Default",
@@ -61572,6 +61572,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\slider\\8e6974a8-23ac-4a1b-b46a-19fddd033d2bCosmetics.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\a2dc2648-2c99-4664-9bc6-e1201ef7bfd7wp6836080.webp",
+      "SourceId": "EnchantElegance",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\",
+      "BasePath": "_content/EnchantElegance",
+      "RelativePath": "assets/img/slider/a2dc2648-2c99-4664-9bc6-e1201ef7bfd7wp6836080.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\slider\\a2dc2648-2c99-4664-9bc6-e1201ef7bfd7wp6836080.webp"
+    },
+    {
+      "Identity": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\ddfe567a-c1bc-4260-a8ed-2c523fcb2170Cosmetics.jpg",
+      "SourceId": "EnchantElegance",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\",
+      "BasePath": "_content/EnchantElegance",
+      "RelativePath": "assets/img/slider/ddfe567a-c1bc-4260-a8ed-2c523fcb2170Cosmetics.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\slider\\ddfe567a-c1bc-4260-a8ed-2c523fcb2170Cosmetics.jpg"
     },
     {
       "Identity": "C:\\Users\\Nubar\\Desktop\\EnchantElegance\\EnchantElegance\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\slider\\f9194bba-d059-4f5d-b583-f16681e9928cSkincare.jpg",

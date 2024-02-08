@@ -18,10 +18,10 @@ namespace EnchantElegance.Persistence.ServiceRegistration
 {
     public static class ServiceRegistration
     {
-        public static IServiceCollection AddPersistenceServices(this IServiceCollection services,IConfiguration configuration)
+        public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("Default"),
-                b=>b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
+                b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
 
             services.AddIdentity<AppUser, IdentityRole>(opt =>
             {
@@ -30,7 +30,7 @@ namespace EnchantElegance.Persistence.ServiceRegistration
                 opt.Password.RequireDigit = true;
                 opt.Password.RequireLowercase = true;
                 opt.Password.RequireUppercase = true;
-               
+
                 opt.User.RequireUniqueEmail = true;
 
                 opt.Lockout.MaxFailedAccessAttempts = 3;
@@ -40,12 +40,12 @@ namespace EnchantElegance.Persistence.ServiceRegistration
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
 
-            services.AddScoped<IAuthService,AuthService>();
-			services.AddScoped<ISliderService, SliderService>();
-			services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<ISliderService, SliderService>();
+            services.AddScoped<ICategoryService, CategoryService>();
 
 
-			return services;
+            return services;
         }
     }
 }

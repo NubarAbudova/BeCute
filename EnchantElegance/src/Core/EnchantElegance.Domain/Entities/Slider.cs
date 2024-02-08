@@ -9,9 +9,8 @@ namespace EnchantElegance.Domain.Entities
 {
 	public class Slider:BaseNameableEntity
 	{
-		public string SubTitle { get; set; }
-		public string Description { get; set; }
-		public string Image { get; set; }
+		public string SubTitle { get; set; } = null!;
+		public string Image { get; set; } = null!;
         public int Order { get; set; }
 	}
 }

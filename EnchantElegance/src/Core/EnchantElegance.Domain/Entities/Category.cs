@@ -8,9 +8,6 @@ namespace EnchantElegance.Domain.Entities
 {
     public class Category:BaseNameableEntity
     {
-        public string Description { get; set; } = null!;
-        public string Image { get; set; }
-
         //Relational Properties
         public ICollection<Product>? Products { get; set; } 
     }

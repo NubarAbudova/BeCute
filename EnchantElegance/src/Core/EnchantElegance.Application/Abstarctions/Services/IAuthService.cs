@@ -13,8 +13,6 @@ namespace EnchantElegance.Application.Abstarctions.Services
 		Task<List<string>> Register(RegisterDTO registerDTO);
 		Task<List<string>> Login(LoginDTO loginDTO);
 		Task Logout();
-		Task CreateRoleAsync();
-		Task CreateAdminRoleAsync();
-		Task AssignRoleToUser(AppUser user, string roleName);
+	
 	}
 }

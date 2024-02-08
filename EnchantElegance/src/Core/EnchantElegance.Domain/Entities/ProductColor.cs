@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace EnchantElegance.Domain.Entities
 {
-    public class ProductColor:BaseEntity
-    {
-        //Relational Properties
+	public class ProductColor:BaseNameableEntity
+	{
         public int ProductId { get; set; }
-        public Product Product { get; set; } = null!;
+        public Product Product { get; set; }
         public int ColorId { get; set; }
-        public Color Color { get; set; } = null!;
+        public Color Color { get; set; }
     }
 }

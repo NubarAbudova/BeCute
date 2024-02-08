@@ -42,28 +42,25 @@ namespace EnchantElegance.Persistence.Implementations.Services
 		public async Task<List<string>> Create(CategoryCreateDTO CategoryDTO)
 		{
 			List<string> str = new List<string>();
-			if (CategoryDTO.Photo != null)
-			{
-				if (!CategoryDTO.Photo.ValidateType("image/"))
-				{
-					str.Add("File type does not match");
-					return str;
-				}
-				if (!CategoryDTO.Photo.ValidateSize(2 * 1024))
-				{
-					str.Add("File size should not be larger than 2MB");
-					return str;
-				}
-			}
+			//if (CategoryDTO.Photo != null)
+			//{
+			//	if (!CategoryDTO.Photo.ValidateType("image/"))
+			//	{
+			//		str.Add("File type does not match");
+			//		return str;
+			//	}
+			//	if (!CategoryDTO.Photo.ValidateSize(2 * 1024))
+			//	{
+			//		str.Add("File size should not be larger than 2MB");
+			//		return str;
+			//	}
+			//}
 
-			string fileName = await CategoryDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img");
+			//string fileName = await CategoryDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img");
 
 			Category category = new Category
 			{
-				Image = fileName,
 				Name = CategoryDTO.Name,
-
-				Description = CategoryDTO.Description,
 			};
 
 			await _context.Categories.AddAsync(category);
@@ -96,30 +93,29 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
 			// Güncelleme işlemlerini yapın
 			Category.Name = updateDTO.Name;
-			Category.Description = updateDTO.Description;
 
-			if (updateDTO.Photo != null)
-			{
-				// Yeni fotoğraf varsa işlemleri gerçekleştirin
-				if (!updateDTO.Photo.ValidateType("image/"))
-				{
-					throw new Exception("File type does not match");
-				}
+			//if (updateDTO.Photo != null)
+			//{
+			//	// Yeni fotoğraf varsa işlemleri gerçekleştirin
+			//	if (!updateDTO.Photo.ValidateType("image/"))
+			//	{
+			//		throw new Exception("File type does not match");
+			//	}
 
-				if (!updateDTO.Photo.ValidateSize(2 * 1024))
-				{
-					throw new Exception("File size should not be larger than 2MB");
-				}
+			//	if (!updateDTO.Photo.ValidateSize(2 * 1024))
+			//	{
+			//		throw new Exception("File size should not be larger than 2MB");
+			//	}
 
-				// Eski fotoğraf varsa silin
-				if (!string.IsNullOrEmpty(Category.Image))
-				{
-					Category.Image.DeleteFile(_env.WebRootPath, "assets", "img");
-				}
+			//	Eski fotoğraf varsa silin
+			//	if (!string.IsNullOrEmpty(Category.Image))
+			//	{
+			//		Category.Image.DeleteFile(_env.WebRootPath, "assets", "img");
+			//	}
 
-				// Yeni fotoğrafı ekleyin
-				Category.Image = await updateDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img");
-			}
+			//	// Yeni fotoğrafı ekleyin
+			//	Category.Image = await updateDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img");
+			//}
 
 			await _context.SaveChangesAsync();
 		}
@@ -143,10 +139,10 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
 			}
 
-			if (!string.IsNullOrEmpty(existed.Image))
-			{
-				existed.Image.DeleteFile(_env.WebRootPath, "assets", "img");
-			}
+			//if (!string.IsNullOrEmpty(existed.Image))
+			//{
+			//	existed.Image.DeleteFile(_env.WebRootPath, "assets", "img");
+			//}
 
 			await _context.SaveChangesAsync();
 		}

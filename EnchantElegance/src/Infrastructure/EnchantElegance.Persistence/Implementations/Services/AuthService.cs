@@ -58,34 +58,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
 			};
 
-			//if (registerDTO.MainImage is not null)
-			//{
-			//	if (!registerDTO.MainImage.CheckType("image/"))
-			//	{
-			//		String.Add("Your photo type is not true.Please use only image");
-			//		return String;
-			//	}
-			//	if (!registerDTO.MainImage.ValidateSize(7))
-			//	{
-			//		String.Add("Your Email size must be max 7 mb");
-			//		return String;
-			//	}
-			//	user.MainImage = await register.MainImage.CreateFileAsync(_env.WebRootPath, "assets", "images");
-			//}
-			//if (register.BackImage is not null)
-			//{
-			//	if (!register.BackImage.CheckType("image/"))
-			//	{
-			//		String.Add("Your photo type is not true.Please use only image");
-			//		return String;
-			//	}
-			//	if (!register.BackImage.ValidateSize(7))
-			//	{
-			//		String.Add("Your Email size must be max 5mb");
-			//		return String;
-			//	}
-			//	user.BackImage = await register.BackImage.CreateFileAsync(_env.WebRootPath, "assets", "images");
-			//}
+			
 			IdentityResult result = await _userManager.CreateAsync(user, registerDTO.Password);
 			if (!result.Succeeded)
 			{
@@ -151,34 +124,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 				}
 			}
 		}
-
-
-		public async Task CreateAdminRoleAsync()
-		{
-			var adminRoleName = "Admin";
-
-			if (!await _roleManager.RoleExistsAsync(adminRoleName))
-			{
-				await _roleManager.CreateAsync(new IdentityRole
-				{
-					Name = adminRoleName,
-				});
-			}
-		}
-
-		public async Task AssignRoleToUser(AppUser user, string roleName)
-		{
-			if (!await _roleManager.RoleExistsAsync(roleName))
-			{
-
-				await _roleManager.CreateAsync(new IdentityRole
-				{
-					Name = roleName
-				});
-			}
-			await _userManager.AddToRoleAsync(user, roleName);
-		}
-
+		
 		public Task Logout()
 		{
 			throw new NotImplementedException();

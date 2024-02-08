@@ -20,16 +20,16 @@ namespace EnchantElegance.Controllers
         //	return View();
         //}
 
-        public IActionResult Detail(int id)
-		{
-			if (id <= 0) return BadRequest();
+  //      public IActionResult Detail(int id)
+		//{
+		//	if (id <= 0) return BadRequest();
 
-			Product product=_context.Products
-				.Include(p=>p.Category)
-				.FirstOrDefault(p => p.Id == id);
+		//	//Product product=_context.Products
+		//	//	.Include(p=>p.Category)
+		//	//	.FirstOrDefault(p => p.Id == id);
 
-			if(product == null) return NotFound();	
-			return View(product);
-		}
+		//	if(product == null) return NotFound();	
+		//	return View(product);
+		//}
 	}
 }

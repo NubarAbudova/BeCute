@@ -65,7 +65,6 @@ namespace EnchantElegance.Persistence.Implementations.Services
 				Image = fileName,
 				Name = sliderDTO.Name,
 				SubTitle = sliderDTO.SubTitle,
-				Description = sliderDTO.Description,
 				Order = sliderDTO.Order,
 			};
 
@@ -99,7 +98,6 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
 			// Güncelleme işlemlerini yapın
 			slider.Name = updateDTO.Name;
-			slider.Description = updateDTO.Description;
 			slider.SubTitle = updateDTO.SubTitle;
 			slider.Order = updateDTO.Order;
 

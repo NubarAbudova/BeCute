@@ -10,25 +10,17 @@ namespace EnchantElegance.Domain.Entities
     {
         //Common Properties
         public string? Description { get; set; }
-        public decimal Price { get; set; }
-        public int StockQuantity { get; set; }
-        public string Brand { get; set; } = null!;
-
-        // Cosmetics and SkinCare Properties
-        public string SkinType { get; set; } = null!;
-        public string SkinTone { get; set; } = null!;
+		public decimal OldPrice { get; set; }
+		public decimal CurrentPrice { get; set; }
         public string? Color { get; set; }
-        public string Usage { get; set; } = null!;
         public string Ingredients { get; set; } = null!;
-        public bool IsOrganic { get; set; }
+
 
         //Relational Properties
         public int CategoryId { get; set; }
         public Category Category { get; set; } = null!;
-
-        public ICollection<ProductColor> ProductColors { get; set; } = null!;
 		public ICollection<ProductImages> ProductImages { get; set; } = null!;
-
+		public ICollection<ProductColor> ProductColors { get; set; }
 
 
 	}

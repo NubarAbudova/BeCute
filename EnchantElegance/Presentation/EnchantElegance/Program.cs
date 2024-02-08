@@ -1,14 +1,12 @@
-
-
 using EnchantElegance.Application.ServiceRegistration;
-
 using EnchantElegance.Persistence.ServiceRegistration;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-	
+
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices(builder.Configuration);
 
