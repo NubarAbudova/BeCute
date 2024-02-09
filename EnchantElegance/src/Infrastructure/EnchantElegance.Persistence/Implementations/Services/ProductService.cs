@@ -6,7 +6,7 @@ using EnchantElegance.Persistence.Contexts;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using EnchantElegance.Domain.Utilities.Extensions;
-
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EnchantElegance.Persistence.Implementations.Services
 {
@@ -25,66 +25,129 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
 		public async Task<ItemVM<Product>> GetAllAsync(int page, int take)
 		{
-			List<Product> products = await _context.Products.ToListAsync();
+			List<Product> products = await _context.Products
+				.Include(p=>p.Category)
+				.Include(p=>p.ProductImages.Where(pi=>pi.IsPrimary==true))
+				.ToListAsync();
 			ItemVM<Product> categoryvm = new ItemVM<Product>
 			{
 				Items = products,
 			};
 			return categoryvm;
 		}
+		public ProductCreateDTO GetProductCreateDTO()
+		{
+			var productCreateDTO = new ProductCreateDTO();
+
+			// Kategori listesini doldurun
+			productCreateDTO.CategoryList = GetCategoryList();
+
+			return productCreateDTO;
+		}
+
+		private List<SelectListItem> GetCategoryList()
+		{
+			List<Category> categories = _context.Categories.ToList(); // Gerçek kategori verilerini veritabanından al
+
+			// Kategori listesini SelectListItem'lar listesine çevir
+			List<SelectListItem> categoryList = categories.Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.Name }).ToList();
+
+			return categoryList;
+		}
 		public async Task<List<string>> Create(ProductCreateDTO productCreateDTO)
 		{
-			List<string> str = new List<string>();
+			List<string> errors = new List<string>();
+
+			if (string.IsNullOrEmpty(productCreateDTO.Name))
+			{
+				errors.Add("Product name is required.");
+			}
+		
+			if (productCreateDTO.CurrentPrice <= 0)
+			{
+				errors.Add("Product price should be greater than zero.");
+			}
+		
+			if (string.IsNullOrEmpty(productCreateDTO.Description))
+			{
+				errors.Add("Product description is required.");
+			}
+
 			if (productCreateDTO.Photo != null)
 			{
-
+			
 				if (!productCreateDTO.Photo.ValidateType("image/"))
 				{
-					str.Add("File type does not match");
-					return str;
+					errors.Add("File type does not match. Please upload a valid image.");
 				}
+
 				if (!productCreateDTO.Photo.ValidateSize(2 * 1024))
 				{
-					str.Add("File size should not be larger than 2MB");
-					return str;
+					errors.Add("File size should not be larger than 2MB.");
 				}
 			}
 
-			string fileName = await productCreateDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img");
-			
+			if (productCreateDTO.CategoryId <= 0)
+			{
+				errors.Add("Category ID is required.");
+			}
+			else
+			{
+				bool isCategoryExist = await _context.Categories.AnyAsync(c => c.Id == productCreateDTO.CategoryId);
+				if (!isCategoryExist)
+				{
+					errors.Add("Category not found.");
+				}
+			}
 
+
+			if (errors.Count > 0)
+			{
+				return errors;
+			}
+
+			string fileName = await productCreateDTO.Photo?.CreateFileAsync(_env.WebRootPath, "assets", "img");
 
 			Product product = new Product
 			{
-		
 				Name = productCreateDTO.Name,
-				Description= productCreateDTO.Description,
-				CurrentPrice=productCreateDTO.CurrentPrice,
-				OldPrice=productCreateDTO.OldPrice,
+				Description = productCreateDTO.Description,
+				CurrentPrice = productCreateDTO.CurrentPrice,
+				OldPrice = productCreateDTO.OldPrice,
 				CategoryId = (int)productCreateDTO.CategoryId,
-				ProductColors = new List<ProductColor>(),
-				ProductImages = new List<ProductImages>()
-
-
+				//ProductColors = new List<ProductColor>(),
+				//ProductImages = new List<ProductImages>()
 			};
 
 			await _context.Products.AddAsync(product);
 			await _context.SaveChangesAsync();
-			return str;
+
+			return errors;
 		}
-		public async Task GetProductForUpdateAsync(int id)
+		public async Task<ProductUpdateDTO> GetProductForUpdateAsync(int id)
 		{
-			Product product = await _context.Products.FirstOrDefaultAsync(s => s.Id == id);
+			Product product = await _context.Products
+				.Include(p => p.Category)
+				.Include(p => p.ProductImages.Where(pi => pi.IsPrimary == true))
+				.FirstOrDefaultAsync(s => s.Id == id);
 
-			if (product == null)
+			if (product == null) throw new Exception("Product not found");
+
+			//ProductUpdateDTO updateDTO = _mapper.Map<ProductUpdateDTO>(product);
+
+
+			// ProductUpdateDTO'yu oluşturun ve eski verileri set edin
+			ProductUpdateDTO updateDTO = new ProductUpdateDTO
 			{
-				throw new Exception("Product is null");
+				Name = product.Name,
+				Description = product.Description,
+				OldPrice = product.OldPrice,
+				CurrentPrice = product.CurrentPrice,
+				// Diğer özellikleri de set edin...
+			};
+			updateDTO.CategoryList = GetCategoryList(); // Kategori listesini set et
 
-			}
-
-			ProductUpdateDTO updateDTO = _mapper.Map<ProductUpdateDTO>(product);
-
-			await _context.SaveChangesAsync();
+			return updateDTO;
 		}
 
 		public async Task Update(int id, ProductUpdateDTO updateDTO)

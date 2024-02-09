@@ -34,8 +34,12 @@
 								<th>Image</th>
 
 								<th>Name</th>
-								<th>SubTitle</th>
-								<th>Order</th>
+								<th>Description</th>
+								<th>CurrentPrice</th>
+								<th>OldPrice</th>
+								<th>Category</th>
+
+
 								<th>Actions</th>
 							</tr>
 						</thead>
@@ -46,12 +50,15 @@
 								<tr>
 									<td>@count</td>
 									<td>
-										@* <img src="~/assets/img/slider/@product.Image"> *@
+										<img src="~/assets/img/product/@product.ProductImages.FirstOrDefault()?.Url">
 									</td>
 
 									<td>@product.Name</td>
+									<td>@product.Description</td>
 									<td>@product.CurrentPrice</td>
-									<td>@product.</td>
+									<td>@product.OldPrice</td>
+									<td>@product.Category.Name</td>
+
 									<td>
 										<a asp-controller="Product" asp-action="Update" asp-route-id="@product.Id"><i class="ti-marker-alt"></i></a>
 										<a asp-controller="Product" asp-action="Delete" asp-route-id="@product.Id" class="customDelete"><i class="ti-trash"></i></a>

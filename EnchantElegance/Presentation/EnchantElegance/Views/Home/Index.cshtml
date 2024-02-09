@@ -124,8 +124,8 @@
 							<article class="product__card">
 								<div class="product__card--thumbnail">
 									<a class="product__card--thumbnail__link display-block" href="product-details.html">
-										<img class="product__card--thumbnail__img product__primary--img" src="~/assets/img/product/main-product/@product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==true).Url" alt="product-img">
-										<img class="product__card--thumbnail__img product__secondary--img" src="~/assets/img/product/main-product/@product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==false).Url" alt="product-img">
+										<img class="product__card--thumbnail__img product__primary--img" src="~/assets/img/product/main-product/@product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==true)?.Url" alt="product-img">
+										<img class="product__card--thumbnail__img product__secondary--img" src="~/assets/img/product/main-product/@product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==false)?.Url" alt="product-img">
 									</a>
 									<span class="product__badge">-14%</span>
 									<ul class="product__card--action">

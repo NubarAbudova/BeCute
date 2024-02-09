@@ -1,5 +1,6 @@
 ﻿using EnchantElegance.Application.Abstarctions.Services;
 using EnchantElegance.Application.DTOs;
+using EnchantElegance.Persistence.Implementations.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnchantElegance.Areas.Manage.Controllers
@@ -17,14 +18,17 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		{
 			return View(await _service.GetAllAsync(1, 3));
 		}
-		public async Task<IActionResult> Create()
+		public IActionResult Create()
 		{
-			return View();
+			var productCreateDTO = _service.GetProductCreateDTO();
+			// Diğer işlemler...
+			return View(productCreateDTO);
 		}
 		[HttpPost]
 		public async Task<IActionResult> Create(ProductCreateDTO productDTO)
 		{
 			if (!ModelState.IsValid) return View(productDTO);
+
 
 			var result = await _service.Create(productDTO);
 
@@ -40,12 +44,13 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		{
 			if (id <= 0) return BadRequest();
 
-			await _service.GetProductForUpdateAsync(id);
+			ProductUpdateDTO updateDTO = await _service.GetProductForUpdateAsync(id);
 
-			ProductUpdateDTO updateDTO = new ProductUpdateDTO();
-
+			if (updateDTO == null) return NotFound();
+	
 			return View(updateDTO);
 		}
+
 		[HttpPost]
 		public async Task<IActionResult> Update(int id, ProductUpdateDTO updateDTO)
 		{

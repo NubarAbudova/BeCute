@@ -54,7 +54,16 @@
 							</div>
 							<div class="col-sm-6 form-group">
 								<label asp-for="CategoryId">Category</label>
-								<input asp-for="CategoryId" class="form-control" placeholder="Category">
+								@if (Model.CategoryList != null)
+								{
+									<select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(Model.CategoryList, "Value", "Text"))">
+										<option value="">Select Category</option>
+									</select>
+								}
+								else
+								{
+									<p>Error: CategoryList is null.</p>
+								}
 								<span asp-validation-for="CategoryId"></span>
 							</div>
 							<div class="col-sm-6 form-group">
