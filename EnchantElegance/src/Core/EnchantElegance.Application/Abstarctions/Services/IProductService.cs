@@ -12,8 +12,9 @@ namespace EnchantElegance.Application.Abstarctions.Services
 	public interface IProductService
 	{
 		Task<ItemVM<Product>> GetAllAsync(int page, int take);
-		ProductCreateDTO GetProductCreateDTO();
-		Task<List<string>> Create(ProductCreateDTO ProductCreateDTO);
+		Task <ProductCreateDTO> GetProductCreateDTO();
+		Task<List<Category>> GetCategoriesAsync();
+		Task<List<string>> Create(ProductCreateDTO productCreateDTO);
 		Task<ProductUpdateDTO> GetProductForUpdateAsync(int id);
 		Task Update(int id, ProductUpdateDTO updateDTO);
 		Task Delete(int id);

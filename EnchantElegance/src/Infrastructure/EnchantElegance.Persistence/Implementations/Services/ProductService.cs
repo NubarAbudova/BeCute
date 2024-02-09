@@ -26,33 +26,29 @@ namespace EnchantElegance.Persistence.Implementations.Services
 		public async Task<ItemVM<Product>> GetAllAsync(int page, int take)
 		{
 			List<Product> products = await _context.Products
-				.Include(p=>p.Category)
-				.Include(p=>p.ProductImages.Where(pi=>pi.IsPrimary==true))
+				.Include(p => p.Category)
+				.Include(p => p.ProductImages.Where(pi => pi.IsPrimary == true))
 				.ToListAsync();
-			ItemVM<Product> categoryvm = new ItemVM<Product>
+
+			ItemVM<Product> productVM = new ItemVM<Product>
 			{
 				Items = products,
 			};
-			return categoryvm;
+
+			return productVM;
 		}
-		public ProductCreateDTO GetProductCreateDTO()
+		public async Task <ProductCreateDTO> GetProductCreateDTO()
 		{
 			var productCreateDTO = new ProductCreateDTO();
 
-			// Kategori listesini doldurun
-			productCreateDTO.CategoryList = GetCategoryList();
+			productCreateDTO.Categories = await GetCategoriesAsync();
 
 			return productCreateDTO;
 		}
 
-		private List<SelectListItem> GetCategoryList()
+		public async Task<List<Category>> GetCategoriesAsync()
 		{
-			List<Category> categories = _context.Categories.ToList(); // Gerçek kategori verilerini veritabanından al
-
-			// Kategori listesini SelectListItem'lar listesine çevir
-			List<SelectListItem> categoryList = categories.Select(c => new SelectListItem { Value = c.Id.ToString(), Text = c.Name }).ToList();
-
-			return categoryList;
+			return await _context.Categories.ToListAsync();
 		}
 		public async Task<List<string>> Create(ProductCreateDTO productCreateDTO)
 		{
@@ -133,22 +129,20 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
 			if (product == null) throw new Exception("Product not found");
 
-			//ProductUpdateDTO updateDTO = _mapper.Map<ProductUpdateDTO>(product);
-
-
-			// ProductUpdateDTO'yu oluşturun ve eski verileri set edin
 			ProductUpdateDTO updateDTO = new ProductUpdateDTO
 			{
 				Name = product.Name,
 				Description = product.Description,
 				OldPrice = product.OldPrice,
 				CurrentPrice = product.CurrentPrice,
-				// Diğer özellikleri de set edin...
+				CategoryId = product.CategoryId,
+				ColorId = 0, // Assuming you have a property for ColorId in ProductUpdateDTO
+				Categories = await GetCategoriesAsync(),
 			};
-			updateDTO.CategoryList = GetCategoryList(); // Kategori listesini set et
 
 			return updateDTO;
 		}
+
 
 		public async Task Update(int id, ProductUpdateDTO updateDTO)
 		{

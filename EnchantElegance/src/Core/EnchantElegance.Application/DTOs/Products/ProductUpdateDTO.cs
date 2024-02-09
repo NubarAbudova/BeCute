@@ -1,21 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EnchantElegance.Domain.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EnchantElegance.Application.DTOs
 {
 	public class ProductUpdateDTO
 	{
+		[Required(ErrorMessage = "Product name is required.")]
 		public string Name { get; set; }
+
+		[Required(ErrorMessage = "Product description is required.")]
 		public string Description { get; set; }
-		public decimal OldPrice { get; set; }
+
+		[Required(ErrorMessage = "Product price should be greater than zero.")]
+		[Range(0.01, double.MaxValue, ErrorMessage = "Please enter a value greater than zero.")]
 		public decimal CurrentPrice { get; set; }
+
+		public decimal OldPrice { get; set; }
+
+		public IFormFile Photo { get; set; }
+
+		[Required(ErrorMessage = "Category is required.")]
 		public int CategoryId { get; set; }
-		public int ColorId { get; set; }
-		public List<SelectListItem> CategoryList { get; set; } = new List<SelectListItem>();
+
+		public List<Category>? Categories { get; set; }
 
 	}
 }
