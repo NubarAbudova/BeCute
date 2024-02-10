@@ -9,6 +9,7 @@ using EnchantElegance.Domain.Utilities.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace EnchantElegance.Persistence.Implementations.Services
 {
@@ -232,26 +233,67 @@ namespace EnchantElegance.Persistence.Implementations.Services
 				Description = product.Description,
 				OldPrice = product.OldPrice,
 				CurrentPrice = product.CurrentPrice,
+				ProductImages = product.ProductImages,
 				CategoryId = product.CategoryId,
 				Categories = await GetCategoriesAsync(),
 				ColorIds = product.ProductColors.Select(pc => pc.ColorId).ToList(),
 				Colors = await _context.Colors.ToListAsync(),
-
 			};
-
 			return updateDTO;
 		}
 
-
 		public async Task Update(int id, ProductUpdateDTO updateDTO)
 		{
+			List<string> errors = new List<string>();
 
+			Product product = await _context.Products
+				.Include(p=>p.ProductImages)
+				.Include(p => p.ProductColors)
+				.FirstOrDefaultAsync(p => p.Id == id);
 			updateDTO.Categories = await _context.Categories.ToListAsync();
 			updateDTO.Colors = await _context.Colors.ToListAsync();
-
-			Product product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+			updateDTO.ProductImages = product.ProductImages;
 
 			if (product == null) throw new Exception("Product not found");
+
+			if (updateDTO.MainPhoto != null)
+			{
+				if (!updateDTO.MainPhoto.ValidateType("image/"))
+				{
+					errors.Add("File type does not match. Please upload a valid image.");
+				}
+
+				if (!updateDTO.MainPhoto.ValidateSize(600))
+				{
+					errors.Add("File size should not be larger than 2MB.");
+				}
+			}
+			if (updateDTO.HoverPhoto != null)
+			{
+
+				if (!updateDTO.HoverPhoto.ValidateType("image/"))
+				{
+					errors.Add("File type does not match. Please upload a valid image.");
+				}
+
+				if (!updateDTO.HoverPhoto.ValidateSize(600))
+				{
+					errors.Add("File size should not be larger than 2MB.");
+				}
+			}
+			if (updateDTO.HoverPhoto != null)
+			{
+
+				if (!updateDTO.HoverPhoto.ValidateType("image/"))
+				{
+					errors.Add("File type does not match. Please upload a valid image.");
+				}
+
+				if (!updateDTO.HoverPhoto.ValidateSize(600))
+				{
+					errors.Add("File size should not be larger than 2MB.");
+				}
+			}
 
 			bool result = await _context.Categories.AnyAsync(c => c.Id == updateDTO.CategoryId);
 			if (!result) throw new Exception("Category not found");
@@ -272,35 +314,43 @@ namespace EnchantElegance.Persistence.Implementations.Services
 					ColorId = cId,
 				});
 			}
+			if(updateDTO.MainPhoto!=null)
+			{
+				string fileName = await updateDTO.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "img");
 
+				ProductImages existedImg = product.ProductImages.FirstOrDefault(pi => pi.IsPrimary == true);
+				existedImg.Url.DeleteFile(_env.WebRootPath, "assets", "img");
+				product.ProductImages.Remove(existedImg);
+
+			   product.ProductImages.Add(new ProductImages
+			   {
+				   IsPrimary=true,
+				   Alternative=updateDTO.Name,
+				   Url=fileName,
+
+			   });
+			}
+			if (updateDTO.HoverPhoto != null)
+			{
+				string fileName = await updateDTO.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "img");
+
+				ProductImages existedImg = product.ProductImages.FirstOrDefault(pi => pi.IsPrimary == false);
+				existedImg.Url.DeleteFile(_env.WebRootPath, "assets", "img");
+				product.ProductImages.Remove(existedImg);
+
+				product.ProductImages.Add(new ProductImages
+				{
+					IsPrimary = false,
+					Alternative = updateDTO.Name,
+					Url = fileName,
+				});
+			}
 			product.Name = updateDTO.Name;
 			product.Description = updateDTO.Description;
 			product.CurrentPrice = updateDTO.CurrentPrice;
 			product.OldPrice = updateDTO.OldPrice;
 			product.CategoryId = updateDTO.CategoryId;
 
-			//if (updateDTO.Photo != null)
-			//{
-			//	
-			//	if (!updateDTO.Photo.ValidateType("image/"))
-			//	{
-			//		throw new Exception("File type does not match");
-			//	}
-
-			//	if (!updateDTO.Photo.ValidateSize(2 * 1024))
-			//	{
-			//		throw new Exception("File size should not be larger than 2MB");
-			//	}
-
-			//	
-			//	if (!string.IsNullOrEmpty(Category.Image))
-			//	{
-			//		Category.Image.DeleteFile(_env.WebRootPath, "assets", "img");
-			//	}
-
-			//	// Yeni fotoğrafı ekleyin
-			//	Category.Image = await updateDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img");
-			//}
 
 			await _context.SaveChangesAsync();
 		}
