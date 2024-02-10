@@ -29,7 +29,11 @@ namespace EnchantElegance.Application.DTOs
 		[Required(ErrorMessage = "Category is required.")]
 		public int CategoryId { get; set; }
 
-		public List<Category>? Categories { get; set; }
+        public List<Category>? Categories { get; set; }
+		public List<int> ColorIds { get; set; }
+
+		public List<Color>? Colors { get; set; }
+
 
 	}
 }

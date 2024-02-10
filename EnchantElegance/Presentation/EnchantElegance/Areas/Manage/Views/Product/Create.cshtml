@@ -1,6 +1,6 @@
-﻿@using EnchantElegance.Application.DTOs;
-@using EnchantElegance.Domain.Entities;
-@model ProductCreateDTO
+﻿@using EnchantElegance.Domain.Entities;
+@model EnchantElegance.Application.DTOs.ProductCreateDTO
+
 <!-- START PAGE CONTENT-->
 <div class="page-heading">
 	<h1 class="page-title">Product</h1>
@@ -29,9 +29,19 @@
 					<form method="post" enctype="multipart/form-data">
 						<div class="row">
 							<div class="col-sm-6 form-group">
-								<label asp-for="Photo"> Photo</label>
-								<input asp-for="Photo" class="form-control" placeholder="Photo">
-								<span asp-validation-for="Photo"></span>
+								<label asp-for="MainPhoto">Main Image</label>
+								<input asp-for="MainPhoto" class="form-control" accept="image/*" placeholder="Main Image">
+								<span asp-validation-for="MainPhoto"></span>
+							</div>
+							<div class="col-sm-6 form-group">
+								<label asp-for="HoverPhoto">Hover Image</label>
+								<input asp-for="HoverPhoto" class="form-control" accept="image/*" placeholder="Hover Image">
+								<span asp-validation-for="HoverPhoto"></span>
+							</div>
+							<div class="col-sm-6 form-group">
+								<label asp-for="Photos">Additional Images</label>
+								<input asp-for="Photos" class="form-control" accept="image/*" placeholder="Images">
+								<span asp-validation-for="Photos"></span>
 							</div>
 							<div class="col-sm-6 form-group">
 								<label asp-for="Name"> Name</label>
@@ -55,15 +65,16 @@
 							</div>
 							<div class="form-group">
 								<label asp-for="CategoryId">Category</label>
-								<select asp-for="CategoryId" class="form-control" asp-items="new SelectList(Model.Categories,nameof(Category.Id),nameof(Category.Name))"></select>
+								<select asp-for="CategoryId" class="form-control" asp-items="new SelectList(Model.Categories, nameof(Category.Id), nameof(Category.Name))">
+									<option disabled selected>Choose Category</option>
+								</select>
 								<span class="text-danger" asp-validation-for="CategoryId"></span>
 							</div>
-						@* 	<div class="col-sm-6 form-group">
-								<label asp-for="ColorId">Color</label>
-								<input asp-for="ColorId" class="form-control" placeholder="Color">
-								<span asp-validation-for="ColorId"></span>
-							</div> *@
-
+							<div class="form-group">
+								<label asp-for="ColorIds">Colors</label>
+								<select asp-for="ColorIds" asp-items="new SelectList(Model.Colors, nameof(Color.Id), nameof(Color.Name))" multiple class="form-control"></select>
+								<span class="text-danger" asp-validation-for="ColorIds"></span>
+							</div>
 						</div>
 						<div class="form-group">
 							<button class="btn btn-success" type="submit">Submit</button>

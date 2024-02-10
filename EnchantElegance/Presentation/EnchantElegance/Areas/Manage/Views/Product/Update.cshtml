@@ -1,5 +1,6 @@
 ﻿@using EnchantElegance.Application.DTOs;
 @using EnchantElegance.Domain.Entities;
+
 @model ProductUpdateDTO
 <!-- START PAGE CONTENT-->
 <div class="page-heading">
@@ -58,11 +59,12 @@
 								<select asp-for="CategoryId" class="form-control" asp-items="new SelectList(Model.Categories,nameof(Category.Id),nameof(Category.Name))"></select>
 								<span class="text-danger" asp-validation-for="CategoryId"></span>
 							</div>
-@* 							<div class="col-sm-6 form-group">
-								<label asp-for="ColorId">Color</label>
-								<input asp-for="ColorId" class="form-control" placeholder="Color">
-								<span asp-validation-for="ColorId"></span>
-							</div> *@
+							<div class="form-group">
+								<label asp-for="ColorIds">Colors</label>
+								<select asp-for="ColorIds" class="form-control" asp-items="new SelectList(Model.Colors,nameof(Color.Id),nameof(Color.Name))"></select>
+								<span class="text-danger" asp-validation-for="ColorIds"></span>
+							</div>
+				
 
 						</div>
 						<div class="form-group">

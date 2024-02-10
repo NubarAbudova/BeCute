@@ -25,12 +25,16 @@ namespace EnchantElegance.Application.DTOs
 
 		public decimal OldPrice { get; set; }
 
-		public IFormFile Photo { get; set; }
+		public IFormFile MainPhoto { get; set; }
 
-		[Required(ErrorMessage = "Category is required.")]
+		public IFormFile HoverPhoto { get; set; }
+        public List<IFormFile> Photos { get; set; }
+
+        [Required(ErrorMessage = "Category is required.")]
 		public int CategoryId { get; set; }
-
-		public List<Category>? Categories { get; set; }
+		public List<Category> Categories { get; set; }
+		public List<int> ColorIds { get; set; }
+		public List<Color> Colors { get; set; }
 	}
 
 

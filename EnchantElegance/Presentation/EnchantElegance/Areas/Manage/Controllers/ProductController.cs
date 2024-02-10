@@ -18,10 +18,9 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		{
 			return View(await _service.GetAllAsync(1, 3));
 		}
-		public IActionResult Create()
+		public async Task< IActionResult> Create()
 		{
-			var productCreateDTO = _service.GetProductCreateDTO();
-			// Diğer işlemler...
+			var productCreateDTO = await _service.GetProductCreateDTO();
 			return View(productCreateDTO);
 		}
 		[HttpPost]
@@ -29,9 +28,8 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		{
 			if (!ModelState.IsValid) return View(productDTO);
 
-
 			var result = await _service.Create(productDTO);
-
+			TempData["Message"] = "";
 			if (result.Any())
 			{
 				ModelState.AddModelError(String.Empty, "Create is not success");
