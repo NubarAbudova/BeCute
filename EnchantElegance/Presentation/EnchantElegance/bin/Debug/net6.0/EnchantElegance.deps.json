@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "EnchantElegance/1.0.0": {
         "dependencies": {
-          "EnchantElegance.Application": "1.0.0",
+          "EnchantElegance.Infrastructure": "1.0.0",
           "EnchantElegance.Persistence": "1.0.0",
           "Microsoft.EntityFrameworkCore.Design": "6.0.25",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.16"
@@ -2653,6 +2653,14 @@
           "EnchantElegance.Domain.dll": {}
         }
       },
+      "EnchantElegance.Infrastructure/1.0.0": {
+        "dependencies": {
+          "EnchantElegance.Application": "1.0.0"
+        },
+        "runtime": {
+          "EnchantElegance.Infrastructure.dll": {}
+        }
+      },
       "EnchantElegance.Persistence/1.0.0": {
         "dependencies": {
           "EnchantElegance.Application": "1.0.0",
@@ -4309,6 +4317,11 @@
       "sha512": ""
     },
     "EnchantElegance.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EnchantElegance.Infrastructure/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

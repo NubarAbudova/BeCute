@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
+using EnchantElegance.Application.Abstarctions.Repositories;
 using EnchantElegance.Application.Abstarctions.Services;
 using EnchantElegance.Domain.Entities;
 using EnchantElegance.Persistence.Contexts;
+using EnchantElegance.Persistence.Implementations.Repositories;
 using EnchantElegance.Persistence.Implementations.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
 
 namespace EnchantElegance.Persistence.ServiceRegistration
 {
@@ -39,11 +35,23 @@ namespace EnchantElegance.Persistence.ServiceRegistration
 
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
-
+            //Identity
             services.AddScoped<IAuthService, AuthService>();
+
+            //Slider
             services.AddScoped<ISliderService, SliderService>();
+
+            //Category
             services.AddScoped<ICategoryService, CategoryService>();
-            services.AddScoped<IProductService, ProductService>();
+			services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+            //Product
+			services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductRepository,ProductRepository>();
+
+            //Color
+
+			services.AddScoped<IColorRepository,ColorRepository >();
 
 
 

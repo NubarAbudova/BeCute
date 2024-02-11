@@ -26,7 +26,15 @@ namespace EnchantElegance.Persistence.Contexts
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-            base.OnModelCreating(modelBuilder);
+			modelBuilder.Entity<Product>()
+		.Property(p => p.CurrentPrice)
+		.HasColumnType("decimal(18, 2)");
+
+			modelBuilder.Entity<Product>()
+				.Property(p => p.OldPrice)
+				.HasColumnType("decimal(18, 2)");
+
+			base.OnModelCreating(modelBuilder);
         }
 
     }

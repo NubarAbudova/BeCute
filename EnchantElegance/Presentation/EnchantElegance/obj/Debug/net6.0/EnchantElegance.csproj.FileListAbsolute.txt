@@ -266,3 +266,5 @@ C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\Presentation\EnchantElega
 C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\Presentation\EnchantElegance\bin\Debug\net6.0\FluentValidation.dll
 C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\Presentation\EnchantElegance\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
 C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\Presentation\EnchantElegance\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\Presentation\EnchantElegance\bin\Debug\net6.0\EnchantElegance.Infrastructure.dll
+C:\Users\Nubar\Desktop\EnchantElegance\EnchantElegance\Presentation\EnchantElegance\bin\Debug\net6.0\EnchantElegance.Infrastructure.pdb

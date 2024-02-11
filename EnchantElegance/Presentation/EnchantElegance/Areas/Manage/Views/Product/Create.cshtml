@@ -1,6 +1,6 @@
-﻿@using EnchantElegance.Domain.Entities;
-@model EnchantElegance.Application.DTOs.ProductCreateDTO
-
+﻿@using EnchantElegance.Application.DTOs;
+@using EnchantElegance.Domain.Entities;
+@model ProductCreateDTO
 <!-- START PAGE CONTENT-->
 <div class="page-heading">
 	<h1 class="page-title">Product</h1>
@@ -28,6 +28,7 @@
 				<div class="ibox-body">
 					<form method="post" enctype="multipart/form-data">
 						<div class="row">
+					
 							<div class="col-sm-6 form-group">
 								<label asp-for="MainPhoto">Main Image</label>
 								<input asp-for="MainPhoto" class="form-control" accept="image/*" placeholder="Main Image">
@@ -65,16 +66,16 @@
 							</div>
 							<div class="form-group">
 								<label asp-for="CategoryId">Category</label>
-								<select asp-for="CategoryId" class="form-control" asp-items="new SelectList(Model.Categories, nameof(Category.Id), nameof(Category.Name))">
-									<option disabled selected>Choose Category</option>
-								</select>
+								<select asp-for="CategoryId" class="form-control" asp-items="new SelectList(Model.Categories,nameof(Category.Id),nameof(Category.Name))"></select>
 								<span class="text-danger" asp-validation-for="CategoryId"></span>
 							</div>
 							<div class="form-group">
 								<label asp-for="ColorIds">Colors</label>
-								<select asp-for="ColorIds" asp-items="new SelectList(Model.Colors, nameof(Color.Id), nameof(Color.Name))" multiple class="form-control"></select>
+								<select asp-for="ColorIds" class="form-control" asp-items="new SelectList(Model.Colors,nameof(Color.Id),nameof(Color.Name))"></select>
 								<span class="text-danger" asp-validation-for="ColorIds"></span>
 							</div>
+
+
 						</div>
 						<div class="form-group">
 							<button class="btn btn-success" type="submit">Submit</button>

@@ -1,6 +1,5 @@
 ﻿using EnchantElegance.Application.Abstarctions.Services;
 using EnchantElegance.Application.DTOs;
-using EnchantElegance.Persistence.Implementations.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnchantElegance.Areas.Manage.Controllers
@@ -18,53 +17,49 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		{
 			return View(await _service.GetAllAsync(1, 3));
 		}
-		public async Task< IActionResult> Create()
+		public async Task<IActionResult> Create()
 		{
-			var productCreateDTO = await _service.GetProductCreateDTO();
+			ProductCreateDTO productCreateDTO = new ProductCreateDTO();
+		    productCreateDTO = await _service.CreatedAsync(productCreateDTO);
 			return View(productCreateDTO);
 		}
 		[HttpPost]
 		public async Task<IActionResult> Create(ProductCreateDTO productDTO)
 		{
-			if (!ModelState.IsValid) return View(productDTO);
-
-			var result = await _service.Create(productDTO);
-			TempData["Message"] = "";
-			if (result.Any())
+			if (await _service.Create(productDTO, ModelState))
 			{
-				ModelState.AddModelError(String.Empty, "Create is not success");
-				return View(productDTO);
+				return RedirectToAction(nameof(Index));
 			}
-			return RedirectToAction(nameof(Index));
+			return View(await _service.CreatedAsync(productDTO));
 		}
 
-		public async Task<IActionResult> Update(int id)
-		{
-			if (id <= 0) return BadRequest();
+		//public async Task<IActionResult> Update(int id)
+		//{
+		//	if (id <= 0) return BadRequest();
 
-			ProductUpdateDTO updateDTO = await _service.GetProductForUpdateAsync(id);
+		//	ProductUpdateDTO updateDTO = await _service.GetProductForUpdateAsync(id);
 
-			if (updateDTO == null) return NotFound();
-	
-			return View(updateDTO);
-		}
+		//	if (updateDTO == null) return NotFound();
 
-		[HttpPost]
-		public async Task<IActionResult> Update(int id, ProductUpdateDTO updateDTO)
-		{
-			if (!ModelState.IsValid) return View(updateDTO);
+		//	return View(updateDTO);
+		//}
 
-			await _service.Update(id, updateDTO);
-			return RedirectToAction(nameof(Index));
-		}
-		public async Task<IActionResult> Delete(int id)
-		{
-			if (id <= 0) return BadRequest();
+		//[HttpPost]
+		//public async Task<IActionResult> Update(int id, ProductUpdateDTO updateDTO)
+		//{
+		//	if (!ModelState.IsValid) return View(updateDTO);
 
-			await _service.Delete(id);
-			return RedirectToAction(nameof(Index));
-		}
-		//public async Task<IActionResult> Details(int id)
+		//	await _service.Update(id, updateDTO);
+		//	return RedirectToAction(nameof(Index));
+		//}
+		//public async Task<IActionResult> Delete(int id)
+		//{
+		//	if (id <= 0) return BadRequest();
+
+		//	await _service.Delete(id);
+		//	return RedirectToAction(nameof(Index));
+		//}
+		////public async Task<IActionResult> Details(int id)
 		//{
 		//	if (id <= 0) BadRequest();
 		//	Category Category = await _context.Categorys.FirstOrDefaultAsync(c => c.Id == id);

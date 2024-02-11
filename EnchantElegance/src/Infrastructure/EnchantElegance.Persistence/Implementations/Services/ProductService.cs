@@ -6,10 +6,9 @@ using EnchantElegance.Persistence.Contexts;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using EnchantElegance.Domain.Utilities.Extensions;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using EnchantElegance.Application.Abstarctions.Repositories;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
 namespace EnchantElegance.Persistence.Implementations.Services
 {
@@ -18,14 +17,20 @@ namespace EnchantElegance.Persistence.Implementations.Services
 		private readonly AppDbContext _context;
 		private readonly IMapper _mapper;
 		private readonly IWebHostEnvironment _env;
-		private readonly IHttpContextAccessor _http;
+		private readonly IColorRepository _colorrepo;
+		private readonly IProductRepository _productrepo;
+		private readonly ICategoryRepository _categoryrepo;
 
-		public ProductService(AppDbContext context, IMapper mapper, IWebHostEnvironment env, IHttpContextAccessor http)
+		public ProductService(AppDbContext context, IMapper mapper, IWebHostEnvironment env, 
+			IColorRepository colorrepo,IProductRepository productrepo,ICategoryRepository categoryrepo)
 		{
 			_context = context;
 			_mapper = mapper;
 			_env = env;
-			_http = http;
+			_colorrepo = colorrepo;
+			_productrepo = productrepo;
+			_categoryrepo = categoryrepo;
+	
 		}
 
 		public async Task<ItemVM<Product>> GetAllAsync(int page, int take)
@@ -39,117 +44,67 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			{
 				Items = products,
 			};
-
 			return productVM;
 		}
-		public async Task<ProductCreateDTO> GetProductCreateDTO()
+		public async Task<ProductCreateDTO> CreatedAsync(ProductCreateDTO dto)
 		{
-			var productCreateDTO = new ProductCreateDTO();
-
-			productCreateDTO.Categories = await GetCategoriesAsync();
-
-			List<Color> colors = await _context.Colors.ToListAsync();
-
-			productCreateDTO.ColorIds = colors.Select(c => c.Id).ToList();
-
-			return productCreateDTO;
+			dto.Colors = await _colorrepo.GetAll().ToListAsync();
+			dto.Categories=await _categoryrepo.GetAll().ToListAsync();
+			return dto;
 		}
-
-		public async Task<List<Category>> GetCategoriesAsync()
+		public async Task<bool> Create(ProductCreateDTO productCreateDTO,ModelStateDictionary modelstate)
 		{
-			return await _context.Categories.ToListAsync();
-		}
-		public async Task<List<string>> Create(ProductCreateDTO productCreateDTO)
-		{
-			productCreateDTO.Categories = await _context.Categories.ToListAsync();
-			productCreateDTO.Colors = await _context.Colors.ToListAsync();
-			List<string> errors = new List<string>();
-
-			if (string.IsNullOrEmpty(productCreateDTO.Name))
+			if (!modelstate.IsValid)
 			{
-				errors.Add("Product name is required.");
+				foreach (var modelError in modelstate.Values.SelectMany(v => v.Errors))
+				{
+					var errorMessage = modelError.ErrorMessage;
+					Console.WriteLine($"ModelState Error: {errorMessage}");
+				}
+				return false;
 			}
 
-			if (productCreateDTO.CurrentPrice <= 0)
+			if (await _productrepo.IsExistAsync(p=>p.Name== productCreateDTO.Name))
 			{
-				errors.Add("Product price should be greater than zero.");
+				modelstate.AddModelError("Name", "Name already exists");
 			}
 
-			if (string.IsNullOrEmpty(productCreateDTO.Description))
+			if (await _productrepo.IsExistAsync(p => p.CurrentPrice<=0))
 			{
-				errors.Add("Product description is required.");
+				modelstate.AddModelError("CurrentPrice", "CurrentPrice must be greater than or equal to 0");
+				return false;
 			}
-			if (errors.Count > 0)
+			if (await _productrepo.IsExistAsync(p => p.OldPrice <= 0))
 			{
-				_http.HttpContext.Response.Redirect("/your-error-path");
-				return errors;
+				modelstate.AddModelError("OldPrice", "OldPrice must be greater than or equal to 0");
+				return false;
 			}
-			if (productCreateDTO.MainPhoto != null)
-			{
 
+			if (productCreateDTO.MainPhoto!=null)
+			{
 				if (!productCreateDTO.MainPhoto.ValidateType("image/"))
 				{
-					errors.Add("File type does not match. Please upload a valid image.");
+					modelstate.AddModelError("MainPhoto", "File type does not match. Please upload a valid image.");
+					return false;
 				}
-
 				if (!productCreateDTO.MainPhoto.ValidateSize(600))
 				{
-					errors.Add("File size should not be larger than 2MB.");
+					modelstate.AddModelError("MainPhoto", "File size should not be larger than 2MB.");
+					return false;
 				}
 			}
 			if (productCreateDTO.HoverPhoto != null)
 			{
-
 				if (!productCreateDTO.HoverPhoto.ValidateType("image/"))
 				{
-					errors.Add("File type does not match. Please upload a valid image.");
+					modelstate.AddModelError("HoverPhoto", "File type does not match. Please upload a valid image.");
+					return false;
 				}
-
 				if (!productCreateDTO.HoverPhoto.ValidateSize(600))
 				{
-					errors.Add("File size should not be larger than 2MB.");
+					modelstate.AddModelError("HoverPhoto", "File size should not be larger than 2MB.");
+					return false;
 				}
-			}
-			if (productCreateDTO.HoverPhoto != null)
-			{
-
-				if (!productCreateDTO.HoverPhoto.ValidateType("image/"))
-				{
-					errors.Add("File type does not match. Please upload a valid image.");
-				}
-
-				if (!productCreateDTO.HoverPhoto.ValidateSize(600))
-				{
-					errors.Add("File size should not be larger than 2MB.");
-				}
-			}
-
-			if (productCreateDTO.CategoryId <= 0)
-			{
-				errors.Add("Category ID is required.");
-			}
-			else
-			{
-				bool isCategoryExist = await _context.Categories.AnyAsync(c => c.Id == productCreateDTO.CategoryId);
-				if (!isCategoryExist)
-				{
-					errors.Add("Category not found.");
-				}
-			}
-
-			foreach (int ColorId in productCreateDTO.ColorIds)
-			{
-				bool ColorResult = await _context.Colors.AnyAsync(c => c.Id == ColorId);
-				if (!ColorResult) throw new Exception("This color does not found");
-
-			}
-
-
-			if (errors.Count > 0)
-			{
-				_http.HttpContext.Response.Redirect("/your-error-path");
-				_http.HttpContext.Items["Message"] = string.Join(", ", errors);
-				return errors;
 			}
 
 			ProductImages main = new ProductImages()
@@ -161,11 +116,13 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			};
 			ProductImages hover = new ProductImages()
 			{
-				IsPrimary = true,
+				IsPrimary = false,
 				Url = await productCreateDTO.HoverPhoto.CreateFileAsync(_env.WebRootPath, "assets", "img"),
 				Alternative = productCreateDTO.Name
 
 			};
+
+
 			Product product = new Product
 			{
 				Name = productCreateDTO.Name,
@@ -176,26 +133,18 @@ namespace EnchantElegance.Persistence.Implementations.Services
 				ProductColors = new List<ProductColor>(),
 				ProductImages = new List<ProductImages> { main, hover }
 			};
-			if (errors.Count > 0)
-			{
-				_http.HttpContext.Response.Redirect("/your-error-path");
-				_http.HttpContext.Items["Message"] = string.Join(", ", errors);
-				return errors;
-			}
+
 
 			foreach (IFormFile photo in productCreateDTO.Photos)
 			{
 				if (!photo.ValidateType("image/"))
 				{
-
 					continue;
 				}
 				if (!photo.ValidateSize(600))
 				{
-
 					continue;
 				}
-
 				product.ProductImages.Add(new ProductImages
 				{
 					IsPrimary = true,
@@ -203,190 +152,198 @@ namespace EnchantElegance.Persistence.Implementations.Services
 					Alternative = productCreateDTO.Name
 				});
 			}
-			foreach (int colorId in productCreateDTO.ColorIds)
+
+			if (productCreateDTO.ColorIds != null)
 			{
-				ProductColor productColor = new ProductColor
+				foreach (var colorId in productCreateDTO.ColorIds)
 				{
-					ColorId = colorId,
-				};
-				product.ProductColors.Add(productColor);
+					if (!await _colorrepo.IsExistAsync(c => c.Id == colorId))
+					{
+						modelstate.AddModelError(String.Empty, "This  does not exist");
+						return false;
+					}
+					product.ProductColors.Add(new ProductColor
+					{
+						ColorId = colorId
+					});
+				}
 			}
 
 			await _context.Products.AddAsync(product);
 			await _context.SaveChangesAsync();
-
-			return errors;
+			return true;
+			
 		}
-		public async Task<ProductUpdateDTO> GetProductForUpdateAsync(int id)
-		{
-			Product product = await _context.Products
-				.Include(p => p.Category)
-				.Include(p => p.ProductImages.Where(pi => pi.IsPrimary == true))
-				.Include(p => p.ProductColors)
-				.FirstOrDefaultAsync(s => s.Id == id);
+		//public async Task<ProductUpdateDTO> GetProductForUpdateAsync(int id)
+		//{
+		//	Product product = await _context.Products
+		//		.Include(p => p.Category)
+		//		.Include(p => p.ProductImages.Where(pi => pi.IsPrimary == true))
+		//		.Include(p => p.ProductColors)
+		//		.FirstOrDefaultAsync(s => s.Id == id);
 
-			if (product == null) throw new Exception("Product not found");
+		//	if (product == null) throw new Exception("Product not found");
 
-			ProductUpdateDTO updateDTO = new ProductUpdateDTO
-			{
-				Name = product.Name,
-				Description = product.Description,
-				OldPrice = product.OldPrice,
-				CurrentPrice = product.CurrentPrice,
-				ProductImages = product.ProductImages,
-				CategoryId = product.CategoryId,
-				Categories = await GetCategoriesAsync(),
-				ColorIds = product.ProductColors.Select(pc => pc.ColorId).ToList(),
-				Colors = await _context.Colors.ToListAsync(),
-			};
-			return updateDTO;
-		}
+		//	ProductUpdateDTO updateDTO = new ProductUpdateDTO
+		//	{
+		//		Name = product.Name,
+		//		Description = product.Description,
+		//		OldPrice = product.OldPrice,
+		//		CurrentPrice = product.CurrentPrice,
+		//		ProductImages = product.ProductImages,
+		//		CategoryId = product.CategoryId,
+		//		Categories = await GetCategoriesAsync(),
+		//		ColorIds = product.ProductColors.Select(pc => pc.ColorId).ToList(),
+		//		Colors = await _context.Colors.ToListAsync(),
+		//	};
+		//	return updateDTO;
+		//}
 
-		public async Task Update(int id, ProductUpdateDTO updateDTO)
-		{
-			List<string> errors = new List<string>();
+		//public async Task Update(int id, ProductUpdateDTO updateDTO)
+		//{
+		//	List<string> errors = new List<string>();
 
-			Product product = await _context.Products
-				.Include(p=>p.ProductImages)
-				.Include(p => p.ProductColors)
-				.FirstOrDefaultAsync(p => p.Id == id);
-			updateDTO.Categories = await _context.Categories.ToListAsync();
-			updateDTO.Colors = await _context.Colors.ToListAsync();
-			updateDTO.ProductImages = product.ProductImages;
+		//	Product product = await _context.Products
+		//		.Include(p => p.ProductImages)
+		//		.Include(p => p.ProductColors)
+		//		.FirstOrDefaultAsync(p => p.Id == id);
+		//	updateDTO.Categories = await _context.Categories.ToListAsync();
+		//	updateDTO.Colors = await _context.Colors.ToListAsync();
+		//	updateDTO.ProductImages = product.ProductImages;
 
-			if (product == null) throw new Exception("Product not found");
+		//	if (product == null) throw new Exception("Product not found");
 
-			if (updateDTO.MainPhoto != null)
-			{
-				if (!updateDTO.MainPhoto.ValidateType("image/"))
-				{
-					errors.Add("File type does not match. Please upload a valid image.");
-				}
+		//	if (updateDTO.MainPhoto != null)
+		//	{
+		//		if (!updateDTO.MainPhoto.ValidateType("image/"))
+		//		{
+		//			errors.Add("File type does not match. Please upload a valid image.");
+		//		}
 
-				if (!updateDTO.MainPhoto.ValidateSize(600))
-				{
-					errors.Add("File size should not be larger than 2MB.");
-				}
-			}
-			if (updateDTO.HoverPhoto != null)
-			{
+		//		if (!updateDTO.MainPhoto.ValidateSize(600))
+		//		{
+		//			errors.Add("File size should not be larger than 2MB.");
+		//		}
+		//	}
+		//	if (updateDTO.HoverPhoto != null)
+		//	{
 
-				if (!updateDTO.HoverPhoto.ValidateType("image/"))
-				{
-					errors.Add("File type does not match. Please upload a valid image.");
-				}
+		//		if (!updateDTO.HoverPhoto.ValidateType("image/"))
+		//		{
+		//			errors.Add("File type does not match. Please upload a valid image.");
+		//		}
 
-				if (!updateDTO.HoverPhoto.ValidateSize(600))
-				{
-					errors.Add("File size should not be larger than 2MB.");
-				}
-			}
-			if (updateDTO.HoverPhoto != null)
-			{
+		//		if (!updateDTO.HoverPhoto.ValidateSize(600))
+		//		{
+		//			errors.Add("File size should not be larger than 2MB.");
+		//		}
+		//	}
+		//	if (updateDTO.HoverPhoto != null)
+		//	{
 
-				if (!updateDTO.HoverPhoto.ValidateType("image/"))
-				{
-					errors.Add("File type does not match. Please upload a valid image.");
-				}
+		//		if (!updateDTO.HoverPhoto.ValidateType("image/"))
+		//		{
+		//			errors.Add("File type does not match. Please upload a valid image.");
+		//		}
 
-				if (!updateDTO.HoverPhoto.ValidateSize(600))
-				{
-					errors.Add("File size should not be larger than 2MB.");
-				}
-			}
+		//		if (!updateDTO.HoverPhoto.ValidateSize(600))
+		//		{
+		//			errors.Add("File size should not be larger than 2MB.");
+		//		}
+		//	}
 
-			bool result = await _context.Categories.AnyAsync(c => c.Id == updateDTO.CategoryId);
-			if (!result) throw new Exception("Category not found");
+		//	bool result = await _context.Categories.AnyAsync(c => c.Id == updateDTO.CategoryId);
+		//	if (!result) throw new Exception("Category not found");
 
-			List<ProductColor> removable = product.ProductColors.Where(pc => !updateDTO.ColorIds.Exists(cId => cId == pc.ColorId)).ToList();
-			_context.ProductColors.RemoveRange(removable);
+		//	List<ProductColor> removable = product.ProductColors.Where(pc => !updateDTO.ColorIds.Exists(cId => cId == pc.ColorId)).ToList();
+		//	_context.ProductColors.RemoveRange(removable);
 
-			List<int> creatable = updateDTO.ColorIds
-		.Where(cId => !product.ProductColors.Any(pc => pc.ColorId == cId))
-		.ToList();
-			foreach (int cId in creatable)
-			{
-				bool ColorResult = await _context.Products.AnyAsync(c => c.Id == cId);
-				if (!ColorResult) throw new Exception("Color not found");
+		//	List<int> creatable = updateDTO.ColorIds
+		//.Where(cId => !product.ProductColors.Any(pc => pc.ColorId == cId))
+		//.ToList();
+		//	foreach (int cId in creatable)
+		//	{
+		//		bool ColorResult = await _context.Products.AnyAsync(c => c.Id == cId);
+		//		if (!ColorResult) throw new Exception("Color not found");
 
-				product.ProductColors.Add(new ProductColor
-				{
-					ColorId = cId,
-				});
-			}
-			if(updateDTO.MainPhoto!=null)
-			{
-				string fileName = await updateDTO.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "img");
+		//		product.ProductColors.Add(new ProductColor
+		//		{
+		//			ColorId = cId,
+		//		});
+		//	}
+		//	if (updateDTO.MainPhoto != null)
+		//	{
+		//		string fileName = await updateDTO.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "img");
 
-				ProductImages existedImg = product.ProductImages.FirstOrDefault(pi => pi.IsPrimary == true);
-				existedImg.Url.DeleteFile(_env.WebRootPath, "assets", "img");
-				product.ProductImages.Remove(existedImg);
+		//		ProductImages existedImg = product.ProductImages.FirstOrDefault(pi => pi.IsPrimary == true);
+		//		existedImg.Url.DeleteFile(_env.WebRootPath, "assets", "img");
+		//		product.ProductImages.Remove(existedImg);
 
-			   product.ProductImages.Add(new ProductImages
-			   {
-				   IsPrimary=true,
-				   Alternative=updateDTO.Name,
-				   Url=fileName,
+		//		product.ProductImages.Add(new ProductImages
+		//		{
+		//			IsPrimary = true,
+		//			Alternative = updateDTO.Name,
+		//			Url = fileName,
 
-			   });
-			}
-			if (updateDTO.HoverPhoto != null)
-			{
-				string fileName = await updateDTO.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "img");
+		//		});
+		//	}
+		//	if (updateDTO.HoverPhoto != null)
+		//	{
+		//		string fileName = await updateDTO.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "img");
 
-				ProductImages existedImg = product.ProductImages.FirstOrDefault(pi => pi.IsPrimary == false);
-				existedImg.Url.DeleteFile(_env.WebRootPath, "assets", "img");
-				product.ProductImages.Remove(existedImg);
+		//		ProductImages existedImg = product.ProductImages.FirstOrDefault(pi => pi.IsPrimary == false);
+		//		existedImg.Url.DeleteFile(_env.WebRootPath, "assets", "img");
+		//		product.ProductImages.Remove(existedImg);
 
-				product.ProductImages.Add(new ProductImages
-				{
-					IsPrimary = false,
-					Alternative = updateDTO.Name,
-					Url = fileName,
-				});
-			}
-			product.Name = updateDTO.Name;
-			product.Description = updateDTO.Description;
-			product.CurrentPrice = updateDTO.CurrentPrice;
-			product.OldPrice = updateDTO.OldPrice;
-			product.CategoryId = updateDTO.CategoryId;
+		//		product.ProductImages.Add(new ProductImages
+		//		{
+		//			IsPrimary = false,
+		//			Alternative = updateDTO.Name,
+		//			Url = fileName,
+		//		});
+		//	}
+		//	product.Name = updateDTO.Name;
+		//	product.Description = updateDTO.Description;
+		//	product.CurrentPrice = updateDTO.CurrentPrice;
+		//	product.OldPrice = updateDTO.OldPrice;
+		//	product.CategoryId = updateDTO.CategoryId;
 
 
-			await _context.SaveChangesAsync();
-		}
+		//	await _context.SaveChangesAsync();
+		//}
 
-		public async Task Delete(int id)
-		{
-			Product existed = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+		//public async Task Delete(int id)
+		//{
+		//	Product existed = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
 
-			if (existed == null)
-			{
-				throw new Exception("Product is null");
-			}
+		//	if (existed == null)
+		//	{
+		//		throw new Exception("Product is null");
+		//	}
 
-			try
-			{
-				_context.Products.Remove(existed);
-				await _context.SaveChangesAsync();
-			}
-			catch (Exception)
-			{
-				throw new Exception("Product is null");
+		//	try
+		//	{
+		//		_context.Products.Remove(existed);
+		//		await _context.SaveChangesAsync();
+		//	}
+		//	catch (Exception)
+		//	{
+		//		throw new Exception("Product is null");
 
-			}
+		//	}
 
-			//if (!string.IsNullOrEmpty(existed.Image))
-			//{
-			//	existed.Image.DeleteFile(_env.WebRootPath, "assets", "img");
-			//}
+		//	//if (!string.IsNullOrEmpty(existed.Image))
+		//	//{
+		//	//	existed.Image.DeleteFile(_env.WebRootPath, "assets", "img");
+		//	//}
 
-			await _context.SaveChangesAsync();
-		}
+		//	await _context.SaveChangesAsync();
+		//}
 
-		public Task SoftDeleteAsync(int id)
-		{
-			throw new NotImplementedException();
-		}
+		//public Task SoftDeleteAsync(int id)
+		//{
+		//	throw new NotImplementedException();
+		//}
 
 
 	}
