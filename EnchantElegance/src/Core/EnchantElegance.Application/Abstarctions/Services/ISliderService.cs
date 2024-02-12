@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EnchantElegance.Application.DTOs;
+﻿using EnchantElegance.Application.DTOs;
 using EnchantElegance.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace EnchantElegance.Application.Abstarctions.Services
 {
 	public interface ISliderService
 	{
 		Task<ItemVM<Slider>> GetAllAsync(int page, int take);
-		Task<List<string>>Create(SliderCreateDTO sliderCreateDTO);
-		Task<SliderUpdateDTO> GetSliderForUpdateAsync(int id);
-		Task Update(int id, SliderUpdateDTO updateDTO);
-		Task Delete(int id);
+		//Task<SliderCreateDTO> CreatedAsync(ProductCreateDTO dto);
+		Task<bool> Create(SliderCreateDTO sliderCreateDTO, ModelStateDictionary modelstate);
+		Task<SliderUpdateDTO> GetProductForUpdateAsync(int id,SliderUpdateDTO dto);
+		Task<bool> Update(int id, SliderUpdateDTO updateDTO, ModelStateDictionary modelstate);
+		Task<bool> Delete(int id);
 		Task SoftDeleteAsync(int id);
-
 	}
 }

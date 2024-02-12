@@ -30,6 +30,7 @@
 							<tr>
 								<th>#</th>
 								<th>Name</th>
+								<th>Image</th>
 								<th>Actions</th>
 							</tr>
 						</thead>
@@ -39,11 +40,15 @@
 								count++;
 								<tr >
 									<td>@count</td>
-									<td>@category.Name</td>
 									<td>
-										<a asp-controller="Category" asp-action="Update" asp-route-id="@category.Id" class="btn-btn warning">Update</a>
-										<a asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" class="customDelete"  class="btn-btn danger">Delete</a>
-										<a asp-controller="Category" asp-action="Details" asp-route-id="@category.Id" class="btn-btn info">Details</a>
+										<img src="~/assets/img/slider/@category.Image">
+									</td>
+									<td>@category.Name</td>
+
+									<td>
+										<a asp-controller="Category" asp-action="Update" asp-route-id="@category.Id">Update</a>
+										<a asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" class="customDelete">Delete</a>
+										<a asp-controller="Category" asp-action="Details" asp-route-id="@category.Id">Details</a>
 
 									</td>
 								</tr>

@@ -53,7 +53,7 @@
 						<div class="swiper-slide">
 							<div class="shop__collection--card text-center">
 								<a class="shop__collection--link" href="shop.html">
-							@* 		<img class="shop__collection--img" src="~/assets/img/@category.Image" alt="icon-img"> *@
+									<img class="shop__collection--img" src="~/assets/img/@category.Image" alt="icon-img">
 									<h3 class="shop__collection--title">@category.Name</h3>
 									@* <span class="shop__collection--subtitle">@category.Description</span> *@
 								</a>
@@ -204,10 +204,10 @@
 											<span class="rating__review--text">(126) Review</span>
 										</li>
 									</ul>
-									<h3 class="product__card--title"><a href="product-details.html">Z 7-8mm Freshwater Button is </a></h3>
+									<h3 class="product__card--title"><a href="product-details.html">@product.Description</a></h3>
 									<div class="product__card--price">
-										<span class="current__price">$239.52</span>
-										<span class="old__price"> $362.00</span>
+										<span class="current__price">$@product.OldPrice</span>
+										<span class="old__price"> $@product.CurrentPrice</span>
 									</div>
 								</div>
 							</article>

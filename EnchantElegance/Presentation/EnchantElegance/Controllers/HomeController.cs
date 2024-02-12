@@ -18,6 +18,7 @@ namespace EnchantElegance.Controllers
 		{
 			List<Slider> sliders = await _context.Sliders.ToListAsync();
 			List<Category> categories = await _context.Categories.ToListAsync();
+			List<Color> colors = await _context.Colors.ToListAsync();
 			List<Product> products = await _context.Products.Include(p=>p.ProductImages).ToListAsync();
 
 
@@ -25,7 +26,9 @@ namespace EnchantElegance.Controllers
 			{
 				Sliders = sliders,
 				Categories = categories,
-				Products = products
+				Products = products,
+				Colors=colors
+				
 			};
 
 			return View(homeVM);

@@ -26,8 +26,16 @@
                     </div>
                 </div>
                 <div class="ibox-body">
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         <div class="row">
+                            <div class="form-group">
+                                <img style="width:150px;height:150px;" src="~/assets/img/@Model.Image.FirstOrDefault()">
+                            </div>
+                            <div class="col-sm-6 form-group">
+                                <label asp-for="Photo">Image</label>
+                                <input asp-for="Photo" class="form-control">
+                                <span asp-validation-for="Photo"></span>
+                            </div>
                             <div class="col-sm-6 form-group">
                                 <label asp-for="Name"> Name</label>
                                 <input asp-for="Name" class="form-control" placeholder="Name">

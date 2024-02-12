@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
+using EnchantElegance.Application.Abstarctions.Repositories;
 using EnchantElegance.Application.Abstarctions.Services;
 using EnchantElegance.Application.DTOs;
 using EnchantElegance.Domain.Entities;
 using EnchantElegance.Domain.Utilities.Extensions;
 using EnchantElegance.Persistence.Contexts;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 
 namespace EnchantElegance.Persistence.Implementations.Services
@@ -15,12 +16,14 @@ namespace EnchantElegance.Persistence.Implementations.Services
 		private readonly AppDbContext _context;
 		private readonly IMapper _mapper;
 		private readonly IWebHostEnvironment _env;
+		private readonly ISliderRepository _sliderrepo;
 
-		public SliderService(AppDbContext context, IMapper mapper, IWebHostEnvironment env)
+		public SliderService(AppDbContext context, IMapper mapper, IWebHostEnvironment env,ISliderRepository sliderrepo)
 		{
 			_context = context;
 			_mapper = mapper;
 			_env = env;
+			_sliderrepo = sliderrepo;
 		}
 		public async Task<ItemVM<Slider>> GetAllAsync(int page, int take)
 		{
@@ -31,118 +34,120 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			};
 			return slidervm;
 		}
-
-		public async Task<List<string>> Create(SliderCreateDTO sliderDTO)
+		public async Task<bool> Create(SliderCreateDTO sliderCreateDTO, ModelStateDictionary modelstate)
 		{
-			List<string> str = new List<string>();
-			if (sliderDTO.Photo != null)
-			{
+			if (!modelstate.IsValid) return false;
 
-				if (!sliderDTO.Photo.ValidateType("image/"))
+			if (await _sliderrepo.IsExistAsync(p => p.Name == sliderCreateDTO.Name))
+			{
+				modelstate.AddModelError("Name", "Name already exists");
+			}
+			if (sliderCreateDTO.Photo != null)
+			{
+				if (!sliderCreateDTO.Photo.ValidateType("image/"))
 				{
-					str.Add("File type does not match");
-					return str;
+					modelstate.AddModelError("Photo", "File type does not match. Please upload a valid image.");
+					return false;
 				}
-				if (!sliderDTO.Photo.ValidateSize(2 * 1024))
+				if (!sliderCreateDTO.Photo.ValidateSize(600))
 				{
-					str.Add("File size should not be larger than 2MB");
-					return str;
+					modelstate.AddModelError("Photo", "File size should not be larger than 2MB.");
+					return false;
 				}
 			}
 
-			string fileName = await sliderDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img", "slider");
-
-			bool result = _context.Sliders.Any(s => s.Name.Trim() == sliderDTO.Name.Trim());
-
 			Slider slider = new Slider
 			{
-				Image = fileName,
-				Name = sliderDTO.Name,
-				SubTitle = sliderDTO.SubTitle,
-				Order = sliderDTO.Order,
+				Name = sliderCreateDTO.Name,
+				SubTitle= sliderCreateDTO.SubTitle,
+				Order = sliderCreateDTO.Order,
+				Image= sliderCreateDTO.Image,
+			
 			};
-
 			await _context.Sliders.AddAsync(slider);
 			await _context.SaveChangesAsync();
-			return str;
+			return true;
 		}
-		public async Task<SliderUpdateDTO> GetSliderForUpdateAsync(int id)
+
+		public async Task<SliderUpdateDTO> GetProductForUpdateAsync(int id, SliderUpdateDTO updateDTO)
 		{
-			Slider slider = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
+			if (id <= 0) throw new Exception("Bad Request");
 
-			if (slider == null) throw new Exception("Slider is not found");
+			Slider exist = await _sliderrepo.GetByIdAsync(id);
 
-			var updateDTO = _mapper.Map<SliderUpdateDTO>(slider);
-		
+			if (exist == null) throw new Exception("Not Found");
+
+			updateDTO.Image = exist.Image;
+			updateDTO.Name = exist.Name.Trim();
+
 			return updateDTO;
 		}
-
-		public async Task Update(int id, SliderUpdateDTO updateDTO)
+		public async Task<bool> Update(int id, SliderUpdateDTO updateDTO, ModelStateDictionary modelstate)
 		{
-			Slider existed = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
+			if (id <= 0) throw new Exception("Bad Request");
 
-			if (existed == null) throw new Exception("Slider not found");
+			if (!modelstate.IsValid) return false;
+			Slider slider = await _sliderrepo.GetByIdAsync(id);
+			Slider existed = await _context.Sliders
+				.FirstOrDefaultAsync(p => p.Id == id);
 
-			existed.Name = updateDTO.Name;
-			existed.SubTitle = updateDTO.SubTitle;
-			existed.Order = updateDTO.Order;
+			if (existed is null) throw new Exception("Not Found");
+
+			if (await _sliderrepo.IsExistAsync(c => c.Name == updateDTO.Name) && await _sliderrepo.IsExistAsync(c => c.Id != id))
+			{
+				modelstate.AddModelError("Name", "Slider is already exist");
+				return false;
+			}
 
 			if (updateDTO.Photo != null)
 			{
 				if (!updateDTO.Photo.ValidateType("image/"))
 				{
-					throw new Exception("File type does not match");
+					modelstate.AddModelError("Photo", "File type does not match. Please upload a valid image.");
+					return false;
 				}
-
-				if (!updateDTO.Photo.ValidateSize(2 * 1024))
+				if (!updateDTO.Photo.ValidateSize(600))
 				{
-					throw new Exception("File size should not be larger than 2MB");
+					modelstate.AddModelError("Photo", "File size should not be larger than 2MB.");
+					return false;
 				}
-
-			
-				if (!string.IsNullOrEmpty(existed.Image))
-				{
-					existed.Image.DeleteFile(_env.WebRootPath, "assets", "img", "slider");
-				}
-
-				existed.Image = await updateDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img", "slider");
-			}
-
-			await _context.SaveChangesAsync();
-		}
-		public async Task Delete(int id)
-		{
-			Slider existed = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
-
-			if (existed == null)
-			{
-				throw new Exception("slider is null");
-			}
-
-			try
-			{
-				_context.Sliders.Remove(existed);
-				await _context.SaveChangesAsync();
-			}
-			catch (Exception)
-			{
-				throw new Exception("slider is null");
-
-			}
-
-			if (!string.IsNullOrEmpty(existed.Image))
-			{
+				string fileName = await updateDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img", "slider");
 				existed.Image.DeleteFile(_env.WebRootPath, "assets", "img", "slider");
+
+				existed.Image = fileName;
 			}
 
-			await _context.SaveChangesAsync();
-		}
+			existed.Name = updateDTO.Name;
+			existed.SubTitle = updateDTO.SubTitle;
+			existed.Order = updateDTO.Order;
 
+
+			_sliderrepo.Update(slider);
+			await _sliderrepo.SaveChangesAsync();
+			return true;
+		}
+		public async Task<bool>Delete(int id)
+		{
+			if (id <= 0) throw new Exception("Bad Request");
+
+			Slider exist = await _sliderrepo.GetByIdAsync(id);
+
+			if (exist is null) throw new Exception("Not Found");
+
+			Slider slider = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
+
+			if (exist.Image is not null)
+			{
+				exist.Image.DeleteFile(_env.WebRootPath, "assets", "img","slider");
+			}
+			_sliderrepo.Delete(exist);
+			await _sliderrepo.SaveChangesAsync();
+			return true;
+		}
 
 		public Task SoftDeleteAsync(int id)
 		{
 			throw new NotImplementedException();
 		}
-
 	}
 }

@@ -22,43 +22,33 @@ namespace EnchantElegance.Areas.Manage.Controllers
 			return View();
 		}
 		[HttpPost]
-		public async Task<IActionResult> Create(CategoryCreateDTO categoryCreateDTO)
+		public async Task<IActionResult> Create(CategoryCreateDTO categoryDTO)
 		{
-			if (!ModelState.IsValid) return View(categoryCreateDTO);
-
-			var result = await _service.Create(categoryCreateDTO);
-
-			if (result.Any())
+			if (await _service.Create(categoryDTO, ModelState))
 			{
-				ModelState.AddModelError(String.Empty, "Create is not success");
-				return View(categoryCreateDTO);
+				return RedirectToAction(nameof(Index));
 			}
-			return RedirectToAction(nameof(Index));
+			return View(categoryDTO);
 		}
-
 		public async Task<IActionResult> Update(int id)
 		{
-			if (id <= 0) return BadRequest();
+			CategoryUpdateDTO updateDTO = new CategoryUpdateDTO();
+			updateDTO = await _service.GetCategoryForUpdateAsync(id, updateDTO);
 
-			CategoryUpdateDTO updateDTO=await _service.GetCategoryForUpdateAsync(id);
-			if (updateDTO == null) return NotFound();
 			return View(updateDTO);
 		}
 		[HttpPost]
 		public async Task<IActionResult> Update(int id, CategoryUpdateDTO updateDTO)
 		{
-			if (!ModelState.IsValid) return View(updateDTO);
-
-			await _service.Update(id, updateDTO);
-			return RedirectToAction(nameof(Index));
+			if (await _service.Update(id, updateDTO, ModelState))
+				return RedirectToAction(nameof(Index));
+			return View(await _service.Update(id, updateDTO, ModelState));
 		}
-
 		public async Task<IActionResult> Delete(int id)
 		{
-			if (id <= 0) return BadRequest();
-
-			await _service.Delete(id);
-			return RedirectToAction(nameof(Index));
+			if (await _service.Delete(id))
+				return RedirectToAction(nameof(Index));
+			return NotFound();
 		}
 		//public async Task<IActionResult> Details(int id)
 		//{

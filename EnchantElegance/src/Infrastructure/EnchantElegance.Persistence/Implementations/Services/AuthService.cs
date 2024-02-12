@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using EnchantElegance.Application.Abstarctions.Services;
 using EnchantElegance.Application.DTOs;
 using EnchantElegance.Domain.Entities;
@@ -11,7 +6,6 @@ using EnchantElegance.Domain.Enums;
 using EnchantElegance.Domain.Utilities.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 
 namespace EnchantElegance.Persistence.Implementations.Services
 {

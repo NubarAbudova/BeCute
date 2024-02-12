@@ -40,9 +40,10 @@ namespace EnchantElegance.Persistence.ServiceRegistration
 
             //Slider
             services.AddScoped<ISliderService, SliderService>();
+			services.AddScoped<ISliderRepository, SliderRepository>();
 
-            //Category
-            services.AddScoped<ICategoryService, CategoryService>();
+			//Category
+			services.AddScoped<ICategoryService, CategoryService>();
 			services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             //Product
@@ -51,8 +52,8 @@ namespace EnchantElegance.Persistence.ServiceRegistration
 
             //Color
 
-			services.AddScoped<IColorRepository,ColorRepository >();
-
+			services.AddScoped<IColorService,ColorService >();
+			services.AddScoped<IColorRepository, ColorRepository>();
 
 
 			return services;

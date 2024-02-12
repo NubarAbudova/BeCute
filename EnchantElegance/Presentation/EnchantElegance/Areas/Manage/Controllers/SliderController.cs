@@ -29,41 +29,31 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Create(SliderCreateDTO sliderDTO)
 		{
-			if (ModelState.IsValid) return View(sliderDTO);
-
-			var result = await _service.Create(sliderDTO);
-
-			if (result.Any())
+			if (await _service.Create(sliderDTO, ModelState))
 			{
-				ModelState.AddModelError(String.Empty, "Create is not success");
-				return View(sliderDTO);
+				return RedirectToAction(nameof(Index));
 			}
-			return RedirectToAction(nameof(Index));
+			return View(sliderDTO);
 		}
-
 		public async Task<IActionResult> Update(int id)
 		{
-		
-			if (id <= 0) return BadRequest();
+			SliderUpdateDTO updateDTO = new SliderUpdateDTO();
+			updateDTO = await _service.GetProductForUpdateAsync(id, updateDTO);
 
-			SliderUpdateDTO updateDTO = await _service.GetSliderForUpdateAsync(id);
-			if (updateDTO == null) return NotFound();
 			return View(updateDTO);
 		}
 		[HttpPost]
 		public async Task<IActionResult> Update(int id, SliderUpdateDTO updateDTO)
 		{
-			if (!ModelState.IsValid) return View(updateDTO);
-
-			await _service.Update(id, updateDTO);
-			return RedirectToAction(nameof(Index));
+			if (await _service.Update(id, updateDTO, ModelState))
+				return RedirectToAction(nameof(Index));
+			return View(await _service.Update(id, updateDTO, ModelState));
 		}
 		public async Task<IActionResult> Delete(int id)
 		{
-			if (id <= 0) return BadRequest();
-
-			await _service.Delete(id);
-			return RedirectToAction(nameof(Index));
+			if (await _service.Delete(id))
+				return RedirectToAction(nameof(Index));
+			return NotFound();
 		}
 		//public async Task<IActionResult> Details(int id)
 		//{
