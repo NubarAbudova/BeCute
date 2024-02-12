@@ -16,7 +16,7 @@ namespace EnchantElegance.Controllers
 		}
 		public async Task<IActionResult> Index()
 		{
-			List<Slider> sliders = await _context.Sliders.ToListAsync();
+			List<Slider> sliders = await _context.Sliders.OrderBy(s=>s.Order).ToListAsync();
 			List<Category> categories = await _context.Categories.ToListAsync();
 			List<Color> colors = await _context.Colors.ToListAsync();
 			List<Product> products = await _context.Products.Include(p=>p.ProductImages).ToListAsync();
@@ -28,7 +28,6 @@ namespace EnchantElegance.Controllers
 				Categories = categories,
 				Products = products,
 				Colors=colors
-				
 			};
 
 			return View(homeVM);

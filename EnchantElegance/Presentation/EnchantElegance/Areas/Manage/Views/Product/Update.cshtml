@@ -30,6 +30,7 @@
 						<div class="row">
 							<div class="form-group">
 								<img style="width:150px;height:150px;" src="~/assets/img/@Model.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==true)?.Url">
+								<input asp-for="ProductImages" type="hidden">
 							</div>
 							<div class="col-sm-6 form-group">
 								<label asp-for="MainPhoto">Main Image</label>

@@ -47,7 +47,7 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		{
 			if (await _service.Update(id, updateDTO, ModelState))
 				return RedirectToAction(nameof(Index));
-			return View(await _service.Update(id, updateDTO, ModelState));
+			return View(await _service.GetProductForUpdateAsync(id,updateDTO));
 		}
 		public async Task<IActionResult> Delete(int id)
 		{

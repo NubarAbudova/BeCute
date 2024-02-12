@@ -27,7 +27,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 		}
 		public async Task<ItemVM<Category>> GetAllAsync(int page, int take)
 		{
-			List<Category> categories = await _context.Categories.ToListAsync();
+			List<Category> categories = await _categoryrepo.GetAll().ToListAsync();
 			ItemVM<Category> categoryvm = new ItemVM<Category>
 			{
 				Items = categories,

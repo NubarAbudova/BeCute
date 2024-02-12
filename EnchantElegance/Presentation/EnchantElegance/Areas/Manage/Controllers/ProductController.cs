@@ -19,7 +19,9 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		}
 		public async Task<IActionResult> Create()
 		{
-			return View();
+			ProductCreateDTO productCreateDTO = new ProductCreateDTO();
+			productCreateDTO = await _service.CreatedAsync(productCreateDTO);
+			return View(productCreateDTO);
 		}
 		[HttpPost]
 		public async Task<IActionResult> Create(ProductCreateDTO productDTO)
@@ -41,8 +43,9 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		public async Task<IActionResult> Update(int id, ProductUpdateDTO updateDTO)
 		{
 			if(await _service.Update(id, updateDTO,ModelState))
+
 			return RedirectToAction(nameof(Index));
-			return View(await _service.Update(id,updateDTO,ModelState));
+			return View(await _service.GetProductForUpdateAsync(id,updateDTO));
 		}
 		public async Task<IActionResult> Delete(int id)
 		{

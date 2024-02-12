@@ -13,21 +13,19 @@ namespace EnchantElegance.Persistence.Implementations.Services
 {
 	internal class SliderService : ISliderService
 	{
-		private readonly AppDbContext _context;
 		private readonly IMapper _mapper;
 		private readonly IWebHostEnvironment _env;
 		private readonly ISliderRepository _sliderrepo;
 
 		public SliderService(AppDbContext context, IMapper mapper, IWebHostEnvironment env,ISliderRepository sliderrepo)
 		{
-			_context = context;
 			_mapper = mapper;
 			_env = env;
 			_sliderrepo = sliderrepo;
 		}
 		public async Task<ItemVM<Slider>> GetAllAsync(int page, int take)
 		{
-			List<Slider> sliders = await _context.Sliders.ToListAsync();
+			List<Slider> sliders = await _sliderrepo.GetAll().ToListAsync();
 			ItemVM<Slider> slidervm = new ItemVM<Slider>
 			{
 				Items = sliders,
@@ -37,6 +35,13 @@ namespace EnchantElegance.Persistence.Implementations.Services
 		public async Task<bool> Create(SliderCreateDTO sliderCreateDTO, ModelStateDictionary modelstate)
 		{
 			if (!modelstate.IsValid) return false;
+			Slider slider = new Slider
+			{
+				Name = sliderCreateDTO.Name,
+				SubTitle = sliderCreateDTO.SubTitle,
+				Order = sliderCreateDTO.Order,
+
+			};
 
 			if (await _sliderrepo.IsExistAsync(p => p.Name == sliderCreateDTO.Name))
 			{
@@ -54,18 +59,13 @@ namespace EnchantElegance.Persistence.Implementations.Services
 					modelstate.AddModelError("Photo", "File size should not be larger than 2MB.");
 					return false;
 				}
+				string fileName = await sliderCreateDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img", "slider");
+				slider.Image = fileName;
 			}
 
-			Slider slider = new Slider
-			{
-				Name = sliderCreateDTO.Name,
-				SubTitle= sliderCreateDTO.SubTitle,
-				Order = sliderCreateDTO.Order,
-				Image= sliderCreateDTO.Image,
 			
-			};
-			await _context.Sliders.AddAsync(slider);
-			await _context.SaveChangesAsync();
+			await _sliderrepo.AddAsync(slider);
+			await _sliderrepo.SaveChangesAsync();
 			return true;
 		}
 
@@ -79,6 +79,8 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
 			updateDTO.Image = exist.Image;
 			updateDTO.Name = exist.Name.Trim();
+			updateDTO.SubTitle = exist.SubTitle;
+			updateDTO.Order= exist.Order;
 
 			return updateDTO;
 		}
@@ -88,9 +90,8 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
 			if (!modelstate.IsValid) return false;
 			Slider slider = await _sliderrepo.GetByIdAsync(id);
-			Slider existed = await _context.Sliders
-				.FirstOrDefaultAsync(p => p.Id == id);
 
+			Slider existed = await _sliderrepo.GetByExpressionAsync(s=>s.Id== id);
 			if (existed is null) throw new Exception("Not Found");
 
 			if (await _sliderrepo.IsExistAsync(c => c.Name == updateDTO.Name) && await _sliderrepo.IsExistAsync(c => c.Id != id))
@@ -134,7 +135,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
 			if (exist is null) throw new Exception("Not Found");
 
-			Slider slider = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
+			Slider slider = await _sliderrepo.GetByExpressionAsync(s=>s.Id== id);
 
 			if (exist.Image is not null)
 			{

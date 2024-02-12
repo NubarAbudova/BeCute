@@ -11,9 +11,7 @@ namespace EnchantElegance.Application.DTOs
 	{
         public string Name { get; set; }
         public string SubTitle   { get; set; }
-		public string Image { get; set; }
-        public IFormFile Photo { get; set; }
+        public IFormFile? Photo { get; set; }
         public int Order { get; set; }
-
 	};
 }

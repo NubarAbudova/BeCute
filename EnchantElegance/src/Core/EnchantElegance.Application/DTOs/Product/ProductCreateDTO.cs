@@ -19,8 +19,8 @@ namespace EnchantElegance.Application.DTOs
 		public IFormFile HoverPhoto { get; set; }
 		public List<IFormFile>? Photos { get; set; }
 		public int? CategoryId { get; set; }
-		public List<Category>? Categories { get; set; } = null!;
+		public List<Category>?Categories { get; set; } 
 		public List<int>? ColorIds { get; set; }
-		public List<Color> Colors { get; set; }
+		public List<Color>? Colors { get; set; } 
 	}
 }

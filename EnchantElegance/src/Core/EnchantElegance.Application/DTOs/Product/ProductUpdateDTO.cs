@@ -19,12 +19,11 @@ namespace EnchantElegance.Application.DTOs
 		[Range(0, double.MaxValue, ErrorMessage = "CurrentPrice must be greater than or equal to 0")]
 		public decimal CurrentPrice { get; set; }
 
-		[Required(ErrorMessage = "MainPhoto is required")]
-		[DataType(DataType.Upload)]
-		public IFormFile MainPhoto { get; set; }
+	
+		public IFormFile? MainPhoto { get; set; }
 
 		[DataType(DataType.Upload)]
-		public IFormFile HoverPhoto { get; set; }
+		public IFormFile? HoverPhoto { get; set; }
 
 		[DataType(DataType.Upload)]
 		public List<IFormFile>? Photos { get; set; }
@@ -36,7 +35,7 @@ namespace EnchantElegance.Application.DTOs
 
 		public List<int>? ColorIds { get; set; }
 
-		public List<Color> Colors { get; set; }
+		public List<Color>? Colors { get; set; }
 
 		public List<ProductImages>? ProductImages { get; set; }
 		public List<int>? ImageIds { get; set; }

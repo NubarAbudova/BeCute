@@ -14,17 +14,15 @@ namespace EnchantElegance.Persistence.Implementations.Services
 {
 	public class ProductService : IProductService
 	{
-		private readonly AppDbContext _context;
 		private readonly IMapper _mapper;
 		private readonly IWebHostEnvironment _env;
 		private readonly IColorRepository _colorrepo;
 		private readonly IProductRepository _productrepo;
 		private readonly ICategoryRepository _categoryrepo;
 
-		public ProductService(AppDbContext context, IMapper mapper, IWebHostEnvironment env, 
+		public ProductService( IMapper mapper, IWebHostEnvironment env, 
 			IColorRepository colorrepo,IProductRepository productrepo,ICategoryRepository categoryrepo)
 		{
-			_context = context;
 			_mapper = mapper;
 			_env = env;
 			_colorrepo = colorrepo;
@@ -33,10 +31,8 @@ namespace EnchantElegance.Persistence.Implementations.Services
 		}
 		public async Task<ItemVM<Product>> GetAllAsync(int page, int take)
 		{
-			List<Product> products = await _context.Products
-				.Include(p => p.Category)
-				.Include(p => p.ProductImages.Where(pi => pi.IsPrimary == true))
-				.ToListAsync();
+			List<Product>products=await _productrepo.GetAll(includes:new string[] {nameof(Category), nameof(ProductImages),"ProductColors","ProductColors.Color" })
+				.Where(p=>p.ProductImages.Any(pi=>pi.IsPrimary==true)).ToListAsync();
 
 			ItemVM<Product> productVM = new ItemVM<Product>
 			{
@@ -112,7 +108,6 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
 			};
 
-
 			Product product = new Product
 			{
 				Name = productCreateDTO.Name,
@@ -123,7 +118,6 @@ namespace EnchantElegance.Persistence.Implementations.Services
 				ProductColors = new List<ProductColor>(),
 				ProductImages = new List<ProductImages> { main, hover }
 			};
-
 
 			foreach (IFormFile photo in productCreateDTO.Photos)
 			{
@@ -158,9 +152,11 @@ namespace EnchantElegance.Persistence.Implementations.Services
 					});
 				}
 			}
+			
+		
 
-			await _context.Products.AddAsync(product);
-			await _context.SaveChangesAsync();
+			await _productrepo.AddAsync(product);
+			await _productrepo.SaveChangesAsync();
 			return true;
 			
 		}
@@ -169,12 +165,27 @@ namespace EnchantElegance.Persistence.Implementations.Services
 		{
 			if (id <= 0) throw new Exception("Bad Request");
 
-			Product exist = await _productrepo.GetByIdAsync(id);
+			Product exist = await _productrepo.GetByIdAsync(id,includes:new string[] { nameof(Category), nameof(ProductImages), "ProductColors", "ProductColors.Color" });
 
 			if (exist == null) throw new Exception("Not Found");
 
-			updateDTO.ProductImages = exist.ProductImages.ToList();
+			if(exist.ProductImages!=null)
+			{
+				updateDTO.ProductImages = exist.ProductImages.ToList();
+
+			}
 			updateDTO.Name = exist.Name.Trim();
+			updateDTO.CurrentPrice = exist.CurrentPrice;
+			updateDTO.OldPrice = exist.OldPrice;
+			updateDTO.Description=exist.Description;
+			updateDTO.Categories = await _categoryrepo.GetAll().ToListAsync();
+			updateDTO.Colors= await _colorrepo.GetAll().ToListAsync();
+			if (exist.ProductColors != null)
+			{
+				updateDTO.ColorIds = exist.ProductColors.Select(c => c.ColorId).ToList();
+
+			}
+
 
 			return updateDTO;
 		}
@@ -184,11 +195,8 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			if (id <= 0) throw new Exception("Bad Request");
 
 			if (!modelstate.IsValid) return false;
-			Product product = await _productrepo.GetByIdAsync(id);
-			Product existed = await _context.Products
-				.Include(p => p.ProductImages)
-				.Include(p => p.ProductColors)
-				.FirstOrDefaultAsync(p => p.Id == id);
+			Product existed = await _productrepo.GetByIdAsync(id);
+			List<Product> products = await _productrepo.GetAll(false, false, includes: new string[] { "ProductColors", "ProductImages" }).ToListAsync();
 
 			if (existed is null) throw new Exception("Not Found");
 
@@ -261,12 +269,20 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			{
 				updateDTO.ImageIds = new List<int>();
 			}
-			List<ProductImages> removeable = existed.ProductImages.Where(pi => !updateDTO.ImageIds.Exists(imgId => imgId == pi.Id) && pi.IsPrimary == null).ToList();
-			foreach (ProductImages removedImg in removeable)
+			if (existed.ProductImages != null)
 			{
-				removedImg.Url.DeleteFile(_env.WebRootPath, "assets", "img");
-				existed.ProductImages.Remove(removedImg);
+				List<ProductImages> removeable = existed.ProductImages.Where(pi => !updateDTO.ImageIds.Exists(imgId => imgId == pi.Id) && pi.IsPrimary == null).ToList();
+				foreach (ProductImages removedImg in removeable)
+				{
+					removedImg.Url.DeleteFile(_env.WebRootPath, "assets", "img");
+					existed.ProductImages.Remove(removedImg);
+				}
 			}
+			else
+			{
+				existed.ProductImages=new List<ProductImages>();
+			}
+			
 
 
 			foreach (IFormFile photo in updateDTO.Photos ?? new List<IFormFile>())
@@ -294,7 +310,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			existed.CurrentPrice = updateDTO.CurrentPrice;
 
 
-			_productrepo.Update(product);
+			_productrepo.Update(existed);
 			await _productrepo.SaveChangesAsync();
 			return true;
 		}
@@ -307,9 +323,9 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
 			if (exist is null) throw new Exception("Not Found");
 
-			Product product = await _context.Products.Include(p => p.ProductImages).FirstOrDefaultAsync(p => p.Id == id);
-
-			foreach (ProductImages image in product.ProductImages ?? new List<ProductImages>())
+			List<Product> products = await _productrepo.GetAll(false, false, includes: new string[] {"ProductImages" }).ToListAsync();
+		
+			foreach (ProductImages image in exist.ProductImages ?? new List<ProductImages>())
 			{
 				image.Url.DeleteFile(_env.WebRootPath, "assets", "img");
 			}

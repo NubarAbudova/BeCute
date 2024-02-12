@@ -23,7 +23,6 @@
 					<div class="ibox-title">Products</div>
 					<a asp-controller="Product" asp-action="Create" class="btn btn-success"><i class="ti-plus"></i></a> <br>
 				</div>
-				@Html.Raw(TempData["Message"])
 				<div class="ibox-body">
 					<table class="table table-hover">
 						<thead>
@@ -49,7 +48,7 @@
 								<tr>
 									<td>@count</td>
 									<td>
-										<img src="~/assets/img/product/@product.ProductImages.FirstOrDefault()?.Url">
+										<img src="~/assets/img/@product.ProductImages.FirstOrDefault()?.Url">
 									</td>
 
 									<td>@product.Name</td>
