@@ -7,7 +7,7 @@ namespace EnchantElegance.Application.Abstarctions.Services
 	public interface ISliderService
 	{
 		Task<ItemVM<Slider>> GetAllAsync(int page, int take);
-		//Task<SliderCreateDTO> CreatedAsync(ProductCreateDTO dto);
+		Task<SliderCreateDTO> CreatedAsync(SliderCreateDTO dto);
 		Task<bool> Create(SliderCreateDTO sliderCreateDTO, ModelStateDictionary modelstate);
 		Task<SliderUpdateDTO> GetProductForUpdateAsync(int id,SliderUpdateDTO dto);
 		Task<bool> Update(int id, SliderUpdateDTO updateDTO, ModelStateDictionary modelstate);

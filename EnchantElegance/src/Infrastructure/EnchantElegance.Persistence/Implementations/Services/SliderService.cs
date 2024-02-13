@@ -32,6 +32,10 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			};
 			return slidervm;
 		}
+		public async Task<SliderCreateDTO> CreatedAsync(SliderCreateDTO dto)
+		{
+			return dto;
+		}
 		public async Task<bool> Create(SliderCreateDTO sliderCreateDTO, ModelStateDictionary modelstate)
 		{
 			if (!modelstate.IsValid) return false;
@@ -89,9 +93,9 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			if (id <= 0) throw new Exception("Bad Request");
 
 			if (!modelstate.IsValid) return false;
-			Slider slider = await _sliderrepo.GetByIdAsync(id);
+			Slider existed = await _sliderrepo.GetByIdAsync(id);
+			List<Slider> slider = await _sliderrepo.GetAll().ToListAsync();
 
-			Slider existed = await _sliderrepo.GetByExpressionAsync(s=>s.Id== id);
 			if (existed is null) throw new Exception("Not Found");
 
 			if (await _sliderrepo.IsExistAsync(c => c.Name == updateDTO.Name) && await _sliderrepo.IsExistAsync(c => c.Id != id))
@@ -123,7 +127,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			existed.Order = updateDTO.Order;
 
 
-			_sliderrepo.Update(slider);
+			_sliderrepo.Update(existed);
 			await _sliderrepo.SaveChangesAsync();
 			return true;
 		}

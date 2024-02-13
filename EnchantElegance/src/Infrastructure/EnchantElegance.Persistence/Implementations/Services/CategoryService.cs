@@ -13,14 +13,12 @@ namespace EnchantElegance.Persistence.Implementations.Services
 {
 	public class CategoryService : ICategoryService
 	{
-		private readonly AppDbContext _context;
 		private readonly IMapper _mapper;
 		private readonly IWebHostEnvironment _env;
 		private readonly ICategoryRepository _categoryrepo;
 
-		public CategoryService(AppDbContext context, IMapper mapper, IWebHostEnvironment env, ICategoryRepository categoryrepo)
+		public CategoryService(IMapper mapper, IWebHostEnvironment env, ICategoryRepository categoryrepo)
 		{
-			_context = context;
 			_mapper = mapper;
 			_env = env;
 			_categoryrepo = categoryrepo;
@@ -34,9 +32,17 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			};
 			return categoryvm;
 		}
+		public async Task<CategoryCreateDTO> CreatedAsync(CategoryCreateDTO dto)
+		{
+			return dto;
+		}
 		public async Task<bool> Create(CategoryCreateDTO categoryCreateDTO, ModelStateDictionary modelstate)
 		{
 			if (!modelstate.IsValid) return false;
+			Category category = new Category
+			{
+				Name = categoryCreateDTO.Name,
+			};
 
 			if (await _categoryrepo.IsExistAsync(p => p.Name == categoryCreateDTO.Name))
 			{
@@ -54,15 +60,15 @@ namespace EnchantElegance.Persistence.Implementations.Services
 					modelstate.AddModelError("Photo", "File size should not be larger than 2MB.");
 					return false;
 				}
+
+				string fileName = await categoryCreateDTO.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img");
+				category.Image = fileName;
 			}
 
-			Category category = new Category
-			{
-				Name = categoryCreateDTO.Name,
-				Image = categoryCreateDTO.Image,
-			};
-			await _context.Categories.AddAsync(category);
-			await _context.SaveChangesAsync();
+
+		
+			await _categoryrepo.AddAsync(category);
+			await _categoryrepo.SaveChangesAsync();
 			return true;
 		}
 
@@ -84,9 +90,9 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			if (id <= 0) throw new Exception("Bad Request");
 
 			if (!modelstate.IsValid) return false;
-			Category category = await _categoryrepo.GetByIdAsync(id);
-			Category existed = await _context.Categories
-				.FirstOrDefaultAsync(p => p.Id == id);
+			Category existed = await _categoryrepo.GetByIdAsync(id);
+			List<Category> category = await _categoryrepo.GetAll().ToListAsync();	
+				
 
 			if (existed is null) throw new Exception("Not Found");
 
@@ -115,9 +121,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			}
 
 			existed.Name = updateDTO.Name;
-
-
-			_categoryrepo.Update(category);
+			_categoryrepo.Update(existed);
 			await _categoryrepo.SaveChangesAsync();
 			return true;
 		}
@@ -129,7 +133,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
 			if (exist is null) throw new Exception("Not Found");
 
-			Category category = await _context.Categories.FirstOrDefaultAsync(s => s.Id == id);
+			List<Category> category = await _categoryrepo.GetAll().ToListAsync();
 
 			if (exist.Image is not null)
 			{

@@ -19,7 +19,9 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		}
 		public async Task<IActionResult> Create()
 		{
-			return View();
+			CategoryCreateDTO categoryCreateDTO = new CategoryCreateDTO();
+			categoryCreateDTO = await _service.CreatedAsync(categoryCreateDTO);
+			return View(categoryCreateDTO);
 		}
 		[HttpPost]
 		public async Task<IActionResult> Create(CategoryCreateDTO categoryDTO)

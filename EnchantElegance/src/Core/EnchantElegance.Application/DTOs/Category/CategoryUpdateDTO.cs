@@ -10,7 +10,7 @@ namespace EnchantElegance.Application.DTOs
 	public class CategoryUpdateDTO
 	{
 		public string Name { get; set; }
-        public string Image { get; set; }
-        public IFormFile Photo { get; set; }
+        public string? Image { get; set; }
+        public IFormFile? Photo { get; set; }
     }
 }

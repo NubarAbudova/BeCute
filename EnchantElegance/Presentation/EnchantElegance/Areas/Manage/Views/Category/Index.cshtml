@@ -41,14 +41,14 @@
 								<tr >
 									<td>@count</td>
 									<td>
-										<img src="~/assets/img/slider/@category.Image">
+										<img style="width:150px;height:150px;" src="~/assets/img/@category.Image">
 									</td>
-									<td>@category.Name</td>
+									<td><b>@category.Name</b></td>
 
 									<td>
-										<a asp-controller="Category" asp-action="Update" asp-route-id="@category.Id">Update</a>
-										<a asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" class="customDelete">Delete</a>
-										<a asp-controller="Category" asp-action="Details" asp-route-id="@category.Id">Details</a>
+										<a asp-controller="Category" asp-action="Update" asp-route-id="@category.Id"><i class="ti-marker-alt"></i></a>
+										<a asp-controller="Category" asp-action="Delete" asp-route-id="@category.Id" class="customDelete"><i class="ti-trash"></i></a>
+										<a asp-controller="Category" asp-action="Details" asp-route-id="@category.Id"> <i class="ti-arrow-top-right"></i></a>
 
 									</td>
 								</tr>

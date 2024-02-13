@@ -7,7 +7,7 @@ namespace EnchantElegance.Application.Abstarctions.Services
     public interface ICategoryService
     {
 		Task<ItemVM<Category>> GetAllAsync(int page, int take);
-		//Task<SliderCreateDTO> CreatedAsync(ProductCreateDTO dto);
+		Task<CategoryCreateDTO> CreatedAsync(CategoryCreateDTO dto);
 		Task<bool> Create(CategoryCreateDTO categoryCreateDTO, ModelStateDictionary modelstate);
 		Task<CategoryUpdateDTO> GetCategoryForUpdateAsync(int id, CategoryUpdateDTO dto);
 		Task<bool> Update(int id, CategoryUpdateDTO updateDTO, ModelStateDictionary modelstate);
