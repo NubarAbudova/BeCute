@@ -2,13 +2,13 @@
 using EnchantElegance.Application.Abstarctions.Services;
 using EnchantElegance.Application.DTOs;
 using EnchantElegance.Domain.Entities;
-using EnchantElegance.Persistence.Contexts;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using EnchantElegance.Domain.Utilities.Extensions;
 using EnchantElegance.Application.Abstarctions.Repositories;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Http;
+using EnchantElegance.Application.ViewModels;
 
 namespace EnchantElegance.Persistence.Implementations.Services
 {
@@ -29,17 +29,23 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			_productrepo = productrepo;
 			_categoryrepo = categoryrepo;
 		}
-		public async Task<ItemVM<Product>> GetAllAsync(int page, int take)
+		public async Task<PaginationVM<Product>> GetAllAsync(int page=1, int take=5)
 		{
-			List<Product>products=await _productrepo.GetAll(includes:new string[] {nameof(Category), nameof(ProductImages),"ProductColors","ProductColors.Color" })
-				.Where(p=>p.ProductImages.Any(pi=>pi.IsPrimary==true)).ToListAsync();
+			ICollection<Product> products = await _productrepo.GetPagination(skip: (page - 1) * take, take: take, includes: new string[] { nameof(Category), nameof(ProductImages), "ProductColors", "ProductColors.Color" })
+				.Where(p => p.ProductImages.Any(pi => pi.IsPrimary == true)).ToListAsync();
 
-			ItemVM<Product> productVM = new ItemVM<Product>
+			int count = await _productrepo.GetAll().CountAsync();
+
+			double totalpage = Math.Ceiling((double)count / take);
+			PaginationVM<Product> productVM = new PaginationVM<Product>
 			{
 				Items = products,
+				CurrentPage = page,
+				TotalPage = totalpage
 			};
 			return productVM;
 		}
+
 		public async Task<ProductCreateDTO> CreatedAsync(ProductCreateDTO dto)
 		{
 			dto.Colors = await _colorrepo.GetAll().ToListAsync();
@@ -152,9 +158,6 @@ namespace EnchantElegance.Persistence.Implementations.Services
 					});
 				}
 			}
-			
-		
-
 			await _productrepo.AddAsync(product);
 			await _productrepo.SaveChangesAsync();
 			return true;
@@ -185,7 +188,6 @@ namespace EnchantElegance.Persistence.Implementations.Services
 				updateDTO.ColorIds = exist.ProductColors.Select(c => c.ColorId).ToList();
 
 			}
-
 
 			return updateDTO;
 		}

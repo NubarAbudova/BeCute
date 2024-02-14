@@ -54,9 +54,60 @@ namespace EnchantElegance.Persistence.Implementations.Repositories
             if (isIgnoreQuery) query = query.IgnoreQueryFilters();
             return isTracking ? query : query.AsNoTracking();
         }
+		public IQueryable<T> GetOrderBy(Expression<Func<T, object>>? orderExpression = null, bool IsDescending = false)
+		{
+			IQueryable<T> query = _context.Set<T>();
+			if (orderExpression != null)
+			{
+				if (IsDescending)
+				{
+					query = query.OrderByDescending(orderExpression);
+				}
+				else
+				{
+					query = query.OrderBy(orderExpression);
+				}
 
-        //ADDASYNC
-        public async Task AddAsync(T entity)
+			}
+			return query;
+		}
+		public IQueryable<T> GetPagination(int skip = 0, int take = 0, bool IgnoreQuery = true, Expression<Func<T, object>>? orderExpression = null, bool IsDescending = false, params string[] includes)
+		{
+			IQueryable<T> query = _context.Set<T>();
+			if (skip != 0) query = query.Skip(skip);
+			if (take != 0) query = query.Take(take);
+			if (orderExpression != null)
+			{
+				if (IsDescending)
+				{
+					query = query.OrderByDescending(orderExpression);
+				}
+				else
+				{
+					query = query.OrderBy(orderExpression);
+				}
+
+			}
+			query = _addIncludes(query, includes);
+			if (IgnoreQuery)
+			{
+				query = query.IgnoreQueryFilters();
+			}
+			return query;
+		}
+		private IQueryable<T> _addIncludes(IQueryable<T> query, params string[] includes)
+		{
+			if (includes != null)
+			{
+				for (int i = 0; i < includes.Length; i++)
+				{
+					query = query.Include(includes[i]);
+				}
+			}
+			return query;
+		}
+		//ADDASYNC
+		public async Task AddAsync(T entity)
         {
             await _table.AddAsync(entity);
 

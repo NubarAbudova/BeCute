@@ -2,6 +2,7 @@
 using EnchantElegance.Application.Abstarctions.Repositories;
 using EnchantElegance.Application.Abstarctions.Services;
 using EnchantElegance.Application.DTOs;
+using EnchantElegance.Application.ViewModels;
 using EnchantElegance.Domain.Entities;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -21,10 +22,10 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			_env = env;
 			_colorrepo = colorrepo;
 		}
-		public async Task<ItemVM<Color>> GetAllAsync(int page, int take)
+		public async Task<PaginationVM<Color>> GetAllAsync(int page, int take)
 		{
 			List<Color> colors = await _colorrepo.GetAll().ToListAsync();
-			ItemVM<Color> colorvm = new ItemVM<Color>
+			PaginationVM<Color> colorvm = new PaginationVM<Color>
 			{
 				Items = colors,
 			};
@@ -42,6 +43,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			Color color = new Color
 			{
 				Name = colorCreateDTO.Name,
+				No= colorCreateDTO.No
 			};
 			await _colorrepo.AddAsync(color);
 			await _colorrepo.SaveChangesAsync();
@@ -56,6 +58,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			if (exist == null) throw new Exception("Not Found");
 
 			updateDTO.Name = exist.Name.Trim();
+			updateDTO.No = exist.No;
 
 			return updateDTO;
 		}
@@ -78,6 +81,8 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			}
 	
 			existed.Name = updateDTO.Name;
+			existed.No = updateDTO.No;
+
 
 			_colorrepo.Update(existed);
 			await _colorrepo.SaveChangesAsync();

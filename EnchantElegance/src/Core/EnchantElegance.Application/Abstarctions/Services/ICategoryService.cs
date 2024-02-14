@@ -1,4 +1,5 @@
 ﻿using EnchantElegance.Application.DTOs;
+using EnchantElegance.Application.ViewModels;
 using EnchantElegance.Domain.Entities;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
@@ -6,7 +7,7 @@ namespace EnchantElegance.Application.Abstarctions.Services
 {
     public interface ICategoryService
     {
-		Task<ItemVM<Category>> GetAllAsync(int page, int take);
+		Task<PaginationVM<Category>> GetAllAsync(int page, int take);
 		Task<CategoryCreateDTO> CreatedAsync(CategoryCreateDTO dto);
 		Task<bool> Create(CategoryCreateDTO categoryCreateDTO, ModelStateDictionary modelstate);
 		Task<CategoryUpdateDTO> GetCategoryForUpdateAsync(int id, CategoryUpdateDTO dto);

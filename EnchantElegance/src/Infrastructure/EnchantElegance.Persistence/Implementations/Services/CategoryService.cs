@@ -2,6 +2,7 @@
 using EnchantElegance.Application.Abstarctions.Repositories;
 using EnchantElegance.Application.Abstarctions.Services;
 using EnchantElegance.Application.DTOs;
+using EnchantElegance.Application.ViewModels;
 using EnchantElegance.Domain.Entities;
 using EnchantElegance.Domain.Utilities.Extensions;
 using EnchantElegance.Persistence.Contexts;
@@ -23,14 +24,20 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			_env = env;
 			_categoryrepo = categoryrepo;
 		}
-		public async Task<ItemVM<Category>> GetAllAsync(int page, int take)
+		public async Task<PaginationVM<Category>> GetAllAsync(int page, int take)
 		{
-			List<Category> categories = await _categoryrepo.GetAll().ToListAsync();
-			ItemVM<Category> categoryvm = new ItemVM<Category>
+			ICollection<Category> categories = await _categoryrepo.GetPagination(skip: (page - 1) * take, take: take).ToListAsync();
+
+			int count = await _categoryrepo.GetAll().CountAsync();
+
+			double totalpage = Math.Ceiling((double)count / take);
+			PaginationVM<Category> categoryVM = new PaginationVM<Category>
 			{
 				Items = categories,
+				CurrentPage = page,
+				TotalPage = totalpage
 			};
-			return categoryvm;
+			return categoryVM;
 		}
 		public async Task<CategoryCreateDTO> CreatedAsync(CategoryCreateDTO dto)
 		{

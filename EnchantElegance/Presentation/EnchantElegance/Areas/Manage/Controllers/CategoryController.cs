@@ -13,7 +13,7 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		{
 			_service = service;
 		}
-		public async Task<IActionResult> Index()
+		public async Task<IActionResult> Index(int page = 1, int take = 5)
 		{
 			return View(await _service.GetAllAsync(1, 3));
 		}

@@ -2,6 +2,7 @@
 using EnchantElegance.Application.Abstarctions.Repositories;
 using EnchantElegance.Application.Abstarctions.Services;
 using EnchantElegance.Application.DTOs;
+using EnchantElegance.Application.ViewModels;
 using EnchantElegance.Domain.Entities;
 using EnchantElegance.Domain.Utilities.Extensions;
 using EnchantElegance.Persistence.Contexts;
@@ -23,10 +24,10 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			_env = env;
 			_sliderrepo = sliderrepo;
 		}
-		public async Task<ItemVM<Slider>> GetAllAsync(int page, int take)
+		public async Task<PaginationVM<Slider>> GetAllAsync(int page, int take)
 		{
 			List<Slider> sliders = await _sliderrepo.GetAll().ToListAsync();
-			ItemVM<Slider> slidervm = new ItemVM<Slider>
+			PaginationVM<Slider> slidervm = new PaginationVM<Slider>
 			{
 				Items = sliders,
 			};

@@ -14,7 +14,8 @@ namespace EnchantElegance.Application.Abstarctions.Repositories
 	  bool isTracking = false,
 	  bool isIgnoreQuery = false,
 	  params string[] includes);
-
+		IQueryable<T> GetPagination(int skip = 0, int take = 0, bool IgnoreQuery = false, Expression<Func<T, object>>? orderExpression = null, bool IsDescending = false, params string[] includes);
+		IQueryable<T> GetOrderBy(Expression<Func<T, object>>? orderExpression = null, bool IsDescending = false);
 		Task<bool> IsExistAsync(Expression<Func<T, bool>> expression);
 
 		Task<T> GetByExpressionAsync(Expression<Func<T, bool>>? expression, bool isTracking = false, bool isIgnoreQuery = false, params string[] includes);

@@ -1,5 +1,6 @@
 ﻿@using EnchantElegance.Domain.Entities;
-@model Product
+@using EnchantElegance.ViewModels;
+@model DetailVM
   <main class="main__content_wrapper">
 
         <!-- Start breadcrumb section -->
@@ -9,7 +10,7 @@
                     <div class="col">
                         <div class="breadcrumb__content text-center">
                             <ul class="breadcrumb__content--menu d-flex justify-content-center">
-                                <li class="breadcrumb__content--menu__items"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb__content--menu__items"><a asp-controller="Home" asp-action="Index">Home</a></li>
                                 <li class="breadcrumb__content--menu__items"><span>Product Details</span></li>
                             </ul>
                         </div>
@@ -28,9 +29,9 @@
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
                                         <div class="product__media--preview__items">
-                                            <a class="product__media--preview__items--link glightbox" data-gallery="product-media-preview" href="~/assets/img/product/big-product/product1.webp"><img class="product__media--preview__items--img" src="~/assets/img/product/big-product/product1.webp" alt="product-media-img"></a>
+                                            <a class="product__media--preview__items--link glightbox" data-gallery="product-media-preview" href="~/assets/img/@Model.Product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==true)?.Url"><img class="product__media--preview__items--img" src="~/assets/img/product/big-product/product1.webp" alt="product-media-img"></a>
                                             <div class="product__media--view__icon">
-                                                <a class="product__media--view__icon--link glightbox" href="~/assets/img/product/big-product/product1.webp" data-gallery="product-media-preview">
+                                            <a class="product__media--view__icon--link glightbox" href="~/assets/img/@Model.Product.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==true)?.Url" data-gallery="product-media-preview">
                                                     <svg class="product__items--action__btn--svg" xmlns="http://www.w3.org/2000/svg" width="22.51" height="22.443" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path></svg>
                                                     <span class="visually-hidden">product view</span>
                                                 </a>
@@ -169,7 +170,7 @@
                                         <span class="rating__review--text">(126) Review</span>
                                     </li>
                                 </ul>
-                                <p class="product__details--info__desc mb-15">@Model.Description</p>
+                                <p class="product__details--info__desc mb-15">@Model.Product.Description</p>
                                 <div class="product__variant">
                                     <div class="product__variant--list mb-15">
                                         <fieldset class="variant__input--fieldset">
@@ -200,7 +201,7 @@
                                             <ul class="variant__size d-flex">
                                                 <li class="variant__size--list">
                                                     <input id="weight4" name="weight" type="radio" checked>
-                                                    <label class="variant__size--value red" for="weight4">@Model.Category.Name</label>
+                                                    <label class="variant__size--value red" for="weight4">@Model.Product.Category.Name</label>
                                                 </li>
                                                 <li class="variant__size--list">
                                                     <input id="weight5" name="weight" type="radio">
@@ -317,7 +318,7 @@
                                                     </div>
                                                     <div class="product__tab--content__step">
                                                         <p class="product__tab--content__desc">
-                                                            @Model.Description
+                                                            @Model.Product.Description
                                                         </p>
                                                     </div>
                                                 </div>

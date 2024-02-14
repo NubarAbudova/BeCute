@@ -1,6 +1,9 @@
 ﻿using EnchantElegance.Application.Abstarctions.Services;
 using EnchantElegance.Application.DTOs;
+using EnchantElegance.Application.ViewModels;
+using EnchantElegance.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace EnchantElegance.Areas.Manage.Controllers
 {
@@ -13,9 +16,14 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		{
 			_service = service;
 		}
-		public async Task<IActionResult> Index()
+		public async Task<IActionResult> Index(int page = 1, int take = 5)
 		{
 			return View(await _service.GetAllAsync(1, 3));
+			//PaginationVM<Product> vm;
+			//vm = await _service.GetAllAsync(page, take);
+			//if (vm.Items == null)
+			//	return NotFound();
+			//return View(vm);
 		}
 		public async Task<IActionResult> Create()
 		{

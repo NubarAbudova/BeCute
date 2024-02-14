@@ -1,4 +1,5 @@
 ﻿using EnchantElegance.Application.DTOs;
+using EnchantElegance.Application.ViewModels;
 using EnchantElegance.Domain.Entities;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
@@ -6,7 +7,7 @@ namespace EnchantElegance.Application.Abstarctions.Services
 {
 	public interface ISliderService
 	{
-		Task<ItemVM<Slider>> GetAllAsync(int page, int take);
+		Task<PaginationVM<Slider>> GetAllAsync(int page, int take);
 		Task<SliderCreateDTO> CreatedAsync(SliderCreateDTO dto);
 		Task<bool> Create(SliderCreateDTO sliderCreateDTO, ModelStateDictionary modelstate);
 		Task<SliderUpdateDTO> GetProductForUpdateAsync(int id,SliderUpdateDTO dto);

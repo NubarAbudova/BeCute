@@ -1,7 +1,8 @@
 ﻿@using EnchantElegance.Application.DTOs;
+@using EnchantElegance.Application.ViewModels;
 @using EnchantElegance.Domain.Entities;
 
-@model ItemVM<Color>
+@model PaginationVM<Color>
 @{
 	int count = 0;
 }
@@ -28,6 +29,7 @@
 							<tr>
 								<th>#</th>
 								<th>Name</th>
+								<th> No</th>
 								<th>Actions</th>
 							</tr>
 						</thead>
@@ -38,6 +40,8 @@
 								<tr>
 									<td>@count</td>
 									<td>@category.Name</td>
+									<td>@category.No</td>
+
 									<td>
 										<a asp-controller="Color" asp-action="Update" asp-route-id="@category.Id" class="btn-btn warning">Update</a>
 										<a asp-controller="Color" asp-action="Delete" asp-route-id="@category.Id" class="customDelete" class="btn-btn danger">Delete</a>
