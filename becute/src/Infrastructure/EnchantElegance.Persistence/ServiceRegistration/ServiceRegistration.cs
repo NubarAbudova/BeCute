@@ -20,9 +20,7 @@ namespace EnchantElegance.Persistence.ServiceRegistration
                 b => b.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
 			//services.AddAutoMapper(typeof(AppUserProfile));
 
-			services.AddAuthentication();
 
-			services.AddScoped<IMailService, MailService>();
 
 			services.AddIdentity<AppUser, IdentityRole>(opt =>
             {
@@ -40,8 +38,13 @@ namespace EnchantElegance.Persistence.ServiceRegistration
 
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
-            //Identity
-            services.AddScoped<IAuthService, AuthService>();
+			services.Configure<StripeSettings>(configuration.GetSection("Stripe"));
+
+			services.AddScoped<IMailService, MailService>();
+
+			//Identity
+			services.AddAuthentication();
+			services.AddScoped<IAuthService, AuthService>();
 
             //Slider
             services.AddScoped<ISliderService, SliderService>();
@@ -56,12 +59,16 @@ namespace EnchantElegance.Persistence.ServiceRegistration
             services.AddScoped<IProductRepository,ProductRepository>();
 
             //Color
-
 			services.AddScoped<IColorService,ColorService >();
 			services.AddScoped<IColorRepository, ColorRepository>();
 
+            //Basket
+            services.AddScoped<IBasketService, BasketService>();
+            services.AddScoped<IBasketRepository, BasketRepository>();
 
-			return services;
+
+
+            return services;
         }
     }
 }

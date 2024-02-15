@@ -538,3 +538,12 @@ C:\Users\Nubar\Desktop\becute\becute\Presentation\EnchantElegance\obj\Debug\net6
 C:\Users\Nubar\Desktop\becute\becute\Presentation\EnchantElegance\obj\Debug\net6.0\EnchantElegance.pdb
 C:\Users\Nubar\Desktop\becute\becute\Presentation\EnchantElegance\obj\Debug\net6.0\EnchantElegance.genruntimeconfig.cache
 C:\Users\Nubar\Desktop\becute\becute\Presentation\EnchantElegance\obj\Debug\net6.0\ref\EnchantElegance.dll
+C:\Users\Nubar\Desktop\becute\becute\Presentation\EnchantElegance\bin\Debug\net6.0\BouncyCastle.Cryptography.dll
+C:\Users\Nubar\Desktop\becute\becute\Presentation\EnchantElegance\bin\Debug\net6.0\MailKit.dll
+C:\Users\Nubar\Desktop\becute\becute\Presentation\EnchantElegance\bin\Debug\net6.0\MimeKit.dll
+C:\Users\Nubar\Desktop\becute\becute\Presentation\EnchantElegance\bin\Debug\net6.0\System.Formats.Asn1.dll
+C:\Users\Nubar\Desktop\becute\becute\Presentation\EnchantElegance\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\Nubar\Desktop\becute\becute\Presentation\EnchantElegance\bin\Debug\net6.0\System.Text.Encoding.CodePages.dll
+C:\Users\Nubar\Desktop\becute\becute\Presentation\EnchantElegance\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\Nubar\Desktop\becute\becute\Presentation\EnchantElegance\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll
+C:\Users\Nubar\Desktop\becute\becute\Presentation\EnchantElegance\bin\Debug\net6.0\Stripe.net.dll

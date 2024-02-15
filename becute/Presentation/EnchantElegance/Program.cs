@@ -1,6 +1,6 @@
 using EnchantElegance.Application.ServiceRegistration;
 using EnchantElegance.Persistence.ServiceRegistration;
-
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,10 +22,10 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseAuthentication();
 
 app.UseRouting();
-
-app.UseAuthentication();
+StripeConfiguration.ApiKey = builder.Configuration["Stripe:Secretkey"];
 
 app.UseAuthorization();
 
