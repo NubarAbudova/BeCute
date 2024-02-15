@@ -29,9 +29,9 @@ namespace EnchantElegance.Controllers
         {
             var success = await _basketService.AddToBasket(productId);
             if (success)
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
 
-            return View("Error");
+            return View(nameof(Index));
         }
         //public IActionResult GetBasket()
         //{
