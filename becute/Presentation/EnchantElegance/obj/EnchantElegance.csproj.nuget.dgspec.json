@@ -1,0 +1,377 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Nubar\\Desktop\\becute\\becute\\Presentation\\EnchantElegance\\EnchantElegance.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Nubar\\Desktop\\becute\\becute\\Presentation\\EnchantElegance\\EnchantElegance.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\Presentation\\EnchantElegance\\EnchantElegance.csproj",
+        "projectName": "EnchantElegance",
+        "projectPath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\Presentation\\EnchantElegance\\EnchantElegance.csproj",
+        "packagesPath": "C:\\Users\\Nubar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\Presentation\\EnchantElegance\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Nubar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Infrastructure\\EnchantElegance.Infrastructure\\EnchantElegance.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Infrastructure\\EnchantElegance.Infrastructure\\EnchantElegance.Infrastructure.csproj"
+              },
+              "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Infrastructure\\EnchantElegance.Persistence\\EnchantElegance.Persistence.csproj": {
+                "projectPath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Infrastructure\\EnchantElegance.Persistence\\EnchantElegance.Persistence.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Application\\EnchantElegance.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Application\\EnchantElegance.Application.csproj",
+        "projectName": "EnchantElegance.Application",
+        "projectPath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Application\\EnchantElegance.Application.csproj",
+        "packagesPath": "C:\\Users\\Nubar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Nubar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Domain\\EnchantElegance.Domain.csproj": {
+                "projectPath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Domain\\EnchantElegance.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.9.0, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.0, )"
+            },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[11.9.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Domain\\EnchantElegance.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Domain\\EnchantElegance.Domain.csproj",
+        "projectName": "EnchantElegance.Domain",
+        "projectPath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Domain\\EnchantElegance.Domain.csproj",
+        "packagesPath": "C:\\Users\\Nubar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Nubar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Infrastructure\\EnchantElegance.Infrastructure\\EnchantElegance.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Infrastructure\\EnchantElegance.Infrastructure\\EnchantElegance.Infrastructure.csproj",
+        "projectName": "EnchantElegance.Infrastructure",
+        "projectPath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Infrastructure\\EnchantElegance.Infrastructure\\EnchantElegance.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Nubar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Infrastructure\\EnchantElegance.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Nubar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Application\\EnchantElegance.Application.csproj": {
+                "projectPath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Application\\EnchantElegance.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Infrastructure\\EnchantElegance.Persistence\\EnchantElegance.Persistence.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Infrastructure\\EnchantElegance.Persistence\\EnchantElegance.Persistence.csproj",
+        "projectName": "EnchantElegance.Persistence",
+        "projectPath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Infrastructure\\EnchantElegance.Persistence\\EnchantElegance.Persistence.csproj",
+        "packagesPath": "C:\\Users\\Nubar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Infrastructure\\EnchantElegance.Persistence\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Nubar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Application\\EnchantElegance.Application.csproj": {
+                "projectPath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Application\\EnchantElegance.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
