@@ -303,6 +303,27 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
                     b.ToTable("ProductImages");
                 });
 
+            modelBuilder.Entity("EnchantElegance.Domain.Entities.Setting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Settings");
+                });
+
             modelBuilder.Entity("EnchantElegance.Domain.Entities.Slider", b =>
                 {
                     b.Property<int>("Id")

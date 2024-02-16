@@ -1,12 +1,5 @@
 ﻿using EnchantElegance.Application.Abstarctions.Services;
-using EnchantElegance.Application.DTOs;
-using EnchantElegance.Domain.Entities;
-using EnchantElegance.Persistence.Contexts;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using Stripe;
-
 namespace EnchantElegance.Controllers
 {
 	public class BasketController : Controller
@@ -18,24 +11,24 @@ namespace EnchantElegance.Controllers
             _basketService = basketService;
         }
 
-        public async Task<IActionResult> Index()
-        {
-            var basketItems = await _basketService.GetBasketItems();
-            return View(basketItems);
-        }
+		public async Task<IActionResult> Index()
+		{
+			var basketItems = await _basketService.GetBasketItems();
+			return View(basketItems);
+		}
 
-        [HttpPost]
-        public async Task<IActionResult> AddToBasket(int productId)
-        {
-            var success = await _basketService.AddToBasket(productId);
-            if (success)
-                return RedirectToAction(nameof(Index));
+		[HttpPost]
+		public async Task<IActionResult> AddToBasket(int productId)
+		{
+			var success = await _basketService.AddToBasket(productId);
+			if (success)
+				return RedirectToAction(nameof(Index));
 
-            return View(nameof(Index));
-        }
-        //public IActionResult GetBasket()
-        //{
-        //	return Content(Request.Cookies["Basket"]);
-        //}
-    }
+			return View(nameof(Index));
+		}
+		public IActionResult GetBasket()
+		{
+			return Content(Request.Cookies["Basket"]);
+		}
+	}
 }

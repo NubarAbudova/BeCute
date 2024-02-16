@@ -33,10 +33,6 @@ namespace EnchantElegance.Application.Validators
 				.NotEmpty().WithMessage("Surname cannot be empty.")
 			  .MaximumLength(50).WithMessage("Surname must be at most 100 characters long.");
 
-
-			RuleFor(x => x.PhoneNumber)
-				.NotEmpty().WithMessage("Phone number cannot be empty.")
-				.Must(BeAValidPhoneNumber).WithMessage("Please enter a valid phone number.");
 		}
 
 		private bool BeAValidPassword(string password)

@@ -2,12 +2,14 @@
 using EnchantElegance.Application.DTOs;
 using EnchantElegance.Application.ViewModels;
 using EnchantElegance.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace EnchantElegance.Areas.Manage.Controllers
 {
 	[Area("Manage")]
+	[Authorize]
 	public class ProductController : Controller
 	{
 		private readonly IProductService _service;

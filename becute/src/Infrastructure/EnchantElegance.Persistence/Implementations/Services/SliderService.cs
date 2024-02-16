@@ -46,6 +46,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 		public async Task<bool> Create(SliderCreateDTO sliderCreateDTO, ModelStateDictionary modelstate)
 		{
 			if (!modelstate.IsValid) return false;
+
 			Slider slider = new Slider
 			{
 				Name = sliderCreateDTO.Name,

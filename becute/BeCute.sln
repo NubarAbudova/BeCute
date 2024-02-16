@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnchantElegance.Infrastruct
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{CC6010B9-57E2-4E3D-883E-72C6BD55BBBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnchantElegance", "Presentation\EnchantElegance\EnchantElegance.csproj", "{B95FDCFD-410D-45C6-A395-0E712969D7DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnchantElegance", "Presentation\EnchantElegance\EnchantElegance.csproj", "{B95FDCFD-410D-45C6-A395-0E712969D7DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

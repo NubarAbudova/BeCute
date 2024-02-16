@@ -44,7 +44,7 @@ namespace EnchantElegance.Persistence.ServiceRegistration
 
 			//Identity
 			services.AddAuthentication();
-			services.AddScoped<IAuthService, AuthService>();
+			services.AddScoped<IAccountService, AccountService>();
 
             //Slider
             services.AddScoped<ISliderService, SliderService>();

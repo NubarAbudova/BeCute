@@ -3,7 +3,10 @@ using EnchantElegance.Persistence.ServiceRegistration;
 using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddSession(options =>
+{
+	options.IdleTimeout = TimeSpan.FromSeconds(60);
+});
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -11,6 +14,7 @@ builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices(builder.Configuration);
 
 var app = builder.Build();
+app.UseSession();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

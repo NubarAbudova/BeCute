@@ -1,4 +1,9 @@
-﻿<!doctype html>
+﻿@using EnchantElegance.Persistence.Implementations.Services;
+@inject LayoutService service
+@{
+	Dictionary<string, string> settings = await service.GetSettingsAsync();
+}
+<!doctype html>
 <html lang="en">
 
 
@@ -18,11 +23,11 @@
 	<!-- Plugin css -->
 	<link rel="stylesheet" href="~/assets/css/vendor/bootstrap.min.css">
 
-	<!-- Custom Style CSS -->
+	<!-- Custom Style CSS --> 
 	<link rel="stylesheet" href="~/assets/css/style.css">
 </head>
 
-<body>f
+<body>
 
 	<!-- Start preloader -->
 	<div id="preloader">
@@ -69,7 +74,7 @@
 		<div class="header__topbar bg__primary">
 			<div class="container">
 				<div class="header__topbar--inner text-center">
-					<p class="header__info--text text-white">FREE SHIPPING FOR ORDERS OVER $59 !</p>
+					<p class="header__info--text text-white">Beauty begins the moment you decide to be yourself!</p>
 				</div>
 			</div>
 		</div>
@@ -221,16 +226,16 @@
 										<a class="header__menu--link">@User.Identity.Name </a>
 									</li>
 									<li class="header__menu--items">
-										<a class="header__menu--link" asp-controller="User" asp-action="Logout">Logout </a>
+										<a class="header__menu--link" asp-controller="Account" asp-action="Logout">Logout </a>
 									</li>
 								}
 								else
 								{
 									<li class="header__menu--items">
-										<a class="header__menu--link" asp-controller="User" asp-action="Register">Register </a>
+										<a class="header__menu--link" asp-controller="Account" asp-action="Register">Register </a>
 									</li>
 									<li class="header__menu--items">
-										<a class="header__menu--link" asp-controller="User" asp-action="Login">Login </a>
+										<a class="header__menu--link" asp-controller="Account" asp-action="Login">Login </a>
 									</li>
 								}
 

@@ -8,7 +8,14 @@ namespace EnchantElegance.Domain.Enums
 {
 	public enum UserRole
 	{
-		admin,
-		member,
+		User,
+
+		Member,
+
+		VIPMember,
+
+		SuperAdministrator,
+
+		Administrator,
 	}
 }

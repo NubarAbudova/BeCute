@@ -19,41 +19,43 @@ namespace EnchantElegance.Persistence.Implementations.Services
         public async Task<List<BasketItemDTO>> GetBasketItems()
         {
             List<BasketItemDTO> items = new List<BasketItemDTO>();
-            if (_httpContextAccessor.HttpContext.Request.Cookies["Basket"] is not null)
+            if (_httpContextAccessor.HttpContext != null)
             {
-                List<BasketCookieItemDTO> cookies = JsonConvert.DeserializeObject<List<BasketCookieItemDTO>>(_httpContextAccessor.HttpContext.Request.Cookies["Basket"]);
-                foreach (var cookie in cookies)
-                {
-                    Domain.Entities.Product product = await _productrepo.GetByIdAsync(cookie.Id);
+				if (_httpContextAccessor.HttpContext.Request.Cookies["Basket"] is not null)
+				{
+					List<BasketCookieItemDTO> cookies = JsonConvert.DeserializeObject<List<BasketCookieItemDTO>>(_httpContextAccessor.HttpContext.Request.Cookies["Basket"]);
+					foreach (var cookie in cookies)
+					{
+						Domain.Entities.Product product = await _productrepo.GetByIdAsync(cookie.Id);
 
-                    if (product != null)
-                    {
-                        BasketItemDTO item = new BasketItemDTO()
-                        {
-                            Id = product.Id,
-                            Name = product.Name,
-                            Image = product.ProductImages.FirstOrDefault()?.Url,
-                            Count = cookie.Count,
-                            SubTotal = product.CurrentPrice * cookie.Count,
-                        };
-                        items.Add(item);
-                    }
-                }
-            }
+						if (product != null)
+						{
+							BasketItemDTO item = new BasketItemDTO()
+							{
+								Id = product.Id,
+								Name = product.Name,
+								Image = product.ProductImages.FirstOrDefault()?.Url,
+								Count = cookie.Count,
+								SubTotal = product.CurrentPrice * cookie.Count,
+							};
+							items.Add(item);
+						}
+					}
+				}
+			}
+           
+			return items;
 
-            return items;
-        }
+		}
         public async Task<bool> AddToBasket(int productId)
         {
-            if (productId <= 0)
-                return false;
+            if (productId <= 0) return false;
 
-            Domain.Entities.Product product = await _productrepo.GetByIdAsync(productId);
+			Domain.Entities.Product product = await _productrepo.GetByIdAsync(productId);
 
-            if (product == null)
-                return false;
+            if (product == null) return false;
 
-            List<BasketCookieItemDTO> basket;
+			List<BasketCookieItemDTO> basket;
 
             if (_httpContextAccessor.HttpContext.Request.Cookies["Basket"] is not null)
             {
