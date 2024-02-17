@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "gHWJePnD7pHOuaoOtT8mIVeaBxPX29etFxiquV2xeJc=",
+  "Hash": "jywCfiBkLpvJSnIOLISfUmClbkEDjMW/CKa6d0ND6Bk=",
   "Source": "EnchantElegance",
   "BasePath": "_content/EnchantElegance",
   "Mode": "Default",
@@ -62864,6 +62864,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\slider\\home5-slider3-layer.png"
+    },
+    {
+      "Identity": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\Presentation\\EnchantElegance\\wwwroot\\assets\\js\\main.js",
+      "SourceId": "EnchantElegance",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\Presentation\\EnchantElegance\\wwwroot\\",
+      "BasePath": "_content/EnchantElegance",
+      "RelativePath": "assets/js/main.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\main.js"
     },
     {
       "Identity": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\Presentation\\EnchantElegance\\wwwroot\\assets\\js\\plugins\\glightbox.min.js",

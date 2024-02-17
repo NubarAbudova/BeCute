@@ -2,6 +2,7 @@
 using EnchantElegance.Application.DTOs;
 using EnchantElegance.Application.ViewModels;
 using EnchantElegance.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -16,6 +17,8 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		{
 			_service = service;
 		}
+		[Authorize(Roles = "SuperAdministrator,Administrator")]
+
 		public async Task<IActionResult> Index(int page = 1, int take = 3)
 		{
 			PaginationVM<Color> vm;
@@ -24,6 +27,8 @@ namespace EnchantElegance.Areas.Manage.Controllers
 				return NotFound();
 			return View(vm);
 		}
+		[Authorize(Roles = "SuperAdministrator,Administrator")]
+
 		public async Task<IActionResult> Create()
 		{
 			ColorCreateDTO colorCreateDTO = new ColorCreateDTO();
@@ -39,6 +44,8 @@ namespace EnchantElegance.Areas.Manage.Controllers
 			}
 			return View(colorDTO);
 		}
+		[Authorize(Roles = "SuperAdministrator,Administrator")]
+
 		public async Task<IActionResult> Update(int id)
 		{
 			ColorUpdateDTO updateDTO = new ColorUpdateDTO();
@@ -53,6 +60,8 @@ namespace EnchantElegance.Areas.Manage.Controllers
 				return RedirectToAction(nameof(Index));
 			return View(await _service.Update(id, updateDTO, ModelState));
 		}
+		[Authorize(Roles = "SuperAdministrator")]
+
 		public async Task<IActionResult> Delete(int id)
 		{
 			if (await _service.Delete(id))

@@ -66,6 +66,7 @@ namespace EnchantElegance.Persistence.ServiceRegistration
             services.AddScoped<IBasketService, BasketService>();
             services.AddScoped<IBasketRepository, BasketRepository>();
 
+            services.AddScoped<LayoutService>();
 
 
             return services;

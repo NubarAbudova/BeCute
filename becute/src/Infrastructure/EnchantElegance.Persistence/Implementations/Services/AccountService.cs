@@ -49,6 +49,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 				}
 				return false;
 			}
+			await _userManager.AddToRoleAsync(user,UserRole.Member.ToString());
 
 			await _signInManager.SignInAsync(user, isPersistent: false);
 			if (user != null)

@@ -7,6 +7,7 @@ using EnchantElegance.Domain.Utilities.Extensions;
 using EnchantElegance.Application.Abstarctions.Services;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using EnchantElegance.Application.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EnchantElegance.Areas.Manage.Controllers
 {
@@ -19,6 +20,8 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		{
 			_service = service;
 		}
+		[Authorize(Roles = "SuperAdministrator,Administrator")]
+
 		public async Task<IActionResult> Index(int page = 1, int take = 3)
 		{
 
@@ -28,6 +31,8 @@ namespace EnchantElegance.Areas.Manage.Controllers
 				return NotFound();
 			return View(vm);
 		}
+		[Authorize(Roles = "SuperAdministrator,Administrator")]
+
 		public async Task<IActionResult> Create()
 		{
 			return View();
@@ -41,6 +46,8 @@ namespace EnchantElegance.Areas.Manage.Controllers
 			}
 			return View(sliderDTO);
 		}
+		[Authorize(Roles = "SuperAdministrator,Administrator")]
+
 		public async Task<IActionResult> Update(int id)
 		{
 			SliderUpdateDTO updateDTO = new SliderUpdateDTO();
@@ -55,6 +62,8 @@ namespace EnchantElegance.Areas.Manage.Controllers
 				return RedirectToAction(nameof(Index));
 			return View(await _service.GetProductForUpdateAsync(id,updateDTO));
 		}
+		[Authorize(Roles = "SuperAdministrator")]
+
 		public async Task<IActionResult> Delete(int id)
 		{
 			if (await _service.Delete(id))
