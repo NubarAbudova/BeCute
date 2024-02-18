@@ -3,7 +3,6 @@ using EnchantElegance.Application.Abstarctions.Services;
 using EnchantElegance.Application.DTOs;
 using EnchantElegance.Domain.Entities;
 using EnchantElegance.Domain.Enums;
-using EnchantElegance.Domain.Utilities.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -49,7 +48,8 @@ namespace EnchantElegance.Persistence.Implementations.Services
 				}
 				return false;
 			}
-			await _userManager.AddToRoleAsync(user,UserRole.Member.ToString());
+
+			await _userManager.AddToRoleAsync(user,UserRole.User.ToString());
 
 			await _signInManager.SignInAsync(user, isPersistent: false);
 			if (user != null)

@@ -16,6 +16,10 @@ namespace EnchantElegance.Persistence.Contexts
 		public DbSet<Color> Colors { get; set; }
 		public DbSet<ProductColor> ProductColors { get; set; }
 		public DbSet<Setting> Settings { get; set; }
+        public DbSet<Client> Clients { get; set; }
+		public DbSet<Employee> Employees { get; set; }
+
+
 
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)

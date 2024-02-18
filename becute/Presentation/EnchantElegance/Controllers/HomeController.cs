@@ -20,21 +20,24 @@ namespace EnchantElegance.Controllers
 			List<Category> categories = await _context.Categories.ToListAsync();
 			List<Color> colors = await _context.Colors.ToListAsync();
 			List<Product> products = await _context.Products.Include(p=>p.ProductImages).ToListAsync();
-
+			List<Client> clients = await _context.Clients.ToListAsync();
 
 			HomeVM homeVM = new HomeVM()
 			{
 				Sliders = sliders,
 				Categories = categories,
 				Products = products,
-				Colors=colors
+				Colors=colors,
+				Clients = clients
 			};
 
 			return View(homeVM);
 		}
-		public IActionResult CosmeticSpa()
+		public IActionResult PrivacyandPolicy()
 		{
 			return View();
 		}
+
+
 	}
 }

@@ -5,7 +5,6 @@ using EnchantElegance.Application.DTOs;
 using EnchantElegance.Application.ViewModels;
 using EnchantElegance.Domain.Entities;
 using EnchantElegance.Domain.Utilities.Extensions;
-using EnchantElegance.Persistence.Contexts;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
@@ -72,8 +71,6 @@ namespace EnchantElegance.Persistence.Implementations.Services
 				category.Image = fileName;
 			}
 
-
-		
 			await _categoryrepo.AddAsync(category);
 			await _categoryrepo.SaveChangesAsync();
 			return true;

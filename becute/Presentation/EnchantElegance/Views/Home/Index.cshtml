@@ -19,7 +19,7 @@
 												@slider.Name <br>
 											</h2>
 											<p class="slider__desc">@slider.SubTitle </p>
-											<a class="primary__btn slider__btn" href="shop.html">
+											<a class="primary__btn slider__btn" asp-controller="Shop" asp-action="Index">
 												SHOP NOW
 												<svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 													<path d="M15.9732 5.19375L11.1893 0.460018C11.1225 0.392216 11.0412 0.338185 10.9507 0.301395C10.8601 0.264605 10.7623 0.245867 10.6636 0.246372C10.5648 0.246877 10.4672 0.266615 10.377 0.304329C10.2869 0.342044 10.2061 0.396903 10.14 0.465385C10.001 0.610077 9.9245 0.79778 9.92549 0.992021C9.92649 1.18626 10.0049 1.37316 10.1454 1.51643L13.6531 4.9864L0.935903 5.05145C0.734471 5.06613 0.546408 5.15137 0.409525 5.29006C0.272641 5.42874 0.197086 5.61057 0.19805 5.799C0.199014 5.98743 0.276425 6.16848 0.41472 6.30575C0.553015 6.44303 0.74194 6.52635 0.943512 6.53896L13.6586 6.47392L10.1866 9.98155C10.0475 10.1262 9.97108 10.3139 9.97207 10.5082C9.97306 10.7024 10.0514 10.8893 10.192 11.0326C10.2588 11.1004 10.3401 11.1544 10.4306 11.1912C10.5212 11.228 10.6189 11.2467 10.7177 11.2462C10.8165 11.2457 10.9141 11.226 11.0042 11.1883C11.0944 11.1506 11.1751 11.0957 11.2413 11.0272L15.9786 6.25458C16.1206 6.1093 16.1989 5.91956 16.1979 5.72303C16.1969 5.5265 16.1167 5.33757 15.9732 5.19375Z" fill="currentColor" />
@@ -52,7 +52,7 @@
 					{
 						<div class="swiper-slide">
 							<div class="shop__collection--card text-center">
-								<a class="shop__collection--link" href="shop.html">
+								<a class="shop__collection--link" asp-controller="Shop" asp-action="Index" asp-route-id="@category.Id">
 									<img class="shop__collection--img" src="~/assets/img/@category.Image" alt="icon-img">
 									<h3 class="shop__collection--title">@category.Name</h3>
 									@* <span class="shop__collection--subtitle">@category.Description</span> *@
@@ -79,30 +79,23 @@
 				<div class="image__width--text__thumbnail position-relative">
 					<img src="~/assets/img/banner/banner1.webp" alt="image">
 					<div class="image__width--text">
-						<h2 class="image__width--text__title">Face Your Skin With Us</h2>
+						<h2 class="image__width--text__title">Complete your makeup with us</h2>
 						<p class="image__width--text__desc">
-							Kidlues ispum maruwes cnsectetur adipisicing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua.
+							The most beautiful makeup for a woman is passion.
+							But cosmetics are easier to buy.
 						</p>
 						<div class="image__width--text__footer">
-							<a class="image__width--text__link" href="shop.html">
+							<a class="image__width--text__link" asp-controller="Shop" asp-action="Index">
 								Shop Now
 								<svg width="9" height="12" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M1 1L7.96317 7.96317L1 14.9263" stroke="currentColor" stroke-width="2" />
-								</svg>
-							</a>
-							<a class="image__width--text__link glightbox" href="https://vimeo.com/115041822" data-gallery="video">
-								Play Video
-								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<circle cx="10" cy="10" r="9.75" fill="#F7EEDD" stroke="black" stroke-width="0.5" />
-									<path d="M15 10L7.5 14.3301L7.5 5.66987L15 10Z" fill="black" />
 								</svg>
 							</a>
 						</div>
 					</div>
 				</div>
 				<div class="image__width--text__thumbnail thumbnail2">
-					<img src="~/assets/img/banner/banner2.webp" alt="image">
+					<img style="widht:570px;height:570px;" src="~/assets/img/pngtree-lady-putting-on-makeup-png-image_13229065.png" alt="image">
 				</div>
 			</div>
 		</div>
@@ -122,23 +115,14 @@
 			<div class="container">
 				<div class="video__banner--inner d-flex align-items-end">
 					<div class="video__banner--box position-relative">
-						<img class="video__banner--box__thumbnail" src="~/assets/img/banner/banner3.webp" alt="banner-img">
-						<div class="bideo__play">
-							<a class="bideo__play--icon glightbox" href="https://vimeo.com/115041822" data-gallery="video">
-								<svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M16.5 9.13398C17.1667 9.51888 17.1667 10.4811 16.5 10.866L1.5 19.5263C0.833335 19.9112 9.70611e-07 19.4301 1.00426e-06 18.6603L1.76136e-06 1.33975C1.79501e-06 0.569945 0.833335 0.0888201 1.5 0.47372L16.5 9.13398Z" fill="currentColor" />
-								</svg>
-								<span class="visually-hidden">Video Play</span>
-							</a>
-						</div>
+						<img class="video__banner--box__thumbnail" src="~/assets/img/istockphoto-1688458419-612x612.jpg" alt="banner-img">
 					</div>
 					<div class="video__banner--content">
 						<h2 class="video__banner--content__title">
-							Beauty products that
-							really work
+							– Roberta Gately
 						</h2>
-						<p class="video__banner--content__desc">Our formulations have proven efficacy, contain organic ingredients only and are 100% cruelty free</p>
-						<a class="video__banner--content__btn primary__btn" href="shop.html">SKINCARE</a>
+						<p class="video__banner--content__desc">“Lipstick is really magical. It holds more than a waxy bit of color – it holds the promise of a brilliant smile, a brilliant day, both literally and figuratively.” </p>
+						<a class="video__banner--content__btn primary__btn" asp-controller="Shop" asp-action="Index">Shop Now</a>
 					</div>
 				</div>
 			</div>
@@ -280,10 +264,10 @@
 	<section class="product__section section--padding ">
 		<div class="container">
 			<div class="section__heading text-center mb-40">
-				<h2 class="section__heading--maintitle">Deals of the week!</h2>
+				<h2 class="section__heading--maintitle">Women's Day Deals!</h2>
 			</div>
 			<div class="product__section--border position-relative">
-				<div class="product__section--countdown d-flex justify-content-center" data-countdown="Sep 30, 2025 00:00:00"></div>
+				<div class="product__section--countdown d-flex justify-content-center" data-countdown="March 10, 2024 00:00:00"></div>
 				<div class="product__section--inner product__swiper--column4  padding swiper">
 					<div class="swiper-wrapper">
 				@foreach (Product product in Model.Products)
@@ -372,7 +356,7 @@
 												<span class="rating__review--text">(126) Review</span>
 											</li>
 										</ul>
-										<h3 class="product__card--title"><a href="product-details.html">@product.Name </a></h3>
+										<h3 class="product__card--title"><a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id">@product.Name </a></h3>
 										<div class="product__card--price">
 											<span class="current__price">$@product.OldPrice</span>
 											<span class="old__price"> $@product.CurrentPrice</span>
@@ -410,7 +394,7 @@
 							<h3 class="banner__fullwidth--content__subtitle">SPECIAL OFFER</h3>
 							<h2 class="banner__fullwidth--content__title">Set For A Good Time</h2>
 							<p class="banner__fullwidth--content__desc">We are committed to offering the finest selection of clean and natural skin care products created by the world’s leading brands that are pioneers in innovation, science, technology, and sustainability.</p>
-							<a class="banner__fullwidth--content__btn primary__btn" href="#">SHOP NOW</a>
+							<a class="banner__fullwidth--content__btn primary__btn" asp-controller="Shop" asp-action="Index">SHOP NOW</a>
 						</div>
 					</div>
 				</div>
@@ -422,45 +406,13 @@
 	<section class="skin__advice--section section--padding">
 		<div class="container">
 			<div class="skin__advice--content text-center">
-				<h2 class="skin__advice--content__title">Truly love the skin you're in</h2>
-				<p class="skin__advice--content__desc">Our vision is to give melanin rich skin the attention it deserves. We don't want to just nurture your skin—we want you to discover the beauty that lies within.</p>
-				<h3 class="skin__advice--content__subtitle">Everyone needs a Iil' Buttah – baby!</h3>
+				<h2 class="skin__advice--content__title">Quotes</h2>
+				<p class="skin__advice--content__desc">I feel beautiful without makeup on, but when I do put makeup on, it just gives me this extra pop.</p>
+				<h3 class="skin__advice--content__subtitle">Have a better relationship with your makeup and take the time to learn what your products will do.!</h3>
 			</div>
 		</div>
 	</section>
 	<!-- End skin advice section -->
-	<!-- Start banner section -->
-	<section class="banner__section section--padding pt-0">
-		<div class="container">
-			<div class="row mb--n30">
-				<div class="col-lg-6 col-md-6 mb-30">
-					<div class="banner__box border-radius-5 position-relative">
-						<a class="display-block" href="shop.html">
-							<img class="banner__box--thumbnail border-radius-5" src="~/assets/img/banner/banner7.webp" alt="banner-img">
-							<div class="banner__box--content">
-								<h2 class="banner__box--content__title ">Beauty Box</h2>
-								<p class="banner__box--content__desc">Freshwater pearl necklace and earrings</p>
-								<span class="banner__box--content__btn primary__btn">EXPLORE </span>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 mb-30">
-					<div class="banner__box border-radius-5 position-relative">
-						<a class="display-block" href="shop.html">
-							<img class="banner__box--thumbnail border-radius-5" src="~/assets/img/banner/banner8.webp" alt="banner-img">
-							<div class="banner__box--content">
-								<h2 class="banner__box--content__title ">Organic Serium</h2>
-								<p class="banner__box--content__desc">Freshwater pearl necklace and</p>
-								<span class="banner__box--content__btn primary__btn style2">EXPLORE </span>
-							</div>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End banner section -->
 	<!-- Start testimonial section -->
 	<section class="testimonial__section testimonial__bg section--padding">
 		<div class="container">
@@ -469,234 +421,65 @@
 			</div>
 			<div class="testimonial__section--inner testimonial__swiper--activation swiper">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<div class="testimonial__items">
-							<div class="testimonial__author d-flex align-items-center">
-								<div class="testimonial__author__thumbnail">
-									<img src="~/assets/img/other/testimonial1.webp" alt="testimonial-img">
+				@foreach (var client in Model.Clients)
+					{
+						<div class="swiper-slide">
+							<div class="testimonial__items">
+								<div class="testimonial__author d-flex align-items-center">
+									<div class="testimonial__author__thumbnail">
+										<img src="~/assets/img/@client.Image" alt="testimonial-img">
+									</div>
+									<div class="testimonial__author--text">
+										<h3 class="testimonial__author--title">@client.Name</h3>
+										<span class="testimonial__author--subtitle">@client.Profession</span>
+										<ul class="rating testimonial__rating d-flex">
+											<li class="rating__list">
+												<span class="rating__icon">
+													<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M6.08398 0.921875L4.56055 4.03906L1.11523 4.53125C0.505859 4.625 0.271484 5.375 0.716797 5.82031L3.17773 8.23438L2.5918 11.6328C2.49805 12.2422 3.1543 12.7109 3.69336 12.4297L6.76367 10.8125L9.81055 12.4297C10.3496 12.7109 11.0059 12.2422 10.9121 11.6328L10.3262 8.23438L12.7871 5.82031C13.2324 5.375 12.998 4.625 12.3887 4.53125L8.9668 4.03906L7.41992 0.921875C7.16211 0.382812 6.36523 0.359375 6.08398 0.921875Z" fill="currentColor"></path>
+													</svg>
+												</span>
+											</li>
+											<li class="rating__list">
+												<span class="rating__icon">
+													<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M6.08398 0.921875L4.56055 4.03906L1.11523 4.53125C0.505859 4.625 0.271484 5.375 0.716797 5.82031L3.17773 8.23438L2.5918 11.6328C2.49805 12.2422 3.1543 12.7109 3.69336 12.4297L6.76367 10.8125L9.81055 12.4297C10.3496 12.7109 11.0059 12.2422 10.9121 11.6328L10.3262 8.23438L12.7871 5.82031C13.2324 5.375 12.998 4.625 12.3887 4.53125L8.9668 4.03906L7.41992 0.921875C7.16211 0.382812 6.36523 0.359375 6.08398 0.921875Z" fill="currentColor"></path>
+													</svg>
+												</span>
+											</li>
+											<li class="rating__list">
+												<span class="rating__icon">
+													<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M6.08398 0.921875L4.56055 4.03906L1.11523 4.53125C0.505859 4.625 0.271484 5.375 0.716797 5.82031L3.17773 8.23438L2.5918 11.6328C2.49805 12.2422 3.1543 12.7109 3.69336 12.4297L6.76367 10.8125L9.81055 12.4297C10.3496 12.7109 11.0059 12.2422 10.9121 11.6328L10.3262 8.23438L12.7871 5.82031C13.2324 5.375 12.998 4.625 12.3887 4.53125L8.9668 4.03906L7.41992 0.921875C7.16211 0.382812 6.36523 0.359375 6.08398 0.921875Z" fill="currentColor"></path>
+													</svg>
+												</span>
+											</li>
+											<li class="rating__list">
+												<span class="rating__icon">
+													<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M12.4141 4.53125L8.99219 4.03906L7.44531 0.921875C7.1875 0.382812 6.39062 0.359375 6.10938 0.921875L4.58594 4.03906L1.14062 4.53125C0.53125 4.625 0.296875 5.375 0.742188 5.82031L3.20312 8.23438L2.61719 11.6328C2.52344 12.2422 3.17969 12.7109 3.71875 12.4297L6.78906 10.8125L9.83594 12.4297C10.375 12.7109 11.0312 12.2422 10.9375 11.6328L10.3516 8.23438L12.8125 5.82031C13.2578 5.375 13.0234 4.625 12.4141 4.53125ZM9.53125 7.95312L10.1875 11.75L6.78906 9.96875L3.36719 11.75L4.02344 7.95312L1.25781 5.28125L5.07812 4.71875L6.78906 1.25L8.47656 4.71875L12.2969 5.28125L9.53125 7.95312Z" fill="currentColor"></path>
+													</svg>
+												</span>
+											</li>
+											<li class="rating__list">
+												<span class="rating__icon">
+													<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M12.4141 4.53125L8.99219 4.03906L7.44531 0.921875C7.1875 0.382812 6.39062 0.359375 6.10938 0.921875L4.58594 4.03906L1.14062 4.53125C0.53125 4.625 0.296875 5.375 0.742188 5.82031L3.20312 8.23438L2.61719 11.6328C2.52344 12.2422 3.17969 12.7109 3.71875 12.4297L6.78906 10.8125L9.83594 12.4297C10.375 12.7109 11.0312 12.2422 10.9375 11.6328L10.3516 8.23438L12.8125 5.82031C13.2578 5.375 13.0234 4.625 12.4141 4.53125ZM9.53125 7.95312L10.1875 11.75L6.78906 9.96875L3.36719 11.75L4.02344 7.95312L1.25781 5.28125L5.07812 4.71875L6.78906 1.25L8.47656 4.71875L12.2969 5.28125L9.53125 7.95312Z" fill="currentColor"></path>
+													</svg>
+												</span>
+											</li>
+										</ul>
+									</div>
 								</div>
-								<div class="testimonial__author--text">
-									<h3 class="testimonial__author--title">Michael	Linda</h3>
-									<span class="testimonial__author--subtitle">Beautician</span>
-									<ul class="rating testimonial__rating d-flex">
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M6.08398 0.921875L4.56055 4.03906L1.11523 4.53125C0.505859 4.625 0.271484 5.375 0.716797 5.82031L3.17773 8.23438L2.5918 11.6328C2.49805 12.2422 3.1543 12.7109 3.69336 12.4297L6.76367 10.8125L9.81055 12.4297C10.3496 12.7109 11.0059 12.2422 10.9121 11.6328L10.3262 8.23438L12.7871 5.82031C13.2324 5.375 12.998 4.625 12.3887 4.53125L8.9668 4.03906L7.41992 0.921875C7.16211 0.382812 6.36523 0.359375 6.08398 0.921875Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M6.08398 0.921875L4.56055 4.03906L1.11523 4.53125C0.505859 4.625 0.271484 5.375 0.716797 5.82031L3.17773 8.23438L2.5918 11.6328C2.49805 12.2422 3.1543 12.7109 3.69336 12.4297L6.76367 10.8125L9.81055 12.4297C10.3496 12.7109 11.0059 12.2422 10.9121 11.6328L10.3262 8.23438L12.7871 5.82031C13.2324 5.375 12.998 4.625 12.3887 4.53125L8.9668 4.03906L7.41992 0.921875C7.16211 0.382812 6.36523 0.359375 6.08398 0.921875Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M6.08398 0.921875L4.56055 4.03906L1.11523 4.53125C0.505859 4.625 0.271484 5.375 0.716797 5.82031L3.17773 8.23438L2.5918 11.6328C2.49805 12.2422 3.1543 12.7109 3.69336 12.4297L6.76367 10.8125L9.81055 12.4297C10.3496 12.7109 11.0059 12.2422 10.9121 11.6328L10.3262 8.23438L12.7871 5.82031C13.2324 5.375 12.998 4.625 12.3887 4.53125L8.9668 4.03906L7.41992 0.921875C7.16211 0.382812 6.36523 0.359375 6.08398 0.921875Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M12.4141 4.53125L8.99219 4.03906L7.44531 0.921875C7.1875 0.382812 6.39062 0.359375 6.10938 0.921875L4.58594 4.03906L1.14062 4.53125C0.53125 4.625 0.296875 5.375 0.742188 5.82031L3.20312 8.23438L2.61719 11.6328C2.52344 12.2422 3.17969 12.7109 3.71875 12.4297L6.78906 10.8125L9.83594 12.4297C10.375 12.7109 11.0312 12.2422 10.9375 11.6328L10.3516 8.23438L12.8125 5.82031C13.2578 5.375 13.0234 4.625 12.4141 4.53125ZM9.53125 7.95312L10.1875 11.75L6.78906 9.96875L3.36719 11.75L4.02344 7.95312L1.25781 5.28125L5.07812 4.71875L6.78906 1.25L8.47656 4.71875L12.2969 5.28125L9.53125 7.95312Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M12.4141 4.53125L8.99219 4.03906L7.44531 0.921875C7.1875 0.382812 6.39062 0.359375 6.10938 0.921875L4.58594 4.03906L1.14062 4.53125C0.53125 4.625 0.296875 5.375 0.742188 5.82031L3.20312 8.23438L2.61719 11.6328C2.52344 12.2422 3.17969 12.7109 3.71875 12.4297L6.78906 10.8125L9.83594 12.4297C10.375 12.7109 11.0312 12.2422 10.9375 11.6328L10.3516 8.23438L12.8125 5.82031C13.2578 5.375 13.0234 4.625 12.4141 4.53125ZM9.53125 7.95312L10.1875 11.75L6.78906 9.96875L3.36719 11.75L4.02344 7.95312L1.25781 5.28125L5.07812 4.71875L6.78906 1.25L8.47656 4.71875L12.2969 5.28125L9.53125 7.95312Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-									</ul>
+								<div class="testimonial__content">
+									<p class="testimonial__desc">
+									@client.Description
+									</p>
+									<img class="testimonial__vector--icon" src="~/assets/img/icon/vector-icon.webp" alt="icon">
 								</div>
 							</div>
-							<div class="testimonial__content">
-								<p class="testimonial__desc">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-								</p>
-								<img class="testimonial__vector--icon" src="~/assets/img/icon/vector-icon.webp" alt="icon">
-							</div>
-
 						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="testimonial__items">
-							<div class="testimonial__author d-flex align-items-center">
-								<div class="testimonial__author__thumbnail">
-									<img src="~/assets/img/other/testimonial2.webp" alt="testimonial-img">
-								</div>
-								<div class="testimonial__author--text">
-									<h3 class="testimonial__author--title">Lee Barners</h3>
-									<span class="testimonial__author--subtitle">Beautician</span>
-									<ul class="rating testimonial__rating d-flex">
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M6.08398 0.921875L4.56055 4.03906L1.11523 4.53125C0.505859 4.625 0.271484 5.375 0.716797 5.82031L3.17773 8.23438L2.5918 11.6328C2.49805 12.2422 3.1543 12.7109 3.69336 12.4297L6.76367 10.8125L9.81055 12.4297C10.3496 12.7109 11.0059 12.2422 10.9121 11.6328L10.3262 8.23438L12.7871 5.82031C13.2324 5.375 12.998 4.625 12.3887 4.53125L8.9668 4.03906L7.41992 0.921875C7.16211 0.382812 6.36523 0.359375 6.08398 0.921875Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M6.08398 0.921875L4.56055 4.03906L1.11523 4.53125C0.505859 4.625 0.271484 5.375 0.716797 5.82031L3.17773 8.23438L2.5918 11.6328C2.49805 12.2422 3.1543 12.7109 3.69336 12.4297L6.76367 10.8125L9.81055 12.4297C10.3496 12.7109 11.0059 12.2422 10.9121 11.6328L10.3262 8.23438L12.7871 5.82031C13.2324 5.375 12.998 4.625 12.3887 4.53125L8.9668 4.03906L7.41992 0.921875C7.16211 0.382812 6.36523 0.359375 6.08398 0.921875Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M6.08398 0.921875L4.56055 4.03906L1.11523 4.53125C0.505859 4.625 0.271484 5.375 0.716797 5.82031L3.17773 8.23438L2.5918 11.6328C2.49805 12.2422 3.1543 12.7109 3.69336 12.4297L6.76367 10.8125L9.81055 12.4297C10.3496 12.7109 11.0059 12.2422 10.9121 11.6328L10.3262 8.23438L12.7871 5.82031C13.2324 5.375 12.998 4.625 12.3887 4.53125L8.9668 4.03906L7.41992 0.921875C7.16211 0.382812 6.36523 0.359375 6.08398 0.921875Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M12.4141 4.53125L8.99219 4.03906L7.44531 0.921875C7.1875 0.382812 6.39062 0.359375 6.10938 0.921875L4.58594 4.03906L1.14062 4.53125C0.53125 4.625 0.296875 5.375 0.742188 5.82031L3.20312 8.23438L2.61719 11.6328C2.52344 12.2422 3.17969 12.7109 3.71875 12.4297L6.78906 10.8125L9.83594 12.4297C10.375 12.7109 11.0312 12.2422 10.9375 11.6328L10.3516 8.23438L12.8125 5.82031C13.2578 5.375 13.0234 4.625 12.4141 4.53125ZM9.53125 7.95312L10.1875 11.75L6.78906 9.96875L3.36719 11.75L4.02344 7.95312L1.25781 5.28125L5.07812 4.71875L6.78906 1.25L8.47656 4.71875L12.2969 5.28125L9.53125 7.95312Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M12.4141 4.53125L8.99219 4.03906L7.44531 0.921875C7.1875 0.382812 6.39062 0.359375 6.10938 0.921875L4.58594 4.03906L1.14062 4.53125C0.53125 4.625 0.296875 5.375 0.742188 5.82031L3.20312 8.23438L2.61719 11.6328C2.52344 12.2422 3.17969 12.7109 3.71875 12.4297L6.78906 10.8125L9.83594 12.4297C10.375 12.7109 11.0312 12.2422 10.9375 11.6328L10.3516 8.23438L12.8125 5.82031C13.2578 5.375 13.0234 4.625 12.4141 4.53125ZM9.53125 7.95312L10.1875 11.75L6.78906 9.96875L3.36719 11.75L4.02344 7.95312L1.25781 5.28125L5.07812 4.71875L6.78906 1.25L8.47656 4.71875L12.2969 5.28125L9.53125 7.95312Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="testimonial__content">
-								<p class="testimonial__desc">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-								</p>
-								<img class="testimonial__vector--icon" src="~/assets/img/icon/vector-icon.webp" alt="icon">
-							</div>
-
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="testimonial__items">
-							<div class="testimonial__author d-flex align-items-center">
-								<div class="testimonial__author__thumbnail">
-									<img src="~/assets/img/other/testimonial3.webp" alt="testimonial-img">
-								</div>
-								<div class="testimonial__author--text">
-									<h3 class="testimonial__author--title">Michael	Linda</h3>
-									<span class="testimonial__author--subtitle">Beautician</span>
-									<ul class="rating testimonial__rating d-flex">
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M6.08398 0.921875L4.56055 4.03906L1.11523 4.53125C0.505859 4.625 0.271484 5.375 0.716797 5.82031L3.17773 8.23438L2.5918 11.6328C2.49805 12.2422 3.1543 12.7109 3.69336 12.4297L6.76367 10.8125L9.81055 12.4297C10.3496 12.7109 11.0059 12.2422 10.9121 11.6328L10.3262 8.23438L12.7871 5.82031C13.2324 5.375 12.998 4.625 12.3887 4.53125L8.9668 4.03906L7.41992 0.921875C7.16211 0.382812 6.36523 0.359375 6.08398 0.921875Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M6.08398 0.921875L4.56055 4.03906L1.11523 4.53125C0.505859 4.625 0.271484 5.375 0.716797 5.82031L3.17773 8.23438L2.5918 11.6328C2.49805 12.2422 3.1543 12.7109 3.69336 12.4297L6.76367 10.8125L9.81055 12.4297C10.3496 12.7109 11.0059 12.2422 10.9121 11.6328L10.3262 8.23438L12.7871 5.82031C13.2324 5.375 12.998 4.625 12.3887 4.53125L8.9668 4.03906L7.41992 0.921875C7.16211 0.382812 6.36523 0.359375 6.08398 0.921875Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M6.08398 0.921875L4.56055 4.03906L1.11523 4.53125C0.505859 4.625 0.271484 5.375 0.716797 5.82031L3.17773 8.23438L2.5918 11.6328C2.49805 12.2422 3.1543 12.7109 3.69336 12.4297L6.76367 10.8125L9.81055 12.4297C10.3496 12.7109 11.0059 12.2422 10.9121 11.6328L10.3262 8.23438L12.7871 5.82031C13.2324 5.375 12.998 4.625 12.3887 4.53125L8.9668 4.03906L7.41992 0.921875C7.16211 0.382812 6.36523 0.359375 6.08398 0.921875Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M12.4141 4.53125L8.99219 4.03906L7.44531 0.921875C7.1875 0.382812 6.39062 0.359375 6.10938 0.921875L4.58594 4.03906L1.14062 4.53125C0.53125 4.625 0.296875 5.375 0.742188 5.82031L3.20312 8.23438L2.61719 11.6328C2.52344 12.2422 3.17969 12.7109 3.71875 12.4297L6.78906 10.8125L9.83594 12.4297C10.375 12.7109 11.0312 12.2422 10.9375 11.6328L10.3516 8.23438L12.8125 5.82031C13.2578 5.375 13.0234 4.625 12.4141 4.53125ZM9.53125 7.95312L10.1875 11.75L6.78906 9.96875L3.36719 11.75L4.02344 7.95312L1.25781 5.28125L5.07812 4.71875L6.78906 1.25L8.47656 4.71875L12.2969 5.28125L9.53125 7.95312Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M12.4141 4.53125L8.99219 4.03906L7.44531 0.921875C7.1875 0.382812 6.39062 0.359375 6.10938 0.921875L4.58594 4.03906L1.14062 4.53125C0.53125 4.625 0.296875 5.375 0.742188 5.82031L3.20312 8.23438L2.61719 11.6328C2.52344 12.2422 3.17969 12.7109 3.71875 12.4297L6.78906 10.8125L9.83594 12.4297C10.375 12.7109 11.0312 12.2422 10.9375 11.6328L10.3516 8.23438L12.8125 5.82031C13.2578 5.375 13.0234 4.625 12.4141 4.53125ZM9.53125 7.95312L10.1875 11.75L6.78906 9.96875L3.36719 11.75L4.02344 7.95312L1.25781 5.28125L5.07812 4.71875L6.78906 1.25L8.47656 4.71875L12.2969 5.28125L9.53125 7.95312Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="testimonial__content">
-								<p class="testimonial__desc">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-								</p>
-								<img class="testimonial__vector--icon" src="~/assets/img/icon/vector-icon.webp" alt="icon">
-							</div>
-
-						</div>
-					</div>
-					<div class="swiper-slide">
-						<div class="testimonial__items">
-							<div class="testimonial__author d-flex align-items-center">
-								<div class="testimonial__author__thumbnail">
-									<img src="~/assets/img/other/testimonial4.webp" alt="testimonial-img">
-								</div>
-								<div class="testimonial__author--text">
-									<h3 class="testimonial__author--title">Lee Barners</h3>
-									<span class="testimonial__author--subtitle">Beautician</span>
-									<ul class="rating testimonial__rating d-flex">
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M6.08398 0.921875L4.56055 4.03906L1.11523 4.53125C0.505859 4.625 0.271484 5.375 0.716797 5.82031L3.17773 8.23438L2.5918 11.6328C2.49805 12.2422 3.1543 12.7109 3.69336 12.4297L6.76367 10.8125L9.81055 12.4297C10.3496 12.7109 11.0059 12.2422 10.9121 11.6328L10.3262 8.23438L12.7871 5.82031C13.2324 5.375 12.998 4.625 12.3887 4.53125L8.9668 4.03906L7.41992 0.921875C7.16211 0.382812 6.36523 0.359375 6.08398 0.921875Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M6.08398 0.921875L4.56055 4.03906L1.11523 4.53125C0.505859 4.625 0.271484 5.375 0.716797 5.82031L3.17773 8.23438L2.5918 11.6328C2.49805 12.2422 3.1543 12.7109 3.69336 12.4297L6.76367 10.8125L9.81055 12.4297C10.3496 12.7109 11.0059 12.2422 10.9121 11.6328L10.3262 8.23438L12.7871 5.82031C13.2324 5.375 12.998 4.625 12.3887 4.53125L8.9668 4.03906L7.41992 0.921875C7.16211 0.382812 6.36523 0.359375 6.08398 0.921875Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M6.08398 0.921875L4.56055 4.03906L1.11523 4.53125C0.505859 4.625 0.271484 5.375 0.716797 5.82031L3.17773 8.23438L2.5918 11.6328C2.49805 12.2422 3.1543 12.7109 3.69336 12.4297L6.76367 10.8125L9.81055 12.4297C10.3496 12.7109 11.0059 12.2422 10.9121 11.6328L10.3262 8.23438L12.7871 5.82031C13.2324 5.375 12.998 4.625 12.3887 4.53125L8.9668 4.03906L7.41992 0.921875C7.16211 0.382812 6.36523 0.359375 6.08398 0.921875Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M12.4141 4.53125L8.99219 4.03906L7.44531 0.921875C7.1875 0.382812 6.39062 0.359375 6.10938 0.921875L4.58594 4.03906L1.14062 4.53125C0.53125 4.625 0.296875 5.375 0.742188 5.82031L3.20312 8.23438L2.61719 11.6328C2.52344 12.2422 3.17969 12.7109 3.71875 12.4297L6.78906 10.8125L9.83594 12.4297C10.375 12.7109 11.0312 12.2422 10.9375 11.6328L10.3516 8.23438L12.8125 5.82031C13.2578 5.375 13.0234 4.625 12.4141 4.53125ZM9.53125 7.95312L10.1875 11.75L6.78906 9.96875L3.36719 11.75L4.02344 7.95312L1.25781 5.28125L5.07812 4.71875L6.78906 1.25L8.47656 4.71875L12.2969 5.28125L9.53125 7.95312Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-										<li class="rating__list">
-											<span class="rating__icon">
-												<svg width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M12.4141 4.53125L8.99219 4.03906L7.44531 0.921875C7.1875 0.382812 6.39062 0.359375 6.10938 0.921875L4.58594 4.03906L1.14062 4.53125C0.53125 4.625 0.296875 5.375 0.742188 5.82031L3.20312 8.23438L2.61719 11.6328C2.52344 12.2422 3.17969 12.7109 3.71875 12.4297L6.78906 10.8125L9.83594 12.4297C10.375 12.7109 11.0312 12.2422 10.9375 11.6328L10.3516 8.23438L12.8125 5.82031C13.2578 5.375 13.0234 4.625 12.4141 4.53125ZM9.53125 7.95312L10.1875 11.75L6.78906 9.96875L3.36719 11.75L4.02344 7.95312L1.25781 5.28125L5.07812 4.71875L6.78906 1.25L8.47656 4.71875L12.2969 5.28125L9.53125 7.95312Z" fill="currentColor"></path>
-												</svg>
-											</span>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="testimonial__content">
-								<p class="testimonial__desc">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-								</p>
-								<img class="testimonial__vector--icon" src="~/assets/img/icon/vector-icon.webp" alt="icon">
-							</div>
-
-						</div>
-					</div>
+					}
 				</div>
 				<div class="testimonial__pagination swiper-pagination"></div>
 			</div>

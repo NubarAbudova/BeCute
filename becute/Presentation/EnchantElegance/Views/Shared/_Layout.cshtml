@@ -78,7 +78,7 @@
 		<div class="header__topbar bg__primary">
 			<div class="container">
 				<div class="header__topbar--inner text-center">
-					<p class="header__info--text text-white">Beauty begins the moment you decide to be yourself!</p>
+					<p class="header__info--text text-white">BeCute - Where Your Beauty Shines!</p>
 				</div>
 			</div>
 		</div>
@@ -124,13 +124,25 @@
 										</svg>
 									</a>
 									<ul class="header__sub--menu">
-										<li class="header__sub--menu__items"><a asp-controller="Home" asp-action="Index" class="header__sub--menu__link">Shop List</a></li>
+										<li class="header__sub--menu__items"><a asp-controller="Shop" asp-action="Index" class="header__sub--menu__link">Shop List</a></li>
 
-										<li class="header__sub--menu__items"><a asp-controller="Home" asp-action="Index" class="header__sub--menu__link">Wish List</a></li>
+										<li class="header__sub--menu__items"><a asp-controller="Shop" asp-action="Index" class="header__sub--menu__link">Wish List</a></li>
 									</ul>
 								</li>
 								<li class="header__menu--items">
-									<a class="header__menu--link" href="shop.html">About Us </a>
+									<a class="header__menu--link active" asp-controller="AboutUs" asp-action="Index">
+										>
+										About Us
+										<svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12" height="7.41" viewBox="0 0 12 7.41">
+											<path d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7" />
+										</svg>
+									</a>
+									<ul class="header__sub--menu">
+										<li class="header__sub--menu__items"><a asp-controller="AboutUs" asp-action="Index" class="header__sub--menu__link">About Us</a></li>
+									</ul>
+									<ul class="header__sub--menu">
+										<li class="header__sub--menu__items"><a asp-controller="Home" asp-action="PrivacyandPolicy" class="header__sub--menu__link">Privacy and Policy</a></li>
+									</ul>
 								</li>
 								<li class="header__menu--items">
 									<a class="header__menu--link" href="contact.html">Contact </a>
@@ -294,7 +306,7 @@
 					<div class="col-lg-4 col-md-8">
 						<div class="footer__widget">
 							<h2 class="footer__widget--title d-none d-sm-u-block">
-								About Us <button class="footer__widget--button" aria-label="footer widget button"></button>
+								<a asp-controller="AboutUs" asp-action="Index">  </a>About Us <button class="footer__widget--button" aria-label="footer widget button"></button>
 								<svg class="footer__widget--title__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12.355" height="8.394" viewBox="0 0 10.355 6.394">
 									<path d="M15.138,8.59l-3.961,3.952L7.217,8.59,6,9.807l5.178,5.178,5.178-5.178Z" transform="translate(-6 -8.59)" fill="currentColor"></path>
 								</svg>
@@ -340,7 +352,7 @@
 							</h2>
 							<ul class="footer__widget--menu footer__widget--inner">
 								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="contact.html">Contact Us</a></li>
-								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="about.html">About Us</a></li>
+								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" asp-controller="AboutUs" asp-action="Index">About Us</a></li>
 								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="privacy-policy.html">Privacy Policy</a></li>
 								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="faq.html">Frequently</a></li>
 							</ul>
