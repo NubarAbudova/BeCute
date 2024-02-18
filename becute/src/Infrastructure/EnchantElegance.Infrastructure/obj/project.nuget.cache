@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IqXI+idE85zB5kqOZ98lg1CFY5lli38UiXS15LXG09yaHbfW2zRXFz8ibhdWzwef7s0sLf2CffGzMH9eAg2ieA==",
+  "dgSpecHash": "Ja79j6KA3+/0aLUr1zgMv7s+4w/hkQKBQ9H9mJRjbXR+hjgNPFb9ST/hx0vxCzsXTdTmKBBvcdSe3ovPP4BnOw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Infrastructure\\EnchantElegance.Infrastructure\\EnchantElegance.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\Nubar\\Desktop\\BeCute\\becute\\src\\Infrastructure\\EnchantElegance.Infrastructure\\EnchantElegance.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nubar\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Nubar\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

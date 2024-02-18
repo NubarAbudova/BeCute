@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XhaWx1A/mZ3iC40tJDrhZKaPNhfzjjc7Z0R7bF+RGOx1TywosntBZAPphQpxmZM2GUKNiaGqxAMeEsZilh6hhA==",
+  "dgSpecHash": "Qrm0o4B02g21VNKFHYL0c1HqltRE60GWSbCaQGVRru6X1ZYh1YeG0KvKl502yapPauRI26RpBRbr0BAAFOypWg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Domain\\EnchantElegance.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Nubar\\Desktop\\BeCute\\becute\\src\\Core\\EnchantElegance.Domain\\EnchantElegance.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nubar\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.25\\microsoft.aspnetcore.cryptography.internal.6.0.25.nupkg.sha512",
     "C:\\Users\\Nubar\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.25\\microsoft.aspnetcore.cryptography.keyderivation.6.0.25.nupkg.sha512",

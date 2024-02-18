@@ -9,165 +9,165 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = EnchantElegance
 build_property.RootNamespace = EnchantElegance
-build_property.ProjectDir = C:\Users\Nubar\Desktop\becute\becute\Presentation\EnchantElegance\
+build_property.ProjectDir = C:\Users\Nubar\Desktop\BeCute\becute\Presentation\EnchantElegance\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Nubar\Desktop\becute\becute\Presentation\EnchantElegance
+build_property.MSBuildProjectDirectory = C:\Users\Nubar\Desktop\BeCute\becute\Presentation\EnchantElegance
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Category/Create.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Category/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXENhdGVnb3J5XENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Category/Index.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXENhdGVnb3J5XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Category/Update.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Category/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXENhdGVnb3J5XFVwZGF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Client/Create.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Client/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXENsaWVudFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Client/Index.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Client/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXENsaWVudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Client/Update.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Client/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXENsaWVudFxVcGRhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Color/Create.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Color/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXENvbG9yXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Color/Index.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Color/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXENvbG9yXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Color/Update.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Color/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXENvbG9yXFVwZGF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Dashboard/Index.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXERhc2hib2FyZFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Employee/Create.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Employee/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEVtcGxveWVlXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Employee/Index.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Employee/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEVtcGxveWVlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Employee/Update.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Employee/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXEVtcGxveWVlXFVwZGF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Product/Create.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Product/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFByb2R1Y3RcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Product/Index.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFByb2R1Y3RcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Product/Update.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Product/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFByb2R1Y3RcVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Shared/_AdminLayout.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFNoYXJlZFxfQWRtaW5MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Slider/Create.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Slider/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFNsaWRlclxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Slider/Index.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Slider/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFNsaWRlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Slider/Update.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/Slider/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXFNsaWRlclxVcGRhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/_ViewImports.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Areas/Manage/Views/_ViewStart.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Areas/Manage/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcTWFuYWdlXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Views/AboutUs/Index.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Views/AboutUs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJvdXRVc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Views/Account/ForgotPassword.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Views/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Views/Account/Login.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Views/Account/Register.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Views/Account/ResetPassword.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Views/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Views/Basket/Index.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Views/Basket/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFza2V0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Views/Home/Index.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Views/Home/Privacy.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Views/Home/PrivacyandPolicy.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Views/Home/PrivacyandPolicy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5YW5kUG9saWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Views/Product/Detail.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Views/Product/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Views/Shared/Error.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Views/Shared/ProductPartialView.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Views/Shared/ProductPartialView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFByb2R1Y3RQYXJ0aWFsVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Views/Shop/Index.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Views/Shop/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hvcFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Views/_ViewImports.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Views/_ViewStart.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nubar/Desktop/becute/becute/Presentation/EnchantElegance/Views/Shared/_Layout.cshtml]
+[C:/Users/Nubar/Desktop/BeCute/becute/Presentation/EnchantElegance/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-pgrs7w2u96

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Domain\\EnchantElegance.Domain.csproj": {}
+    "C:\\Users\\Nubar\\Desktop\\BeCute\\becute\\src\\Core\\EnchantElegance.Domain\\EnchantElegance.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Domain\\EnchantElegance.Domain.csproj": {
+    "C:\\Users\\Nubar\\Desktop\\BeCute\\becute\\src\\Core\\EnchantElegance.Domain\\EnchantElegance.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Domain\\EnchantElegance.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Nubar\\Desktop\\BeCute\\becute\\src\\Core\\EnchantElegance.Domain\\EnchantElegance.Domain.csproj",
         "projectName": "EnchantElegance.Domain",
-        "projectPath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Domain\\EnchantElegance.Domain.csproj",
+        "projectPath": "C:\\Users\\Nubar\\Desktop\\BeCute\\becute\\src\\Core\\EnchantElegance.Domain\\EnchantElegance.Domain.csproj",
         "packagesPath": "C:\\Users\\Nubar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nubar\\Desktop\\becute\\becute\\src\\Core\\EnchantElegance.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Nubar\\Desktop\\BeCute\\becute\\src\\Core\\EnchantElegance.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Nubar\\AppData\\Roaming\\NuGet\\NuGet.Config",
