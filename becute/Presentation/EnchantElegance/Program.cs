@@ -27,11 +27,11 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseAuthentication();
 
 app.UseRouting();
 StripeConfiguration.ApiKey = builder.Configuration["Stripe:Secretkey"];
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

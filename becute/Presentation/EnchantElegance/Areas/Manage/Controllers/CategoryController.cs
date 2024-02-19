@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EnchantElegance.Areas.Manage.Controllers
 {
 	[Area("Manage")]
+	[AutoValidateAntiforgeryToken]
 	public class CategoryController : Controller
 	{
 		private readonly ICategoryService _service;
