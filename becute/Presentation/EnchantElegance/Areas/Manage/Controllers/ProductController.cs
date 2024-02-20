@@ -17,7 +17,7 @@ namespace EnchantElegance.Areas.Manage.Controllers
 		{
 			_service = service;
 		}
-		[Authorize(Roles = "SuperAdministrator,Administrator")]
+		//[Authorize(Roles = "SuperAdministrator,Administrator")]
 
 		public async Task<IActionResult> Index(int page = 1, int take = 3)
 		{
@@ -27,7 +27,7 @@ namespace EnchantElegance.Areas.Manage.Controllers
 				return NotFound();
 			return View(vm);
 		}
-		[Authorize(Roles = "SuperAdministrator,Administrator")]
+		//[Authorize(Roles = "SuperAdministrator,Administrator")]
 
 		public async Task<IActionResult> Create()
 		{
@@ -44,7 +44,7 @@ namespace EnchantElegance.Areas.Manage.Controllers
 			}
 			return View(await _service.CreatedAsync(productDTO));
 		}
-		[Authorize(Roles = "SuperAdministrator,Administrator")]
+		//[Authorize(Roles = "SuperAdministrator,Administrator")]
 
 		public async Task<IActionResult> Update(int id)
 		{
@@ -61,7 +61,7 @@ namespace EnchantElegance.Areas.Manage.Controllers
 			return RedirectToAction(nameof(Index));
 			return View(await _service.GetProductForUpdateAsync(id,updateDTO));
 		}
-		[Authorize(Roles = "SuperAdministrator")]
+		//[Authorize(Roles = "SuperAdministrator")]
 
 		public async Task<IActionResult> Delete(int id)
 		{

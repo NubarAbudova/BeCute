@@ -14,5 +14,9 @@ namespace EnchantElegance.Application.DTOs
         public string Name { get; set; }
         public int Count { get; set; }
         public decimal SubTotal { get; set; }
+
+        //Relational Properties
+        public int ProductId { get; set; }
+        public string? AppUserId { get; set; }
     }
 }

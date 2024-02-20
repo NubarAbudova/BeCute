@@ -18,11 +18,11 @@ namespace EnchantElegance.Persistence.Contexts
 		public DbSet<Setting> Settings { get; set; }
         public DbSet<Client> Clients { get; set; }
 		public DbSet<Employee> Employees { get; set; }
+		public DbSet<BasketItem>BasketItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
 
-
-
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 

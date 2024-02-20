@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KDBd6NoI9Z2hZS1YRjOZQHZaOwjJhmQglPQfQac/toQ=",
+  "Hash": "eL7OJi6bn++VvM2KapxQACiTGfBsoR0qZ4xi2XSQ16M=",
   "Source": "EnchantElegance",
   "BasePath": "_content/EnchantElegance",
   "Mode": "Default",
@@ -59158,6 +59158,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\259580d9-5f39-4542-85a2-94930a562831person2-1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Nubar\\Desktop\\BeCute\\becute\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\25a4b157-4dff-42d3-a40a-c83ed150ec05download.jpg",
+      "SourceId": "EnchantElegance",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Nubar\\Desktop\\BeCute\\becute\\Presentation\\EnchantElegance\\wwwroot\\",
+      "BasePath": "_content/EnchantElegance",
+      "RelativePath": "assets/img/25a4b157-4dff-42d3-a40a-c83ed150ec05download.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\25a4b157-4dff-42d3-a40a-c83ed150ec05download.jpg"
     },
     {
       "Identity": "C:\\Users\\Nubar\\Desktop\\BeCute\\becute\\Presentation\\EnchantElegance\\wwwroot\\assets\\img\\29e8c941-fce6-42b9-ada7-1bdceaa844500e1888f228e54099998fa596dd888b40.jpeg",

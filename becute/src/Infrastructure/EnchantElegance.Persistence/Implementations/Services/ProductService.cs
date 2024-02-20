@@ -137,7 +137,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 				}
 				product.ProductImages.Add(new ProductImages
 				{
-					IsPrimary = true,
+					IsPrimary = null,
 					Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "img"),
 					Alternative = productCreateDTO.Name
 				});
@@ -244,7 +244,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
 				existed.ProductImages.Add(new ProductImages
 				{
-					IsPrimary = true,
+					IsPrimary = null,
 					Alternative = updateDTO.Name,
 					Url = fileName
 				});
@@ -252,7 +252,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			}
 			if (updateDTO.HoverPhoto is not null)
 			{
-				string fileName = await updateDTO.HoverPhoto.CreateFileAsync(_env.WebRootPath, "assets", "imgs");
+				string fileName = await updateDTO.HoverPhoto.CreateFileAsync(_env.WebRootPath, "assets", "img");
 
 				ProductImages existedImg = existed.ProductImages.FirstOrDefault(pi => pi.IsPrimary == false);
 				existedImg.Url.DeleteFile(_env.WebRootPath, "assets", "img");
@@ -302,7 +302,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 				{
 					IsPrimary = null,
 					Alternative = updateDTO.Name,
-					Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "images", "website-images")
+					Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "img")
 				});
 			}
 
@@ -335,12 +335,9 @@ namespace EnchantElegance.Persistence.Implementations.Services
 			await _productrepo.SaveChangesAsync();
 			return true;
 		}
-
 		public Task SoftDeleteAsync(int id)
 		{
 			throw new NotImplementedException();
 		}
-
-		
 	}
 }

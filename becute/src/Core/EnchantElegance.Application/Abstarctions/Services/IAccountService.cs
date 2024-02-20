@@ -10,6 +10,7 @@ namespace EnchantElegance.Application.Abstarctions.Services
 		Task<bool> Login(LoginDTO dto, ModelStateDictionary modelstate);
 		Task Logout();
 		Task CreateRoleAsync();
-		Task AssignRoleToUser(AppUser user, string roleName);
+        Task<AppUser> GetUserAsync(string userName);
+        Task AssignRoleToUser(AppUser user, string roleName);
 	}
 }

@@ -55632,6 +55632,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\img\259580d9-5f39-4542-85a2-94930a562831person2-1.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\img\25a4b157-4dff-42d3-a40a-c83ed150ec05download.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>EnchantElegance</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/EnchantElegance</BasePath>
+      <RelativePath>assets/img/25a4b157-4dff-42d3-a40a-c83ed150ec05download.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\img\25a4b157-4dff-42d3-a40a-c83ed150ec05download.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\assets\img\29e8c941-fce6-42b9-ada7-1bdceaa844500e1888f228e54099998fa596dd888b40.jpeg))">
       <SourceType>Package</SourceType>
       <SourceId>EnchantElegance</SourceId>

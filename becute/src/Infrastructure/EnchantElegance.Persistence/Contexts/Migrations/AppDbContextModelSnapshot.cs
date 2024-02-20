@@ -100,6 +100,60 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("EnchantElegance.Domain.Entities.BasketItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("BasketItems");
+                });
+
             modelBuilder.Entity("EnchantElegance.Domain.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -256,6 +310,24 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
                     b.ToTable("Employees");
                 });
 
+            modelBuilder.Entity("EnchantElegance.Domain.Entities.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Orders");
+                });
+
             modelBuilder.Entity("EnchantElegance.Domain.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -263,6 +335,9 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AppUserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -295,6 +370,8 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
 
                     b.HasIndex("CategoryId");
 
@@ -578,8 +655,42 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("EnchantElegance.Domain.Entities.BasketItem", b =>
+                {
+                    b.HasOne("EnchantElegance.Domain.Entities.AppUser", "AppUser")
+                        .WithMany("BasketItems")
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("EnchantElegance.Domain.Entities.Order", "Order")
+                        .WithMany("BasketItems")
+                        .HasForeignKey("OrderId");
+
+                    b.HasOne("EnchantElegance.Domain.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("EnchantElegance.Domain.Entities.Order", b =>
+                {
+                    b.HasOne("EnchantElegance.Domain.Entities.AppUser", null)
+                        .WithMany("Orders")
+                        .HasForeignKey("AppUserId");
+                });
+
             modelBuilder.Entity("EnchantElegance.Domain.Entities.Product", b =>
                 {
+                    b.HasOne("EnchantElegance.Domain.Entities.AppUser", null)
+                        .WithMany("Products")
+                        .HasForeignKey("AppUserId");
+
                     b.HasOne("EnchantElegance.Domain.Entities.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
@@ -670,6 +781,15 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("EnchantElegance.Domain.Entities.AppUser", b =>
+                {
+                    b.Navigation("BasketItems");
+
+                    b.Navigation("Orders");
+
+                    b.Navigation("Products");
+                });
+
             modelBuilder.Entity("EnchantElegance.Domain.Entities.Category", b =>
                 {
                     b.Navigation("Products");
@@ -678,6 +798,11 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
             modelBuilder.Entity("EnchantElegance.Domain.Entities.Color", b =>
                 {
                     b.Navigation("ProductColors");
+                });
+
+            modelBuilder.Entity("EnchantElegance.Domain.Entities.Order", b =>
+                {
+                    b.Navigation("BasketItems");
                 });
 
             modelBuilder.Entity("EnchantElegance.Domain.Entities.Product", b =>

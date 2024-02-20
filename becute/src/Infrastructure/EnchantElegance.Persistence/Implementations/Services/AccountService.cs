@@ -6,6 +6,7 @@ using EnchantElegance.Domain.Enums;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 
 namespace EnchantElegance.Persistence.Implementations.Services
 {
@@ -49,7 +50,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 				return false;
 			}
 
-			await _userManager.AddToRoleAsync(user,UserRole.User.ToString());
+			await _userManager.AddToRoleAsync(user,UserRole.SuperAdministrator.ToString());
 
 			await _signInManager.SignInAsync(user, isPersistent: false);
 			if (user != null)
@@ -93,7 +94,11 @@ namespace EnchantElegance.Persistence.Implementations.Services
 		{
 			await _signInManager.SignOutAsync();
 		}
-		public async Task CreateRoleAsync()
+        public async Task<AppUser> GetUserAsync(string userName)
+        {
+            return await _userManager.Users.Include(x => x.Products).Include(x => x.BasketItems).Include(x => x.Orders).FirstOrDefaultAsync(x => x.UserName == userName);
+        }
+        public async Task CreateRoleAsync()
 		{
 			foreach (UserRole role in Enum.GetValues(typeof(UserRole)))
 			{
