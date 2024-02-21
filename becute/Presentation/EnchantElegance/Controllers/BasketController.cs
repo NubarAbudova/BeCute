@@ -31,15 +31,15 @@ namespace EnchantElegance.Controllers
             await _basketService.Remove(id);
             return RedirectToAction("Index", "Basket");
         }
-        //public async Task<IActionResult> Minus(int mealid, int id)
-        //{
-        //	await _service.Minus(mealid);
-        //	return RedirectToAction("Details", "Restaurant", new { id = id });
-        //}
-        //public async Task<IActionResult> Plus(int mealid, int id)
-        //{
-        //	await _service.Plus(mealid);
-        //	return RedirectToAction("Details", "Restaurant", new { id = id });
-        //}
+        public async Task<IActionResult> Minus(int id)
+        {
+            await _basketService.Minus(id);
+            return RedirectToAction("Index", "Basket");
+        }
+        public async Task<IActionResult> Plus(int id)
+        {
+            await _basketService.Plus(id);
+            return RedirectToAction("Index", "Basket");
+        }
     }
 }

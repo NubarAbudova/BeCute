@@ -25,6 +25,9 @@ namespace EnchantElegance.Persistence.Implementations.Repositories
             return query;
         }
 
+
+       
+
         //GETALLWHERE
         public IQueryable<T> GetAllWhere(Expression<Func<T, bool>>? expression = null, Expression<Func<T, object>>? orderExpression = null, bool isDescending = false, int skip = 0, int take = 0, bool isTracking = false, bool isIgnoreQuery = false, params string[] includes)
         {
@@ -125,6 +128,17 @@ namespace EnchantElegance.Persistence.Implementations.Repositories
             if (!isTracking) query = query.AsNoTracking();
 
             query = _addInclude(query, includes);
+            return await query.FirstOrDefaultAsync();
+        }
+
+         public async Task<T> GetByIdAsync(int id, bool isTracking = false, bool? isDeleted = null, params string[] includes)
+        {
+            IQueryable<T> query = _table.Where(x => x.Id == id);
+            if (isDeleted == null) query = query.Where(x => x.IsDeleted == null);
+            else if (isDeleted == false) query = query.Where(x => x.IsDeleted == false);
+            else if (isDeleted == true) query = query.Where(x => x.IsDeleted == true);
+            if (!isTracking) query = query.AsNoTracking();
+            if (includes != null) query = _addIncludes(query, includes);
             return await query.FirstOrDefaultAsync();
         }
 

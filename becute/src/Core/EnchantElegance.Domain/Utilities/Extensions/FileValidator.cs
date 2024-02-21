@@ -15,7 +15,7 @@ namespace EnchantElegance.Domain.Utilities.Extensions
 		}
 		public static bool ValidateSize(this IFormFile file, int kb)
 		{
-			return file.Length < kb * 1024;
+			return file.Length < kb * 1024*1024;
 		}
 		public static async Task<string> CreateFileAsync(this IFormFile file, string root, params string[] folder)
 		{

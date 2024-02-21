@@ -50,7 +50,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
 				return false;
 			}
 
-			await _userManager.AddToRoleAsync(user,UserRole.SuperAdministrator.ToString());
+			await _userManager.AddToRoleAsync(user,UserRole.User.ToString());
 
 			await _signInManager.SignInAsync(user, isPersistent: false);
 			if (user != null)

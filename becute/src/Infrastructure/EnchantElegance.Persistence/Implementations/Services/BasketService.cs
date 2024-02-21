@@ -1,13 +1,12 @@
-﻿using EnchantElegance.Application.Abstarctions.Repositories;
+﻿using System.Security.Claims;
+using EnchantElegance.Application.Abstarctions.Repositories;
 using EnchantElegance.Application.Abstarctions.Services;
 using EnchantElegance.Application.DTOs;
 using EnchantElegance.Domain.Entities;
-using EnchantElegance.Persistence.Implementations.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Org.BouncyCastle.Asn1.Ocsp;
-using Org.BouncyCastle.Bcpg;
 
 namespace EnchantElegance.Persistence.Implementations.Services
 {
@@ -41,7 +40,8 @@ namespace EnchantElegance.Persistence.Implementations.Services
 					Count= basketitem.Count,
 					AppUserId=basketitem.AppUserId,
 					ProductId=basketitem.ProductId,
-                    Image=basketitem.Image
+                    Image=basketitem.Image,
+                    SubTotal=basketitem.Count*basketitem.Price,
 
 				}).ToList();
 			}
@@ -153,28 +153,27 @@ namespace EnchantElegance.Persistence.Implementations.Services
 		}
         public async Task Remove(int id)
         {
-            if (id <= 0)
-                throw new Exception("Bad Request");
+            if (id <= 0) throw new Exception("Bad Request");
 
-            Product product = await _productrepo.GetByIdAsync(id, includes: new string[] { nameof(BasketItem) });
+            Product product = await _productrepo.GetByIdAsync(id);
 
-            if (product == null)
-                throw new Exception("Not Found");
+            if (product == null) throw new Exception("Not Found");
 
             if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
             {
-                AppUser user = await _account.GetUserAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
+                AppUser user = await _account
+                    .GetUserAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
 
-                if (user == null)
-                    throw new Exception("User Not Found");
+                if (user == null) throw new Exception("Not Found");
 
                 BasketItem item = user.BasketItems.FirstOrDefault(bi => bi.ProductId == product.Id);
 
                 if (item != null)
                 {
                     user.BasketItems.Remove(item);
-                    await _basketitemrepo.SaveChangesAsync();
+
                 }
+                await _basketitemrepo.SaveChangesAsync();
             }
             else
             {
@@ -187,34 +186,83 @@ namespace EnchantElegance.Persistence.Implementations.Services
         }
         public async Task Minus(int id)
         {
-            if (id <= 0) throw new Exception("Wrong querry");
+            if (id <= 0) throw new Exception("Bad Request");
             Product product = await _productrepo.GetByIdAsync(id);
-            if (product == null) throw new Exception("Product Not Found:(");
+            if (product == null) throw new Exception("Not Found");
             if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
             {
-                AppUser user = await _account.GetUserAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
-                if (user == null) throw new Exception("User Not Found:(");
+                AppUser user = await _account
+                    .GetUserAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
+                if (user == null) throw new Exception("Not Found");
+
                 BasketItem item = user.BasketItems.FirstOrDefault(bi => bi.ProductId == product.Id);
-                if (item == null) throw new Exception("Item Not Found:(");
-                item.Count--;
+                if (item != null)
+                {
+                    if (item.Count > 1)
+                    {
+
+                        item.Count--;
+                    }
+                    
+                }
+               
                 _basketitemrepo.Update(item);
                 await _basketitemrepo.SaveChangesAsync();
             }
+            else
+            {
+                List<BasketCookieItemDTO> cookiesVM = JsonConvert.DeserializeObject<List<BasketCookieItemDTO>>(_httpContextAccessor.HttpContext.Request.Cookies["Basket"]);
+                BasketCookieItemDTO basketcookies = cookiesVM.FirstOrDefault(c => c.Id == id);
+                if (basketcookies == null) throw new Exception("Not Found");
+                if (basketcookies.Count > 1)
+                {
+
+                    basketcookies.Count--;
+                }
+                else
+                {
+                    cookiesVM.Remove(basketcookies);
+                }
+                string json = JsonConvert.SerializeObject(cookiesVM);
+               _httpContextAccessor.HttpContext.Response.Cookies.Append("Basket", json);
+            }
+
         }
         public async Task Plus(int id)
         {
-            if (id <= 0) throw new Exception("Wrong querry");
+            if (id <= 0) throw new Exception("Bad Request");
             Product product = await _productrepo.GetByIdAsync(id);
-            if (product == null) throw new Exception("Product Not Found:(");
+            if (product == null) throw new Exception("Not Found");
             if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
             {
-                AppUser user = await _account.GetUserAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
-                if (user == null) throw new Exception("User Not Found:(");
+                AppUser user = await _account
+                    .GetUserAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
+                if (user == null) throw new Exception("Not Found");
+
                 BasketItem item = user.BasketItems.FirstOrDefault(bi => bi.ProductId == product.Id);
-                if (item == null) throw new Exception("Item Not Found:(");
-                item.Count++;
+                if (item != null)
+                {
+                    item.Count++;
+                }
+
                 _basketitemrepo.Update(item);
                 await _basketitemrepo.SaveChangesAsync();
+            }
+            else
+            {
+                List<BasketCookieItemDTO> cookiesVM = JsonConvert.DeserializeObject<List<BasketCookieItemDTO>>(_httpContextAccessor.HttpContext.Request.Cookies["Basket"]);
+                BasketCookieItemDTO basketcookies = cookiesVM.FirstOrDefault(c => c.Id == id);
+                if (basketcookies == null) throw new Exception("Not Found");
+                if (basketcookies.Count > 1)
+                {
+                    basketcookies.Count++;
+                }
+                else
+                {
+                    cookiesVM.Remove(basketcookies);
+                }
+                string json = JsonConvert.SerializeObject(cookiesVM);
+                _httpContextAccessor.HttpContext.Response.Cookies.Append("Basket", json);
             }
         }
 

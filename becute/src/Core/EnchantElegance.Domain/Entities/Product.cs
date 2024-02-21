@@ -12,5 +12,6 @@
         public Category Category { get; set; } = null!;
 		public ICollection<ProductImages> ProductImages { get; set; } = null!;
 		public ICollection<ProductColor>? ProductColors { get; set; }
+         public ICollection<BasketItem> BasketItems { get; set; } = new List<BasketItem>();
 	}
 }

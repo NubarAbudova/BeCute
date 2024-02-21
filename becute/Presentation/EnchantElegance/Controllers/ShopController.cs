@@ -14,16 +14,17 @@ namespace EnchantElegance.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index(string? search, int? order,int?categoryId)
+        public async Task<IActionResult> Index(string? search, int? order, int? categoryId)
         {
             IQueryable<Product> query = _context.Products.Include(p => p.ProductImages).AsQueryable();
+
             switch (order)
             {
                 case 1:
                     query = query.OrderBy(p => p.CurrentPrice);
                     break;
                 case 2:
-                    query = query.OrderBy(p => p.Category);
+                    query = query.OrderBy(p => p.Category.Name); // Örnek: Kategoriye göre sıralama
                     break;
                 case 3:
                     query = query.OrderBy(p => p.Name);
@@ -32,21 +33,24 @@ namespace EnchantElegance.Controllers
                     query = query.OrderByDescending(p => p.CreatedAt);
                     break;
             }
+
             if (!String.IsNullOrEmpty(search))
             {
                 query = query.Where(p => p.Name.ToLower().Contains(search.ToLower()));
             }
-            if (categoryId!=null)
+
+            if (categoryId != null)
             {
-                query=query.Where(p=>p.CategoryId==categoryId);
+                query = query.Where(p => p.CategoryId == categoryId);
             }
+
             ShopDTO shopDTO = new ShopDTO()
             {
                 Categories = await _context.Categories.Include(c => c.Products).ToListAsync(),
                 Products = await query.ToListAsync(),
-                CategoryId=categoryId,
-                Order=order,
-                Search=search
+                CategoryId = categoryId,
+                Order = order,
+                Search = search
             };
 
             return View(shopDTO);

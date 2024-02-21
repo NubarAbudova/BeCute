@@ -48,21 +48,20 @@
                                             <tr class="cart__table--body__items">
                                                 <td class="cart__table--body__list">
                                                     <div class="cart__product d-flex align-items-center">
-                                                        <form method="post" asp-controller="Basket" asp-action="Remove" asp-route-id="@item.Id">
-                                                            <button type="submit" class="cart__remove--btn" aria-label="search button">
+                                                            <button asp-controller="Basket" asp-action="Remove" asp-route-id="@item.ProductId" type="submit" class="cart__remove--btn" aria-label="search button">
                                                                 <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16px" height="16px">
                                                                     <path d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z" />
                                                                 </svg>
                                                             </button>
-                                                        </form>
+                                                     
                                                         <div class="cart__thumbnail">
-                                                            <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id">
+                                                            <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.ProductId">
                                                                 <img class="border-radius-5" src="~/assets/img/@item.Image" alt="cart-product">
                                                             </a>
                                                         </div>
                                                         <div class="cart__content">
                                                             <h3 class="cart__content--title h4">
-                                                                <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id">@item.Name</a>
+                                                                <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.ProductId">@item.Name</a>
                                                             </h3>
                                                             <span class="cart__content--variant">COLOR: Blue</span>
                                                             <span class="cart__content--variant">WEIGHT: 2 Kg</span>
@@ -74,11 +73,11 @@
                                                 </td>
                                                 <td class="cart__table--body__list">
                                                     <div class="quantity__box">
-                                                        <button type="button" class="quantity__value quickview__value--quantity decrease" aria-label="quantity value" value="Decrease Value">-</button>
+                                                        <a asp-controller="Basket" asp-action="Minus" asp-route-id="@item.ProductId" type="button" class="quantity__value quickview__value--quantity decrease" aria-label="quantity value" value="Decrease Value">-</a>
                                                         <label>
-                                                            <input type="number" class="quantity__number quickview__value--number" value="1" data-counter />
+                                                            <input type="number" class="quantity__number quickview__value--number" value="@item.Count" data-counter /> 
                                                         </label>
-                                                        <button type="button" class="quantity__value quickview__value--quantity increase" aria-label="quantity value" value="Increase Value">+</button>
+                                                        <a asp-controller="Basket" asp-action="Plus" asp-route-id="@item.ProductId" type="button" class="quantity__value quickview__value--quantity increase" aria-label="quantity value" value="Increase Value">+</a>
                                                     </div>
                                                 </td>
                                                 <td class="cart__table--body__list">
@@ -86,11 +85,10 @@
                                                 </td>
                                             </tr>
                                         }
-                                         
                                         </tbody>
                                     </table> 
                                     <div class="continue__shopping d-flex justify-content-between">
-                                        <a class="continue__shopping--link" href="shop.html">Continue shopping</a>
+                                        <a class="continue__shopping--link" asp-controller="Shop" asp-action="Index">Continue shopping</a>
                                         <button class="continue__shopping--clear" type="submit">Clear Cart</button>
                                     </div>
                                 </div>
