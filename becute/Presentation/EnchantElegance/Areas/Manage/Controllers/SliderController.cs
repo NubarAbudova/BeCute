@@ -12,7 +12,8 @@ using Microsoft.AspNetCore.Authorization;
 namespace EnchantElegance.Areas.Manage.Controllers
 {
 	[Area("Manage")]
-	public class SliderController : Controller
+    [AutoValidateAntiforgeryToken]
+    public class SliderController : Controller
 	{
 		private readonly ISliderService _service;
 

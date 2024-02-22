@@ -55,13 +55,13 @@
                                                             </button>
                                                      
                                                         <div class="cart__thumbnail">
-                                                            <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.ProductId">
+                                                            <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id">
                                                                 <img class="border-radius-5" src="~/assets/img/@item.Image" alt="cart-product">
                                                             </a>
                                                         </div>
                                                         <div class="cart__content">
                                                             <h3 class="cart__content--title h4">
-                                                                <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.ProductId">@item.Name</a>
+                                                                <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id">@item.Name</a>
                                                             </h3>
                                                             <span class="cart__content--variant">COLOR: Blue</span>
                                                             <span class="cart__content--variant">WEIGHT: 2 Kg</span>

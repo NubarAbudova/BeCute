@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EnchantElegance.Domain.Entities;
 
 namespace EnchantElegance.Application.ViewModels
 {
@@ -12,5 +13,5 @@ namespace EnchantElegance.Application.ViewModels
 		public double TotalPage { get; set; }
 		public int CurrentPage { get; set; }
 		public int ProductId { get; set; }
-	}
+    }
 }

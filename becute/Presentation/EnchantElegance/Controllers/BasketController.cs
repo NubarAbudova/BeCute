@@ -41,5 +41,10 @@ namespace EnchantElegance.Controllers
             await _basketService.Plus(id);
             return RedirectToAction("Index", "Basket");
         }
+
+        public IActionResult Checkout()
+        {
+            return View();
+        }
     }
 }

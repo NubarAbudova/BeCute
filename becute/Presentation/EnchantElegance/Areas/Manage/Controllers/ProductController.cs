@@ -9,7 +9,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace EnchantElegance.Areas.Manage.Controllers
 {
 	[Area("Manage")]
-	public class ProductController : Controller
+    [AutoValidateAntiforgeryToken]
+    public class ProductController : Controller
 	{
 		private readonly IProductService _service;
 

@@ -6,7 +6,7 @@
 	<h1 class="page-title">Product</h1>
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item">
-			<a href="index.html"><i class="la la-home font-20"></i></a>
+			<a asp-controller="Dashboard" asp-action="Index"><i class="la la-home font-20"></i></a>
 		</li>
 		<li class="breadcrumb-item">Create Product</li>
 	</ol>
@@ -32,37 +32,37 @@
 							<div class="col-sm-6 form-group">
 								<label asp-for="MainPhoto">Main Image</label>
 								<input asp-for="MainPhoto" class="form-control" accept="image/*" placeholder="Main Image">
-								<span asp-validation-for="MainPhoto"></span>
+								<span class="text-danger" asp-validation-for="MainPhoto"></span>
 							</div>
 							<div class="col-sm-6 form-group">
 								<label asp-for="HoverPhoto">Hover Image</label>
 								<input asp-for="HoverPhoto" class="form-control" accept="image/*" placeholder="Hover Image">
-								<span asp-validation-for="HoverPhoto"></span>
+								<span class="text-danger" asp-validation-for="HoverPhoto"></span>
 							</div>
 							<div class="col-sm-6 form-group">
 								<label asp-for="Photos">Additional Images</label>
 								<input asp-for="Photos" class="form-control" accept="image/*" placeholder="Images">
-								<span asp-validation-for="Photos"></span>
+								<span class="text-danger" asp-validation-for="Photos"></span>
 							</div>
 							<div class="col-sm-6 form-group">
 								<label asp-for="Name"> Name</label>
 								<input asp-for="Name" class="form-control" placeholder="Name">
-								<span asp-validation-for="Name"></span>
+								<span class="text-danger" asp-validation-for="Name"></span>
 							</div>
 							<div class="col-sm-6 form-group">
 								<label asp-for="Description">Description</label>
 								<input asp-for="Description" class="form-control" placeholder="Description">
-								<span asp-validation-for="Description"></span>
+								<span class="text-danger" asp-validation-for="Description"></span>
 							</div>
 							<div class="col-sm-6 form-group">
 								<label asp-for="OldPrice">Old Price</label>
 								<input asp-for="OldPrice" class="form-control" placeholder="OldPrice">
-								<span asp-validation-for="OldPrice"></span>
+								<span class="text-danger" asp-validation-for="OldPrice"></span>
 							</div>
 							<div class="col-sm-6 form-group">
 								<label asp-for="CurrentPrice">Current Price</label>
 								<input asp-for="CurrentPrice" class="form-control" placeholder="CurrentPrice">
-								<span asp-validation-for="CurrentPrice"></span>
+								<span class ="text-danger" asp-validation-for="CurrentPrice"></span>
 							</div>
 							<div class="form-group">
 								<label asp-for="CategoryId">Category</label>

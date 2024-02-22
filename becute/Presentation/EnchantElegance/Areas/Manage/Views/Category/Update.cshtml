@@ -1,53 +1,53 @@
 ﻿@using EnchantElegance.Application.DTOs;
 @model CategoryUpdateDTO
 
-       <!-- START PAGE CONTENT-->
+<!-- START PAGE CONTENT-->
 <div class="page-heading">
-    <h1 class="page-title">Category</h1>
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="index.html"><i class="la la-home font-20"></i></a>
-        </li>
-    </ol>
+	<h1 class="page-title">Category</h1>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a asp-controller="Dashboard" asp-action="Index"><i class="la la-home font-20"></i></a>
+		</li>
+	</ol>
 </div>
 <div class="page-content fade-in-up">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="ibox">
-                <div class="ibox-head">
-                    <div class="ibox-tools">
-                        <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
-                        <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item">option 1</a>
-                            <a class="dropdown-item">option 2</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="ibox-body">
-                    <form method="post" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="form-group">
-                                <img style="width:150px;height:150px;" src="~/assets/img/@Model.Image">
-                            </div>
-                            <div class="col-sm-6 form-group">
-                                <label asp-for="Photo">Image</label>
-                                <input asp-for="Photo" class="form-control">
-                                <span asp-validation-for="Photo"></span>
-                            </div>
-                            <div class="col-sm-6 form-group">
-                                <label asp-for="Name"> Name</label>
-                                <input asp-for="Name" class="form-control" placeholder="Name">
-                                <span asp-validation-for="Name"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-success" type="submit">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="ibox">
+				<div class="ibox-head">
+					<div class="ibox-tools">
+						<a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+						<a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<a class="dropdown-item">option 1</a>
+							<a class="dropdown-item">option 2</a>
+						</div>
+					</div>
+				</div>
+				<div class="ibox-body">
+					<form method="post" enctype="multipart/form-data">
+						<div class="row">
+							<div class="form-group">
+								<img style="width:150px;height:150px;" src="~/assets/img/@Model.Image">
+							</div>
+							<div class="col-sm-6 form-group">
+								<label asp-for="Photo">Image</label>
+								<input asp-for="Photo" class="form-control">
+								<span class="text-danger" asp-validation-for="Photo"></span>
+							</div>
+							<div class="col-sm-6 form-group">
+								<label asp-for="Name"> Name</label>
+								<input asp-for="Name" class="form-control" placeholder="Name">
+								<span class="text-danger" asp-validation-for="Name"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<button class="btn btn-success" type="submit">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <!-- END PAGE CONTENT-->

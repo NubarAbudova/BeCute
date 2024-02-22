@@ -140,13 +140,14 @@
 									</a>
 									<ul class="header__sub--menu">
 										<li class="header__sub--menu__items"><a asp-controller="AboutUs" asp-action="Index" class="header__sub--menu__link">About Us</a></li>
-									</ul>
-									<ul class="header__sub--menu">
+
 										<li class="header__sub--menu__items"><a asp-controller="Home" asp-action="PrivacyandPolicy" class="header__sub--menu__link">Privacy and Policy</a></li>
+										<li class="header__sub--menu__items"><a asp-controller="Home" asp-action="FAQ" class="header__sub--menu__link">FAQ</a></li>
+
 									</ul>
 								</li>
 								<li class="header__menu--items">
-									<a class="header__menu--link" href="contact.html">Contact </a>
+									<a class="header__menu--link" asp-controller="Home" asp-action="Contact">Contact </a>
 								</li>
 								@if (User.Identity.IsAuthenticated)
 								{
@@ -230,6 +231,7 @@
 			</div>
 			@foreach (BasketItemDTO item in basket)
 			{
+				total += item.SubTotal;
 				<div class="minicart__product">
 				<div class="minicart__product--items d-flex">
 					<div class="minicart__thumb">
@@ -244,13 +246,13 @@
 						</div>
 						<div class="minicart__text--footer d-flex align-items-center">
 							<div class="quantity__box minicart__quantity">
-								<button type="button" class="quantity__value decrease" aria-label="quantity value" value="Decrease Value">-</button>
+									<a asp-controller="Basket" asp-action="Minus" asp-route-id="@item.ProductId" type="button" class="quantity__value decrease" aria-label="quantity value" value="Decrease Value">-</a>
 								<label>
 									<input type="number" class="quantity__number" value="1" data-counter />
 								</label>
-								<button type="button" class="quantity__value increase" aria-label="quantity value" value="Increase Value">+</button>
+									<a asp-controller="Basket" asp-action="Plus" asp-route-id="@item.ProductId" type="button" class="quantity__value increase" aria-label="quantity value" value="Increase Value">+</a>
 							</div>
-							<button class="minicart__product--remove" type="button">Remove</button>
+								<button asp-controller="Basket" asp-action="Remove" asp-route-id="@item.ProductId" class="minicart__product--remove" type="button">Remove</button>
 						</div>
 					</div>
 				</div>
@@ -258,20 +260,20 @@
 			<div class="minicart__amount">
 				<div class="minicart__amount_list d-flex justify-content-between">
 					<span>Sub Total:</span>
-					<span><b>$240.00</b></span>
+					<span><b>$@item.SubTotal</b></span>
 				</div>
 				<div class="minicart__amount_list d-flex justify-content-between">
 					<span>Total:</span>
-					<span><b>$240.00</b></span>
+					<span><b>$@total</b></span>
 				</div>
 			</div>
 			<div class="minicart__conditions text-center">
 				<input class="minicart__conditions--input" id="accept" type="checkbox">
-				<label class="minicart__conditions--label" for="accept">I agree with the <a class="minicart__conditions--link" href="privacy-policy.html">Privacy Policy</a></label>
+				<label class="minicart__conditions--label" for="accept">I agree with the <a class="minicart__conditions--link" asp-controller="Home" asp-action="PrivacyandPolicy">Privacy Policy</a></label>
 			</div>
 			<div class="minicart__button d-flex justify-content-center">
-				<a class="primary__btn minicart__button--link" href="cart.html">View cart</a>
-				<a class="primary__btn minicart__button--link" href="checkout.html">Checkout</a>
+				<a class="primary__btn minicart__button--link" asp-controller="Basket" asp-action="Index" >View cart</a>
+				<a class="primary__btn minicart__button--link" asp-controller="Basket" asp-action="Checkout">Checkout</a>
 			</div>
 
 			}
@@ -280,7 +282,7 @@
 		<div class="predictive__search--box ">
 			<div class="predictive__search--box__inner">
 				<h2 class="predictive__search--title">Search Products</h2>
-				<form class="predictive__search--form" action="#">
+				<form class="predictive__search--form" asp-controller="Shop" asp-action="Index">
 					<label>
 						<input class="predictive__search--input" placeholder="Search Here" type="text">
 					</label>
@@ -352,10 +354,10 @@
 								</svg>
 							</h2>
 							<ul class="footer__widget--menu footer__widget--inner">
-								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="contact.html">Contact Us</a></li>
+								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" asp-controller="Home" asp-action="Contact">Contact Us</a></li>
 								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" asp-controller="AboutUs" asp-action="Index">About Us</a></li>
-								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="privacy-policy.html">Privacy Policy</a></li>
-								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="faq.html">Frequently</a></li>
+								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" asp-controller="Home" asp-action="PrivacyandPolicy">Privacy Policy</a></li>
+								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" asp-controller="Home" asp-action="FAQ">Frequently</a></li>
 							</ul>
 						</div>
 					</div>
@@ -369,11 +371,11 @@
 							</h2>
 							<ul class="footer__widget--menu footer__widget--inner">
 
-								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="my-account.html">My Account</a></li>
-								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="cart.html">Shopping Cart</a></li>
+								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" >My Account</a></li>
+								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" asp-controller="Basket" asp-action="Index">Shopping Cart</a></li>
 								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" asp-controller="Account" asp-action="Login">Login</a></li>
 								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" asp-controller="Account" asp-action="Register">Register</a></li>
-								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" href="checkout.html">Checkout</a></li>
+								<li class="footer__widget--menu__list"><a class="footer__widget--menu__text" asp-controller="Basket" asp-action="Checkout">Checkout</a></li>
 							</ul>
 						</div>
 					</div>
@@ -751,6 +753,8 @@
 
 	<!-- Customscript js -->
 	<script src="~/assets/js/script.js"></script>
+	@* <script src="~/assets/js/main.js"></script> *@
+
 
 </body>
 

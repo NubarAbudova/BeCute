@@ -9,7 +9,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace EnchantElegance.Areas.Manage.Controllers
 {
 	[Area("Manage")]
-	public class ColorController : Controller
+    [AutoValidateAntiforgeryToken]
+    public class ColorController : Controller
 	{
 		private readonly IColorService _service;
 

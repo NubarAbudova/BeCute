@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace EnchantElegance.Areas.Manage.Controllers
 {
 	[Area("Manage")]
-	public class EmployeeController : Controller
+    [AutoValidateAntiforgeryToken]
+    public class EmployeeController : Controller
 	{
 		private readonly IEmployeeService _service;
 

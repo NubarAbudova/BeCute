@@ -28,50 +28,6 @@ namespace EnchantElegance.Persistence.Implementations.Services
 		{
 			List<BasketItemDTO> items = new List<BasketItemDTO>();
 
-			if(_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
-			{
-				AppUser user = await _account.GetUserAsync(_httpContextAccessor.HttpContext.User.Identity.Name);
-				List<BasketItem> basketitems = await _basketitemrepo.GetAllWhere(b => b.AppUserId == user.Id, includes: new string[] { nameof(BasketItem.Product) }).ToListAsync();
-				items = basketitems.Select(basketitem => new BasketItemDTO
-				{
-					Id = basketitem.Id,
-					Name=basketitem.ProductName,
-					Price = basketitem.Price,
-					Count= basketitem.Count,
-					AppUserId=basketitem.AppUserId,
-					ProductId=basketitem.ProductId,
-                    Image=basketitem.Image,
-                    SubTotal=basketitem.Count*basketitem.Price,
-
-				}).ToList();
-			}
-			else
-			{
-                if (_httpContextAccessor.HttpContext != null && _httpContextAccessor.HttpContext.Request.Cookies["Basket"] is not null)
-                {
-                    List<BasketCookieItemDTO> cookies = JsonConvert.DeserializeObject<List<BasketCookieItemDTO>>(_httpContextAccessor.HttpContext.Request.Cookies["Basket"]);
-                    foreach (var cookie in cookies)
-                    {
-                       Product product = await _productrepo.GetByIdAsync(cookie.Id);
-
-                        if (product != null)
-                        {
-                            BasketItemDTO item = new BasketItemDTO()
-                            {
-                                Id = product.Id,
-                                Name = product.Name,
-                                Image = product.ProductImages.FirstOrDefault()?.Url,
-                                Count = cookie.Count,
-                                SubTotal = product.CurrentPrice * cookie.Count,
-                            };
-                            items.Add(item);
-                        }
-                    }
-
-                }
-
-            }
-
             return items;
 
 		}
