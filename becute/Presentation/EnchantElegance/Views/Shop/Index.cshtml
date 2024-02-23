@@ -32,8 +32,8 @@
 					{
 						<div class="swiper-slide">
 							<div class="shop__collection--card text-center">
-								<a class="shop__collection--link" href="shop.html">
-									<img class="shop__collection--img" src="~/assets/img/@category.Image" alt="icon-img">
+								<a class="shop__collection--link" asp-controller="Shop" asp-action="Index">
+									<img class="shop__collection--img" src="~/assets/img/@category.Image" alt="@category.Name">
 									<h3 class="shop__collection--title mb-0">@category.Name</h3>
 								</a>
 							</div>
@@ -77,8 +77,8 @@
 												   asp-route-categoryId="@category.Id"
 												   asp-route-order="@Model.Order"
 												   asp-route-search="@Model.Search">
-													<img class="widget__categories--sub__menu--img" src="~/assets/img/@category.Products alt="categories-img">
-													<span class="widget__categories--sub__menu--text"></span>
+													@* <img class="widget__categories--sub__menu--img" src="~/assets/img/@category.Products.Count" alt="categories-img"> *@
+													<span class="widget__categories--sub__menu--text">Count :@category.Products.Count</span>
 												</a>
 											</li>
 										</ul>
@@ -119,7 +119,7 @@
 								{
 									<div class="small__product--card d-flex">
 										<div class="small__product--thumbnail">
-											<a class="display-block" asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id"><img src="~/assets/img/@item.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==true)" alt="product-img"></a>
+											<a class="display-block" asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id"><img src="~/assets/img/@item.ProductImages.FirstOrDefault(pi=>pi.IsPrimary==true)?.Url" alt="product-img"></a>
 										</div>
 										<div class="small__product--content">
 											<h3 class="small__product--card__title"><a asp-controller="Product" asp-action="Detail" asp-route-id="@item.Id">@item.Id </a></h3>
@@ -207,11 +207,7 @@
 									<label class="product__view--label">Prev Page :</label>
 									<div class="select shop__header--select">
 										<select class="product__view--select">
-											<option selected value="1">65</option>
-											<option value="2">40</option>
-											<option value="3">42</option>
-											<option value="4">57 </option>
-											<option value="5">60 </option>
+											<option>@Model.Pagination.CurrentPage</option>
 										</select>
 									</div>
 								</div>

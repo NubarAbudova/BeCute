@@ -39,10 +39,13 @@ namespace EnchantElegance.Controllers
                .Include(p => p.ProductImages.Where(pi => pi.IsPrimary == null))
             .ToListAsync();
 
+			List<BasketItem>items=await _context.BasketItems.ToListAsync();
+
             DetailVM vm = new DetailVM
             {
                 Product = product,
-                TrendingProducts = trendingproducts
+                TrendingProducts = trendingproducts,
+				Items=items
             };
             return View(vm);
 		}

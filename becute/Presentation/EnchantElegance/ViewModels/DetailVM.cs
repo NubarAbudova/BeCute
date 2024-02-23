@@ -7,5 +7,6 @@ namespace EnchantElegance.ViewModels
         public Product Product { get; set; }
 
         public List<Product> TrendingProducts { get; set; }
+        public List<BasketItem> Items { get; set; }
     }
 }

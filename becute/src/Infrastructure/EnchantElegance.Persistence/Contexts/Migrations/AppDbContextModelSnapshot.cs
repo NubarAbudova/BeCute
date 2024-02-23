@@ -318,8 +318,22 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("AppUserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("PurchasedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool?>("Status")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -430,6 +444,9 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -454,6 +471,8 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("ProductId");
 
@@ -666,7 +685,7 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
                         .HasForeignKey("OrderId");
 
                     b.HasOne("EnchantElegance.Domain.Entities.Product", "Product")
-                        .WithMany()
+                        .WithMany("BasketItems")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -680,9 +699,13 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
 
             modelBuilder.Entity("EnchantElegance.Domain.Entities.Order", b =>
                 {
-                    b.HasOne("EnchantElegance.Domain.Entities.AppUser", null)
+                    b.HasOne("EnchantElegance.Domain.Entities.AppUser", "AppUser")
                         .WithMany("Orders")
-                        .HasForeignKey("AppUserId");
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("EnchantElegance.Domain.Entities.Product", b =>
@@ -721,6 +744,10 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
 
             modelBuilder.Entity("EnchantElegance.Domain.Entities.ProductImages", b =>
                 {
+                    b.HasOne("EnchantElegance.Domain.Entities.Category", null)
+                        .WithMany("ProductImages")
+                        .HasForeignKey("CategoryId");
+
                     b.HasOne("EnchantElegance.Domain.Entities.Product", "Product")
                         .WithMany("ProductImages")
                         .HasForeignKey("ProductId")
@@ -792,6 +819,8 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
 
             modelBuilder.Entity("EnchantElegance.Domain.Entities.Category", b =>
                 {
+                    b.Navigation("ProductImages");
+
                     b.Navigation("Products");
                 });
 
@@ -807,6 +836,8 @@ namespace EnchantElegance.Persistence.Contexts.Migrations
 
             modelBuilder.Entity("EnchantElegance.Domain.Entities.Product", b =>
                 {
+                    b.Navigation("BasketItems");
+
                     b.Navigation("ProductColors");
 
                     b.Navigation("ProductImages");
