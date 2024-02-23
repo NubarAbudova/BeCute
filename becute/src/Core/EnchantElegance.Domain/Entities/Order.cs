@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EnchantElegance.Domain.Entities
 {
-    public class Order
+    public class Order:BaseEntity
     {
         public int Id { get; set; }
         public string Address { get; set; }

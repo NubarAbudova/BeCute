@@ -60,10 +60,13 @@ namespace EnchantElegance.Persistence.ServiceRegistration
 
             //Color
 			services.AddScoped<IColorService,ColorService >();
-			services.AddScoped<IColorRepository, ColorRepository>();
+            services.AddScoped<IColorRepository, ColorRepository>();
 
-            //Basket
-            services.AddScoped<IBasketService, BasketService>();
+			//Shop
+			services.AddScoped<IShopService, ShopService>();
+
+			//Basket
+			services.AddScoped<IBasketService, BasketService>();
             services.AddScoped<IBasketRepository, BasketRepository>();
 
             //BasketItem

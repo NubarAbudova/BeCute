@@ -66,6 +66,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
                 {
                     item = new BasketItem
                     {
+                        
                         IsDeleted = false,
                         AppUserId = user.Id,
                         ProductId = product.Id,
@@ -189,6 +190,15 @@ namespace EnchantElegance.Persistence.Implementations.Services
 
                         item.Count--;
                     }
+                    else
+                    {
+                        _basketitemrepo.ReverseDelete(item);
+                    }
+
+                }
+                else
+                {
+                    return;
 
                 }
 
@@ -231,7 +241,7 @@ namespace EnchantElegance.Persistence.Implementations.Services
                     item.Count++;
                 }
 
-                _basketitemrepo.Update(item);
+               await  _basketitemrepo.AddAsync(item);
                 await _basketitemrepo.SaveChangesAsync();
             }
             else
