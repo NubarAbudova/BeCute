@@ -1,4 +1,5 @@
-﻿using EnchantElegance.Domain.Entities;
+﻿using EnchantElegance.Application.Abstarctions.Repositories;
+using EnchantElegance.Domain.Entities;
 using EnchantElegance.Persistence.Contexts;
 using EnchantElegance.ViewModels;
 using FluentValidation;
@@ -9,12 +10,14 @@ namespace EnchantElegance.Controllers
 {
 	public class ProductController : Controller
 	{
-		private readonly AppDbContext _context;
+        private readonly IProductRepository _productrepo;
+        private readonly IBasketItemRepository _basketitemrepo;
 
-		public ProductController(AppDbContext context)
+        public ProductController(IProductRepository productrepo,IBasketItemRepository basketitemrepo)
         {
-			_context = context;
-		}
+            _productrepo = productrepo;
+            _basketitemrepo = basketitemrepo;
+        }
 
 		//public IActionResult Index()
 		//{
@@ -25,7 +28,7 @@ namespace EnchantElegance.Controllers
 		{
 			if (id <= 0) return BadRequest();
 
-			Product product = _context.Products
+			Product product = _productrepo.GetAll()
 				.Include(p => p.Category)
 				.Include(p=>p.ProductImages)
 				.Include(p=>p.ProductColors).ThenInclude(pc=>pc.Color)
@@ -33,15 +36,15 @@ namespace EnchantElegance.Controllers
 
 			if (product == null) return NotFound();
 
-            List<Product> trendingproducts = await _context.Products
+            List<Product> trendingproducts = await _productrepo.GetAll()
                .Where(p => p.CategoryId == product.CategoryId && p.Id != product.Id).Take(8)
                .Include(p => p.Category)
                .Include(p => p.ProductImages.Where(pi => pi.IsPrimary == null))
             .ToListAsync();
 
-			List<BasketItem>items=await _context.BasketItems.ToListAsync();
+			List<BasketItem> items = await _basketitemrepo.GetAll().ToListAsync();
 
-            DetailVM vm = new DetailVM
+			DetailVM vm = new DetailVM
             {
                 Product = product,
                 TrendingProducts = trendingproducts,

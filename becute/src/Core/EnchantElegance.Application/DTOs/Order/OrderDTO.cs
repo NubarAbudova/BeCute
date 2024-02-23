@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EnchantElegance.Domain.Entities;
+using EnchantElegance.Domain.Enums;
 
 namespace EnchantElegance.Application.DTOs
 {
@@ -19,6 +20,7 @@ namespace EnchantElegance.Application.DTOs
         public string PostalCode { get; set; }
         public bool SaveInformation { get; set; }
         public string Notes { get; set; }
+        public OrderStatus OrderStatus { get; set; }
 
         public List<BasketItem>? BasketItems { get; set; }
     }

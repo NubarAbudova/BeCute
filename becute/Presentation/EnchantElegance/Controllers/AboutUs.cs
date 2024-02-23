@@ -1,4 +1,5 @@
-﻿using EnchantElegance.Domain.Entities;
+﻿using EnchantElegance.Application.Abstarctions.Repositories;
+using EnchantElegance.Domain.Entities;
 using EnchantElegance.Persistence.Contexts;
 using EnchantElegance.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -8,16 +9,18 @@ namespace EnchantElegance.Controllers
 {
 	public class AboutUs : Controller
 	{
-		private readonly AppDbContext _context;
+        private readonly IClientRepository _clientrepo;
+        private readonly IEmployeeRepository _employeerepo;
 
-		public AboutUs(AppDbContext context)
+        public AboutUs(IClientRepository clientrepo,IEmployeeRepository employeerepo)
 		{
-			_context = context;
-		}
+            _clientrepo = clientrepo;
+            _employeerepo = employeerepo;
+        }
 		public async Task<IActionResult> Index()
 		{
-			List<Client> clients = await _context.Clients.ToListAsync();
-			List<Employee> employees = await _context.Employees.ToListAsync();
+			List<Client> clients = await _clientrepo.GetAll().ToListAsync();
+			List<Employee> employees = await _employeerepo.GetAll().ToListAsync();
 
 			AboutUsVM aboutUs = new AboutUsVM()
 			{

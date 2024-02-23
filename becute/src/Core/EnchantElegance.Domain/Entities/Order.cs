@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EnchantElegance.Domain.Enums;
 
 namespace EnchantElegance.Domain.Entities
 {
@@ -12,7 +13,7 @@ namespace EnchantElegance.Domain.Entities
         public string Address { get; set; }
         public bool? Status { get; set; }
         public decimal TotalPrice { get; set; }
-
+        public OrderStatus OrderStatus { get; set; }
         public List<BasketItem> BasketItems { get; set; }
         public DateTime PurchasedAt { get; set; }
         public string AppUserId { get; set; }

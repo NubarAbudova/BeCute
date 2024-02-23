@@ -1,4 +1,5 @@
 using EnchantElegance.Application.ServiceRegistration;
+using EnchantElegance.Infrastructure.Middleware;
 using EnchantElegance.Persistence.ServiceRegistration;
 using Stripe;
 
@@ -30,6 +31,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 StripeConfiguration.ApiKey = builder.Configuration["Stripe:Secretkey"];
+app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
 
 app.UseAuthentication();
 app.UseAuthorization();
